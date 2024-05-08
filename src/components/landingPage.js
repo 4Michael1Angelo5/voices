@@ -69,7 +69,7 @@ const LandingPage = () => {
                             
                                 <h1> The Transcontinental Rail Road</h1>
                                 <p>
-                                Hexagon lomo VHS quinoa helvetica, 3 wolf moon DIY actually 
+                                Hexagon polycomo GH-pages lomo VHS quinoa helvetica, 3 wolf moon DIY actually 
                                 sartorial mukbang hammock waistcoat selvage slow-carb tousled. 
                                 Pop-up neutral milk hotel ethical iPhone tattooed typewriter 
                                 air plant, glossier slow-carb vice adaptogen distillery af. 
