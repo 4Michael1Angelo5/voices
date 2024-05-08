@@ -1,36 +1,214 @@
 $deep-jade: #199668; 
 $forest-green: #0e3502 ; 
+$icon-base-color: rgb(208, 207, 189) ; 
+$icon-hover-color: white ; 
+$text-contrast-for-blanchedAlmond: #4d4944;
+
+$nightBlue: rgba(0,30,87,1);
+$duskPurple:rgba(0,30,87,1);
+$dawnBlue: rgba(1,84,164,1) ;
 
 @font-face {
     font-family: Jost;
-    src: url('./assets/fonts/roboto/Roboto-Bold.ttf');
+    // src: url('./assets/fonts/roboto/Roboto-Bold.ttf');
+    src:url('./assets/fonts/allover-modern-demo/ALLOVER\ MODERN\ DEMO.ttf')
+}
+
+@font-face{
+  font-family: landingPage-text;
+  src: url('./assets/fonts/Newsreader/Newsreader-VariableFont_opsz\,wght.ttf')
 }
 
 .App{
-    background: linear-gradient(180deg, blanchedalmond 0%, antiquewhite 100%);
+  overflow: hidden;
+  background-color: #263144;
 }
- 
+// -------------------- Header Design--------------------------
 .app-header{
-    height:350px;
-    // background-color: $deep-jade;
-    background: linear-gradient(90deg, $deep-jade  0%, $forest-green 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width:100%;
+  height:350px;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: Jost;
+  transition: all .5s ease-in-out;
+}
+
+.app-header.landing{
+  background-color: $deep-jade;
+  background: linear-gradient(90deg, $deep-jade  0%, $forest-green 100%);
+  transition: all 2s ease-in-out;
+
+}
+
+.app-header.family-tree-index{
+  position: absolute ;
+  top:0;
+  background: rgb(0,30,87);
+  background: linear-gradient(180deg, rgba(0,30,87,1) 0%, rgba(89,1,151,1) 69%, blue 100%);
+  transition: all 2s ease-in-out;
+}
+
+.app-header h1{
+  padding-left: 5px;
+  color: blanchedalmond;
+}
+.app-header p{
+  margin-left:0px ; 
+  color: antiquewhite;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.active-header{
+  opacity: 1;
+}
+
+// ---------------------Landing Page---------------------------
+
+.landing-page{
+  font-family: landingPage-text;
+  color: $text-contrast-for-blanchedAlmond;
+  font-size: large;
+  font-weight: 500;
+}
+
+.first-section{
+  background-image: url('./assets/map.png'), linear-gradient(180deg, blanchedalmond 0%, antiquewhite 100%);
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+
+}
+.about-the-author.frame{
+  background-clip: content-box, border-box;
+  // background-image: linear-gradient(beige,beige), linear-gradient(0deg, $deep-jade, $forest-green);
+  background-image: linear-gradient(beige, beige), linear-gradient(0deg, #4d4944, #a09990);
+  background-origin: border-box;
+  border: 6px double #0000;
+  text-align: center;
+  padding: 0px;
+  
+  border-radius: 10px;
+
+}
+
+.about-the-author{
+  transform: translateY(-70px) translateX(-10px);
+}
+
+.frame{
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(beige, beige), linear-gradient(0deg, #199668, #0e3502);
+  background-origin: border-box;
+  border: 10px double rgba(0, 0, 0, 0);
+  text-align: center;
+  padding: 0px;
+  border-radius: 10px;
+}
+
+.frame h1{
+  margin-top: 78px;
+  margin-left: 10px;
+}
+.frame p{
+  margin: 1em;
+  text-align: left;
+
+}
+
+.left-line{
+  border-left: 5px solid ;
+  border-image: linear-gradient(181deg, $forest-green, $deep-jade) 30;
+}
+
+//--------------------- nav buttons on landing page
+
+.icon-set{
+  background-color: $icon-base-color;
+  width:75px; 
+  height: 75px;
+  border-radius: 100%;
+  margin-bottom: 1.3em;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center; 
+  border:1px solid white; 
+  box-shadow: 4px 6px 10px;
+  z-index:15;
+  color: $text-contrast-for-blanchedAlmond;
+   
+ 
+}
+
+a.icon-set:hov{
+
+  background: red !important ; 
+
+  
+}
+
+.family-tree{
+  background-image: url('./assets/icons/familyTree.png');
+ 
+
+}
+
+.author{
+  background-image: url('./assets/icons/athuor.png');
+  background-size: 42%;
+
+}
+
+.chapters-link{
+  background-image: url('./assets/icons/book.png');
+  background-size: 50%;
+
+}
+
+.context-section{
+  transform: translate(168px, -653px);
+}
+
+.rail-road-history-section{
+  background: linear-gradient(45deg, blue, #7938aa);
+}
+
+.rail-road-history-section{
+  color:aliceblue
+}
+
+
+//------------------Shape Divders For Header--------------------
+
+// -- shape-divider for tree index page
+
+  .custom-shape-divider-top-1713657617.tree-index{
+    background-image: linear-gradient(360deg, #163fa0, #c26d6d);
+   
   }
   
   
   .custom-shape-divider-top-1713657617 {
-    position: absolute;
-    top: 350px;
-    left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    background: linear-gradient(90deg, $forest-green  0%, $deep-jade 100%);;
-    // background: linear-gradient(90deg, $deep-jade  0%, $forest-green 100%);;
-    transform: translateX(0px) rotate(180deg) translateY(12px);
+    transform: translateX(0px) rotate(180deg);
+    transition: opacity 2s ease-in-out;
+  }
+
+  .custom-shape-divider-top-1713657617.tree-divider{
+    
+    fill: white;
+    background: linear-gradient(0deg, blue  0% , red 100%);
+
+  }
+
+  // ----shape-divider for landing-page
+
+  .custom-shape-divider-top-1713657617.landing-divider{
+    background: linear-gradient(90deg, $forest-green  0%, $deep-jade 100%);
   }
   
   .custom-shape-divider-top-1713657617 svg {
@@ -39,45 +217,48 @@ $forest-green: #0e3502 ;
     width: calc(125% + 1.3px);
     // height: 197px;
   }
+
+  .custom-shape-divider-bottom-1714357161{
+    fill:blanchedalmond;
+  }
   
   .custom-shape-divider-top-1713657617 .shape-fill {
     fill: white;
     background: linear-gradient(90deg, $deep-jade  0%, $forest-green 100%);
   }
 
-  .frame{
-    background-clip: content-box, border-box;
-    background-image: linear-gradient(beige,beige), linear-gradient(0deg, $deep-jade, $forest-green);
-    background-origin: border-box;
-    border: 10px double #0000;
-    text-align: center;
-    padding: 0px;
-    transform: translateY(-70px) translateX(-10px);
-    border-radius: 10px;
 
-  }
 
-  .frame h1{
-    margin-top: 78px;
-  }
-  .frame p{
-    margin: 1em;
-    text-align: left;
 
-  }
 
-.left-line{
-    border-left: 5px solid ;
-    border-image: linear-gradient(181deg, $forest-green, $deep-jade) 30;
+//---------------------------------- family tree index page
+
+.family-tree-index-page{
+  // background-color: blanchedalmond;
+  background-color: #263144 ; ;
+  color:blanchedalmond;
 }
 
-.app-header h1{
-    padding-left: 5px;
-    color: blanchedalmond;
+// .family-tree-index-page h1{
+//   margin-top:  calc(1.375rem + 1.5vw);;
+// }
+
+.ancestor-card{
+
+  background-color: #9ea7c030;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 170px;
+  transition: all .5s ease-in;
+
 }
-.app-header p{
-    margin-left:0px ; 
-    color: antiquewhite;
-    font-style: italic;
-    font-weight: lighter;
+
+.ancestor-card:hover{
+  border: 1px solid whitesmoke;
+  background-color: #263144 ;
+}
+
+.person-container{
+  width: 170px;
+  
 }

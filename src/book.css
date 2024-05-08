@@ -78,8 +78,8 @@
 
 .page {
   box-shadow: -1em 2em 1em -0.2em #00000020;
-    border: 1px solid beige;
-    border-radius: 3px;
+    /* border: 1px solid beige; */
+    /* border-radius: 3px; */
 }
 
 .front,
@@ -133,3 +133,5 @@
     hsl(231, 32%, 29%) url("https://chcp.org/resources/Pictures/News/2020.11.16_Voices-from-the-Railroad-768x942.jpeg") 50% / cover;
   color: hsl(200 30% 98%);
 }
+
+

@@ -2,15 +2,16 @@ import React  from "react"; ;
 
 const Menu = (props)=>{
 
-    console.log(props)
+
    
 
     return(
         <div id={"menu"}onClick={e=>props.toggle(e)}className= {props.isOpen? "menu menu-open " :"menu"} >
-            <a>Hello World!</a>
-            <a>Hello World!</a>
-            <a>Hello World!</a>
-            <a>Hello World!</a>
+            <a>Home</a>
+            <a>The Book</a>
+            <a>The Author</a>
+            <a>The History</a>
+            
             
         </div>
     );
@@ -33,7 +34,7 @@ class BurgerMenu extends React.Component{
     toggle=(e)=>{
         e.preventDefault();
         this.setState({isOpen: !this.state.isOpen});
-        console.log(this.state.isOpen)
+        
     }
 
     render(){
