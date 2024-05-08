@@ -20,7 +20,7 @@ function App() {
         <BurgerMenu />
         <Header />
         <Routes>
-          <Route path='/' element={<LandingPage />} />
+          <Route path='/voices' element={<LandingPage />} />
           <Route path='/family-tree-index' element={<TreeIndexPage/>} />
           {
             ansestors.map((ancestor, index) => {
