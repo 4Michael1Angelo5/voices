@@ -1,92 +1,31 @@
 import { InputText } from 'primereact/inputtext';
-import { OrganizationChart } from 'primereact/organizationchart';
-import { useState } from 'react';
+import { OrganizationChart} from 'primereact/organizationchart';
+import { Timeline } from 'primereact/timeline';
+import { useLayoutEffect, useState, } from 'react';
 import ExampleChart from './exampleChart';
+import AnimatedNumbers from "react-animated-numbers";
 
- 
-const   ColoredDemo = () =>{
-    const [data] = useState([
-        {
-            expanded: true,
-            type: 'person',
-            className: 'bg-indigo-500 text-white',
-            style: { borderRadius: '12px' },
-            data: {
-                image: 'https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png',
-                name: 'Amy Elsner',
-                title: 'CEO'
-            },
-            children: [
-                {
-                    expanded: true,
-                    type: 'person',
-                    className: 'bg-purple-500 text-white',
-                    style: { borderRadius: '12px' },
-                    data: {
-                        image: 'https://primefaces.org/cdn/primereact/images/avatar/annafali.png',
-                        name: 'Anna Fali',
-                        title: 'CMO'
-                    },
-                    children: [
-                        {
-                            label: 'Sales',
-                            className: 'bg-purple-500 text-white',
-                            style: { borderRadius: '12px' }
-                        },
-                        {
-                            label: 'Marketing',
-                            className: 'bg-purple-500 text-white',
-                            style: { borderRadius: '12px' }
-                        }
-                    ]
-                },
-                {
-                    expanded: true,
-                    type: 'person',
-                    className: 'bg-teal-500 text-white',
-                    style: { borderRadius: '12px' },
-                    data: {
-                        image: 'https://primefaces.org/cdn/primereact/images/avatar/stephenshaw.png',
-                        name: 'Stephen Shaw',
-                        title: 'CTO'
-                    },
-                    children: [
-                        {
-                            label: 'Development',
-                            className: 'bg-teal-500 text-white',
-                            style: { borderRadius: '12px' }
-                        },
-                        {
-                            label: 'UI/UX Design',
-                            className: 'bg-teal-500 text-white',
-                            style: { borderRadius: '12px' }
-                        }
-                    ]
-                }
-            ]
-        }
-    ]);
 
-    const nodeTemplate = (node) => {
-        if (node.type === 'person') {
-            return (
-                <div className="flex flex-column">
-                    <div className="flex flex-column align-items-center">
-                        <img alt={node.data.name} src={node.data.image} className="mb-3 w-3rem h-3rem" />
-                        <span className="font-bold mb-2">{node.data.name}</span>
-                        <span>{node.data.title}</span>
-                    </div>
-                </div>
-            );
-        }
 
-        return node.label;
-    };
+// begin example card for family ancestor
 
-    return (
-        <div className="card overflow-x-auto">
-            <OrganizationChart value={data} nodeTemplate={nodeTemplate} />
-            <ExampleChart/>
+const AncestorCard = (props) => {
+
+    // console.log(props.ancestor)
+
+    return(
+        <div className  = 'ancestor-headline'>
+
+            <h1>
+                {props.ancestor.name}            
+            </h1>
+
+            <p>{props.ancestor.lifeSpan}</p>
+
+            <p>
+                {props.ancestor.shortDescription}
+            </p>
+
         </div>
     )
 }
@@ -94,18 +33,111 @@ const   ColoredDemo = () =>{
 
 const AncestorFamilyTree = (props)=>{
 
+   
+    const [ orientation , setOrientation] = useState("portrait") ; 
+    const [ancestor, setAncestor] = useState(props.ancestor) ; 
+    const [num, setNum] = useState(ancestor.year);
+
+     
+    
+
+    useLayoutEffect(() => {
+        // Handler to call on window resize
+        function handleOrientation() {
+            // Set window width/height to state
+
+            let clientWidth = window.innerWidth ; 
+            let clientHeight = window.innerHeight ; 
+
+            if(clientWidth>clientHeight){
+                setOrientation("landscape")
+            }
+            else setOrientation("portrait")
+          
+        }
+        // Add event listener
+        window.addEventListener("resize", handleOrientation);
+        // Call handler right away so state gets updated with initial window size
+        handleOrientation();
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleOrientation);
+    }, []); // Empty array ensures that effect is only run on mount
+
+    useLayoutEffect( ()=>{
+        
+        console.log(ancestor.year)
+        let dif = ancestor.year - num ; 
+        console.log(dif)
+        setNum(dif+num)
+
+    },[ancestor])
+    
+
+
+    let events=  [] ;
+
+    for(let years = 1890 ; years < 2020 ; years+=10){
+
+        events.push(years)
+    }
+
+
     return(
 
-        <div className = 'container'>
+        <div className = 'container ancestor-page'>
             <div className = 'row d-flex justify-content-center'>
-                
 
-                <h1>You've reached the ancestor family tree page</h1><br/>
-                <h2> this is the name of the ansestor {props.ancestor.name}</h2>
-                <InputText />
-                <ColoredDemo/>
+            <AncestorCard ancestor = {ancestor} />
 
             </div>
+            {/* https://www.npmjs.com/package/react-animated-numbers */}
+            <div className='animated-numbers'>
+                <AnimatedNumbers
+                    ancestor = {ancestor}
+                    className=""
+                    transitions={(index) => ({
+                    type: "spring",
+                    duration: index + 0.15,
+                     
+                    })}
+                    animateToNumber={num}
+                    fontStyle={{
+                    fontSize: 40,
+                    color: "red",
+                    }}
+                />
+            </div>
+            <div className = "timeline-container">
+            {events.map((year,index)=>{
+                    return(
+                        <div className = ''>
+
+                        <div>{year}</div>
+                        <div className = "year-marker"/>
+                        {
+                            index=== events.length-1
+                            ?
+                            null
+                            :
+                            <div key = {index} className = "timeline-connector"/>
+                        }
+                        
+
+                        </div>
+                    
+                    )
+                })
+            }
+            </div>
+            {/* <button onClick={() => setNum((state) => state + 31234)}>+</button> */}
+
+            <ExampleChart 
+                orientation = {orientation}
+                setAncestor = {setAncestor}
+                ancestor = {ancestor}
+                />
+     
+
           
 
         </div>

@@ -262,3 +262,61 @@ a.icon-set:hov{
   width: 170px;
   
 }
+
+// -------------------------------------ancestor page -------------------
+
+.ancestor-page{
+  min-height: 100vh;
+  color:blanchedalmond;
+  padding-bottom:200px;
+}
+
+.timeline-connector{ 
+
+  width:176px;
+  border:1px solid
+}
+
+.timeline-container{
+
+    display: flex;
+    overflow-x: hidden;
+    flex-wrap: nowrap;
+}
+.year-marker{
+
+  width:2px ; 
+  height:10px ; 
+  background-color: blanchedalmond;
+  // border: 1px solid blanchedalmond ; 
+  // border-radius: 100%;
+}
+
+.ancestor-headline{
+
+  width:300px ; 
+  border: 1px solid ; 
+  border-radius: 13px;
+  
+}
+
+.animated-numbers{
+  display: flex;
+  justify-content: center;
+}
+
+.tree-container{
+  height:500px;
+  overflow-y:scroll; 
+  overflow-x:hidden;
+  border-image: linear-gradient(#f6b73c, #4d9f0c) 30;
+border-width: 4px;
+border-style: solid;
+scrollbar-width: 10px;
+scrollbar-color: white;
+}
+
+// .dooky-boots{
+//   position: relative; 
+//   top:0px;
+// }

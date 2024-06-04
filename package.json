@@ -2,7 +2,7 @@
   "name": "voices",
   "version": "0.1.0",
   "private": true,
-   "homepage": "https://4michael1angelo5.github.io/voices",
+  "homepage": "https://4michael1angelo5.github.io/voices/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -13,6 +13,7 @@
     "gh-pages": "^6.1.1",
     "primereact": "^10.6.5",
     "react": "^18.2.0",
+    "react-animated-numbers": "^0.18.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",

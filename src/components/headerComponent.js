@@ -10,13 +10,14 @@ const Header = ()=>{
    
 
     return (
-    <div>
 
-        <LandingHeader active = {location.pathname ==='/voices/'?true:false}/>
-        <TreeIndexHeader active = {location.pathname.substring(1,7) === 'family'? true:false}/>
-        {/* <FamilyTreeHeader active ={location.pathname.substring(1,7) === 'family'? true:false}/> */}
-
-    </div>
+            <div>
+                <LandingHeader active = {location.pathname ==='/voices/'?true:false}/>
+                <TreeIndexHeader active = {location.pathname.substring(1,7) === 'family'? true:false}/>
+                {/* <FamilyTreeHeader active ={location.pathname.substring(1,7) === 'family'? true:false}/> */}
+            </div>
+        
+ 
 
     );
 }

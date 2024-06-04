@@ -2,6 +2,7 @@ const ANCESTORS = [
     {
     name: "Him Mark Lai",
     year:1985,
+    lifeSpan: "1879-1890",
     shortDescription:"I'm baby cronut kale chips fingerstache, \
     activated charcoal YOLO four dollar toast lumbersexual \
     flexitarian cred praxis. Butcher vaporware beard tattooed \
@@ -10,6 +11,7 @@ const ANCESTORS = [
     {
     name:"Won Kow Loun",
     year:1972,
+    lifeSpan: "1879-1890",
     shortDescription:"Bodega boys swag chicharrones, semiotics mustache \
     sustainable bitters glossier vibecession la croix. Quinoa narwhal \
     retro, pickled DSA JOMO mustache marfa bodega boys pok pok next level",
@@ -18,6 +20,7 @@ const ANCESTORS = [
     {
     name: "Jared Letto",
     year: 1874,
+    lifeSpan: "1879-1890",
     shortDescription:"Polaroid fixie fashion axe, taiyaki +1 distillery \
     8-bit. Blue bottle etsy af, aesthetic helvetica art party selfies normcore \
     tote bag. Umami VHS af, church-key meditation kinfolk small batch taiyaki \
@@ -26,6 +29,7 @@ const ANCESTORS = [
     {
     name: 'Elivis Presely',  
     year: 1975,
+    lifeSpan: "1879-1890",
     shortDescription:"Hoodie letterpress 90's semiotics fashion axe venmo.\
     Mixtape marxism readymade echo park quinoa. Hot chicken ugh four dollar\
     toast before they sold out, squid forage paleo bodega boys vice umami\

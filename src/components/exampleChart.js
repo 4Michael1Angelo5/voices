@@ -1,42 +1,25 @@
-import React, { useState, useEffect } from 'react';
- 
+import React, { useState, useEffect, useLayoutEffect , useRef} from 'react';
+import { DATA } from './ftreeData';
 import { OrgChartComponent } from './OrgChart';
-import * as d3 from 'd3';
+import * as d3 from 'd3'
+ 
 
 const ExampleChart = (props) => {
-  const [data, setData] = useState(null);
-  let addNodeChildFunc = null;
+const [data, setData] = useState(null);
+const treeContainer = useRef(null)
 
-  function addNode() {
-    const node = {
-      nodeId: 'new Node',
-      parentNodeId: 'O-6066',
-    };
 
-    addNodeChildFunc(node);
-  }
-
-  function onNodeClick(nodeId) {
-    // console.log('d3', d3.event);
-    alert('clicked ' + nodeId);
-  }
-
-  useEffect(() => {
-    d3.csv(
-      'https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
-    ).then((data) => {
-      setData(data);
-    });
-  }, [true]);
   return (
-    <div>
-      Click node to trigger action in parent or &nbsp;
-      <button onClick={() => addNode()}>add node as root's child</button>
+    <div className = "tree-container"
+    ref = {treeContainer}>
       <OrgChartComponent
-        setClick={(click) => (addNodeChildFunc = click)}
-        onNodeClick={onNodeClick}
-        data={data}
+        obj = {treeContainer}
+        data= {DATA}
+        orientation = {props.orientation}
+        setAncestor = {props.setAncestor}
+        ancestor = {props.ancestor}
       />
+       
     </div>
   );
 };
