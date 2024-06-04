@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.7a341cca.css",
-    "main.js": "/voices/static/js/main.df9d26e7.js",
+    "main.css": "/voices/static/css/main.f3d963b1.css",
+    "main.js": "/voices/static/js/main.af860afe.js",
     "static/js/453.3ce130f5.chunk.js": "/voices/static/js/453.3ce130f5.chunk.js",
     "static/media/Jacquard12Charted-Regular.ttf": "/voices/static/media/Jacquard12Charted-Regular.0de6e1d1c91485def831.ttf",
     "static/media/Newsreader-VariableFont_opsz,wght.ttf": "/voices/static/media/Newsreader-VariableFont_opsz,wght.5032d4be14f4a0091c82.ttf",
@@ -9,12 +9,12 @@
     "static/media/map.png": "/voices/static/media/map.7b6905ea8260e3118f13.png",
     "static/media/person.png": "/voices/static/media/person.bcc74561d38db661b53f.png",
     "index.html": "/voices/index.html",
-    "main.7a341cca.css.map": "/voices/static/css/main.7a341cca.css.map",
-    "main.df9d26e7.js.map": "/voices/static/js/main.df9d26e7.js.map",
+    "main.f3d963b1.css.map": "/voices/static/css/main.f3d963b1.css.map",
+    "main.af860afe.js.map": "/voices/static/js/main.af860afe.js.map",
     "453.3ce130f5.chunk.js.map": "/voices/static/js/453.3ce130f5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7a341cca.css",
-    "static/js/main.df9d26e7.js"
+    "static/css/main.f3d963b1.css",
+    "static/js/main.af860afe.js"
   ]
 }
