@@ -1,20 +1,21 @@
-import { InputText } from 'primereact/inputtext';
-import { OrganizationChart} from 'primereact/organizationchart';
-import { Timeline } from 'primereact/timeline';
-import { useLayoutEffect, useState, } from 'react';
-import ExampleChart from './exampleChart';
+
+import { useLayoutEffect, useRef, useState, } from 'react';
 import AnimatedNumbers from "react-animated-numbers";
+import { DATA } from './ftreeData';
+import { OrgChartComponent } from './OrgChart';
 
 
-
-// begin example card for family ancestor
+// Ancestor Detail displaying information about currently selected Ancesetor
 
 const AncestorCard = (props) => {
 
     // console.log(props.ancestor)
 
     return(
-        <div className  = 'ancestor-headline'>
+        <div className = "row d-flex justify-content-center">
+
+        
+        <div className  = 'ancestor-detail col-12 col-lg-6'>
 
             <h1>
                 {props.ancestor.name}            
@@ -27,6 +28,8 @@ const AncestorCard = (props) => {
             </p>
 
         </div>
+
+        </div>
     )
 }
         
@@ -37,9 +40,8 @@ const AncestorFamilyTree = (props)=>{
     const [ orientation , setOrientation] = useState("portrait") ; 
     const [ancestor, setAncestor] = useState(props.ancestor) ; 
     const [num, setNum] = useState(ancestor.year);
+    const treeContainer = useRef(null) ;
 
-     
-    
 
     useLayoutEffect(() => {
         // Handler to call on window resize
@@ -85,13 +87,45 @@ const AncestorFamilyTree = (props)=>{
     return(
 
         <div className = 'container ancestor-page'>
+            {/* ----------------- Title of Page  ----------------------*/}
+
+            <h1>{props.ancestor.name} Family Tree </h1>
+      
+
+            {/*-------------------- d3-org-chart --------------------*/}
+
+            <div className = "tree-container"
+                ref = {treeContainer}
+                >
+                <OrgChartComponent
+                    obj = {treeContainer}
+                    data = {DATA}
+                    orientation = {orientation}
+                    setAncestor = {setAncestor}
+                    ancestor = {ancestor}
+
+
+                />
+            </div>
+
+            {/*
+            -------------------- ancestor information to be displayed -----------------------
+            ---------------------to be displayed when user click chart node---------------------
+            */}
+
             <div className = 'row d-flex justify-content-center'>
 
-            <AncestorCard ancestor = {ancestor} />
+                <AncestorCard ancestor = {ancestor} />
 
             </div>
-            {/* https://www.npmjs.com/package/react-animated-numbers */}
-            <div className='animated-numbers'>
+
+            {/* 
+            --------------------animated numbers for ancestor age and timeline--------------
+            ------------------------------------------------------------------------------------ 
+            -----------------https://www.npmjs.com/package/react-animated-numbers-----------
+            */}
+
+             <div className='animated-numbers'>
                 <AnimatedNumbers
                     ancestor = {ancestor}
                     className=""
@@ -129,17 +163,6 @@ const AncestorFamilyTree = (props)=>{
                 })
             }
             </div>
-            {/* <button onClick={() => setNum((state) => state + 31234)}>+</button> */}
-
-            <ExampleChart 
-                orientation = {orientation}
-                setAncestor = {setAncestor}
-                ancestor = {ancestor}
-                />
-     
-
-          
-
         </div>
 
     );

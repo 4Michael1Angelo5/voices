@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useEffect, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { OrgChart } from 'd3-org-chart';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Dialog } from 'primereact/dialog';
@@ -31,13 +31,7 @@ export const OrgChartComponent = (props, ref) => {
 
   console.log(attr.lastTransform.k , [x,y])
   let interpolator = d3.interpolateZoom(from,to)
-
-
-
-
-
  }
-
 
   // We need to manipulate DOM
   useLayoutEffect(() => {
@@ -47,13 +41,12 @@ export const OrgChartComponent = (props, ref) => {
       }
       chart 
         .container(d3Container.current)
-        .svgHeight(650)
+        .svgHeight(500)
         .data(props.data)
         .nodeWidth((d) => 200)
         .nodeHeight((d) => 120)        
-        .layout( props.orientation == "landscape"?"left":"top") 
-
-                
+        // .layout( props.orientation == "landscape"?"left":"top") 
+        .layout("top")               
         .nodeContent(function (d, i, arr, state) {
           const color = '#263144';
           const imageDiffVert = 25 + 2;
@@ -61,7 +54,7 @@ export const OrgChartComponent = (props, ref) => {
                   <div style='width:${
                     d.width
                   }px;height:${d.height}px;padding-top:${imageDiffVert - 2}px;padding-left:1px;padding-right:1px;'
-                  class = "dooky-boots"> 
+                  class = "ancestor-graph-node"> 
                           <div style="font-family: 'Inter', sans-serif;background-color:${color};  margin-left:-1px;width:${d.width - 2}px;height:${d.height - imageDiffVert}px;border-radius:10px;border: 1px solid #E4E2E9">
                               <div style="display:flex;justify-content:flex-end;margin-top:5px;margin-right:8px">${
                                 d.data.lifeSpan
@@ -70,7 +63,7 @@ export const OrgChartComponent = (props, ref) => {
                               <div style="margin-top:${
                                 -imageDiffVert - 20
                               }px;">   <img src=" ${d.data.imageUrl}" style="margin-left:${20}px;border-radius:100px;width:40px;height:40px;" /></div>
-                              <div style="font-size:15px;color:#08011E;margin-left:20px;margin-top:10px">  ${
+                              <div style="font-size:15px;margin-left:20px;margin-top:10px">  ${
                                 d.data.name
                               } </div>
                               <div style="color:#716E7B;margin-left:20px;margin-top:3px;font-size:10px;"> ${
@@ -101,7 +94,7 @@ export const OrgChartComponent = (props, ref) => {
              setTimeout(()=>setVisible(true),1000);
             
           })})
-        .scaleExtent([.5,1.5])  
+        .scaleExtent([.5,3.5])  
         .render();
     }
 
@@ -124,10 +117,6 @@ export const OrgChartComponent = (props, ref) => {
                   
                 </p>
       </Dialog> */}
-
-     
- 
-    
     </React.Fragment>
 
 

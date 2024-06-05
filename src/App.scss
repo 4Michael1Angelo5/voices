@@ -250,6 +250,7 @@ a.icon-set:hov{
   overflow: hidden;
   height: 170px;
   transition: all .5s ease-in;
+  
 
 }
 
@@ -292,12 +293,12 @@ a.icon-set:hov{
   // border-radius: 100%;
 }
 
-.ancestor-headline{
+.ancestor-detail{
 
-  width:300px ; 
+  // width:300px ; 
   border: 1px solid ; 
   border-radius: 13px;
-  
+  margin-top:2em;
 }
 
 .animated-numbers{
@@ -306,15 +307,20 @@ a.icon-set:hov{
 }
 
 .tree-container{
+  overflow: hidden;
   height:500px;
-  overflow-y:scroll; 
-  overflow-x:hidden;
-  border-image: linear-gradient(#f6b73c, #4d9f0c) 30;
 border-width: 4px;
 border-style: solid;
 scrollbar-width: 10px;
 scrollbar-color: white;
+
+border: 1px solid ; 
+border-radius: 15px;
 }
+
+// .ancestor-graph-node{
+  
+// }
 
 // .dooky-boots{
 //   position: relative; 
