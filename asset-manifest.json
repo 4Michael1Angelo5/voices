@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/voices/static/css/main.8cb2442f.css",
-    "main.js": "/voices/static/js/main.61613e41.js",
+    "main.js": "/voices/static/js/main.a5326d18.js",
     "static/js/453.3ce130f5.chunk.js": "/voices/static/js/453.3ce130f5.chunk.js",
     "static/media/Jacquard12Charted-Regular.ttf": "/voices/static/media/Jacquard12Charted-Regular.0de6e1d1c91485def831.ttf",
     "static/media/Newsreader-VariableFont_opsz,wght.ttf": "/voices/static/media/Newsreader-VariableFont_opsz,wght.5032d4be14f4a0091c82.ttf",
@@ -10,11 +10,11 @@
     "static/media/person.png": "/voices/static/media/person.bcc74561d38db661b53f.png",
     "index.html": "/voices/index.html",
     "main.8cb2442f.css.map": "/voices/static/css/main.8cb2442f.css.map",
-    "main.61613e41.js.map": "/voices/static/js/main.61613e41.js.map",
+    "main.a5326d18.js.map": "/voices/static/js/main.a5326d18.js.map",
     "453.3ce130f5.chunk.js.map": "/voices/static/js/453.3ce130f5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8cb2442f.css",
-    "static/js/main.61613e41.js"
+    "static/js/main.a5326d18.js"
   ]
 }
