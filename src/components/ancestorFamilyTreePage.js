@@ -66,10 +66,8 @@ const AncestorFamilyTree = (props)=>{
     }, []); // Empty array ensures that effect is only run on mount
 
     useLayoutEffect( ()=>{
-        
-        console.log(ancestor.year)
+     
         let dif = ancestor.year - num ; 
-        console.log(dif)
         setNum(dif+num)
 
     },[ancestor])
@@ -94,11 +92,11 @@ const AncestorFamilyTree = (props)=>{
 
             {/*-------------------- d3-org-chart --------------------*/}
 
-            <div className = "tree-container"
+            {/* <div className = "tree-container"
                 ref = {treeContainer}
-                >
+                > */}
                 <OrgChartComponent
-                    obj = {treeContainer}
+                    // obj = {treeContainer}
                     data = {DATA}
                     orientation = {orientation}
                     setAncestor = {setAncestor}
@@ -106,7 +104,7 @@ const AncestorFamilyTree = (props)=>{
 
 
                 />
-            </div>
+            {/* </div> */}
 
             {/*
             -------------------- ancestor information to be displayed -----------------------
@@ -155,14 +153,19 @@ const AncestorFamilyTree = (props)=>{
                             :
                             <div key = {index} className = "timeline-connector"/>
                         }
-                        
+
+                                        
 
                         </div>
                     
                     )
                 })
-            }
+            }            
             </div>
+            <div className = "row d-flex justify-content-center">
+            <div className ="loader"/>
+            </div>
+            
         </div>
 
     );
