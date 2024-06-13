@@ -185,7 +185,7 @@ useEffect(()=>{
       <div ref={d3Container} >
       </div>
       </div>   
-    {/* {  
+    {  
     offset==0
     ?
     null
@@ -223,7 +223,7 @@ useEffect(()=>{
         />
 
         </>
-        } */}
+        }
      
       {/* <button onClick = { ()=> panLeft()}>Pan Left</button> */}
       {/* <div className = "mask" onClick = {e=>handleMaskClick(e)}>
