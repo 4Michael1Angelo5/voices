@@ -1,7 +1,7 @@
 const ANCESTORS = [
     {
     name: "Him Mark Lai",
-    year:1985,
+    year:1879,
     lifeSpan: "1879-1890",
     shortDescription:"I'm baby cronut kale chips fingerstache, \
     activated charcoal YOLO four dollar toast lumbersexual \
@@ -10,7 +10,7 @@ const ANCESTORS = [
     },
     {
     name:"Won Kow Loun",
-    year:1972,
+    year:1979,
     lifeSpan: "1879-1890",
     shortDescription:"Bodega boys swag chicharrones, semiotics mustache \
     sustainable bitters glossier vibecession la croix. Quinoa narwhal \
@@ -19,7 +19,7 @@ const ANCESTORS = [
     },
     {
     name: "Jared Letto",
-    year: 1874,
+    year: 2020,
     lifeSpan: "1879-1890",
     shortDescription:"Polaroid fixie fashion axe, taiyaki +1 distillery \
     8-bit. Blue bottle etsy af, aesthetic helvetica art party selfies normcore \
@@ -28,7 +28,7 @@ const ANCESTORS = [
     },
     {
     name: 'Elivis Presely',  
-    year: 1975,
+    year: 1979,
     lifeSpan: "1879-1890",
     shortDescription:"Hoodie letterpress 90's semiotics fashion axe venmo.\
     Mixtape marxism readymade echo park quinoa. Hot chicken ugh four dollar\

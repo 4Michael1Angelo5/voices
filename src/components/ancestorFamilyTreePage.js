@@ -1,5 +1,5 @@
 
-import { useLayoutEffect, useRef, useState, } from 'react';
+import { useLayoutEffect, useRef, useState,useEffect } from 'react';
 import AnimatedNumbers from "react-animated-numbers";
 import { DATA } from './ftreeData';
 import { OrgChartComponent } from './OrgChart';
@@ -9,7 +9,6 @@ import { OrgChartComponent } from './OrgChart';
 
 const AncestorCard = (props) => {
 
-    // console.log(props.ancestor)
 
     return(
         <div className = "row d-flex justify-content-center">
@@ -40,46 +39,121 @@ const AncestorFamilyTree = (props)=>{
     const [ orientation , setOrientation] = useState("portrait") ; 
     const [ancestor, setAncestor] = useState(props.ancestor) ; 
     const [num, setNum] = useState(ancestor.year);
-    const treeContainer = useRef(null) ;
+    const [translateAmount,setTranslate] = useState(0) ; 
+    const [firstDraw,setFirstDraw] = useState(true) ; 
+    const [screenWidth, setScreenWidth] = useState(100);
+    const timeLineContainer = useRef(null) ; 
+    const centerLine = useRef(null);
+    const [timeWarp,setTimeWarp] = useState(false) ; 
+    
 
-
+ 
     useLayoutEffect(() => {
-        // Handler to call on window resize
-        function handleOrientation() {
-            // Set window width/height to state
+        // set Translate amount for animated number slider
 
-            let clientWidth = window.innerWidth ; 
-            let clientHeight = window.innerHeight ; 
+        let dif = ancestor.year - num ; 
 
-            if(clientWidth>clientHeight){
-                setOrientation("landscape")
-            }
-            else setOrientation("portrait")
-          
+
+        if (firstDraw){
+
+            let firstDif = ancestor.year - 1800 ; 
+
+            setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )
+            setFirstDraw(false)
+
+        }else{
+
+            setTranslate(translateAmount - dif*17.6  )
+            setFirstDraw(true)
+           
         }
+
+    }, [ancestor]); 
+
+    useEffect( ()=>{
+
+        // set number/year for animated numbers
+
+       let dif = ancestor.year - num ; 
+
+       setNum(dif + num)
+        
+    },[ancestor])
+
+    // set inner Width of window
+    useEffect( ()=>{
+
+        setScreenWidth(window.innerWidth)
+
+    }
+    ,[])
+
+
+    function handleOrientation() {
+
+        // reposition the slider on window resize
+        // reset the number/ year for animated number
+       
+        let firstDif = ancestor.year - 1800 ; 
+        
+
+        if(window.innerWidth != screenWidth){
+            
+            console.log("screen width changed")
+            setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )
+            setScreenWidth(window.innerWidth)           
+      
+        }
+        
+        if (window.innerHeight<window.innerWidth){
+            setOrientation("landscape")
+        }else setOrientation("portrait")
+       
+         
+    }
+
+     
+    function resizedw(){
+
+        // Haven't resized in 100ms!
+    
+        if(window.innerWidth!= screenWidth){
+            // only re-animate numbers if device width changes
+            setFirstDraw(!firstDraw)
+            setScreenWidth(window.innerWidth)
+        }
+    }   
+
+    useLayoutEffect(()=>{
+        
         // Add event listener
         window.addEventListener("resize", handleOrientation);
         // Call handler right away so state gets updated with initial window size
         handleOrientation();
+        var doit;
+        window.onresize = function(){
+          clearTimeout(doit);
+          doit = setTimeout(resizedw, 100);
+        };
+
+
         // Remove event listener on cleanup
         return () => window.removeEventListener("resize", handleOrientation);
-    }, []); // Empty array ensures that effect is only run on mount
 
-    useLayoutEffect( ()=>{
-     
-        let dif = ancestor.year - num ; 
-        setNum(dif+num)
+    },[firstDraw,ancestor])
 
-    },[ancestor])
-    
+  
+
 
 
     let events=  [] ;
 
-    for(let years = 1890 ; years < 2020 ; years+=10){
+    for(let years = 1800 ; years < 2030 ; years+=10){
 
         events.push(years)
     }
+
+
 
 
     return(
@@ -92,19 +166,18 @@ const AncestorFamilyTree = (props)=>{
 
             {/*-------------------- d3-org-chart --------------------*/}
 
-            {/* <div className = "tree-container"
-                ref = {treeContainer}
-                > */}
+          
                 <OrgChartComponent
-                    // obj = {treeContainer}
+                    
                     data = {DATA}
-                    orientation = {orientation}
+                    // orientation = {orientation}
+                    setTimeWarp = {setTimeWarp}
                     setAncestor = {setAncestor}
                     ancestor = {ancestor}
 
 
                 />
-            {/* </div> */}
+          
 
             {/*
             -------------------- ancestor information to be displayed -----------------------
@@ -112,6 +185,7 @@ const AncestorFamilyTree = (props)=>{
             */}
 
             <div className = 'row d-flex justify-content-center'>
+                
 
                 <AncestorCard ancestor = {ancestor} />
 
@@ -120,51 +194,96 @@ const AncestorFamilyTree = (props)=>{
             {/* 
             --------------------animated numbers for ancestor age and timeline--------------
             ------------------------------------------------------------------------------------ 
-            -----------------https://www.npmjs.com/package/react-animated-numbers-----------
+            -----------------https://www.npmjs.com/package/react-animated-numbers
             */}
 
              <div className='animated-numbers'>
-                <AnimatedNumbers
-                    ancestor = {ancestor}
-                    className=""
+                {
+                    
+                    firstDraw 
+                    ?
+                    <AnimatedNumbers
+                    // ancestor = {ancestor}
+                    // className=""    
+                    key = {123}               
                     transitions={(index) => ({
                     type: "spring",
-                    duration: index + 0.15,
-                     
+                    duration: index + 0.15
                     })}
-                    animateToNumber={num}
+                    animateToNumber={ancestor.year}
                     fontStyle={{
                     fontSize: 40,
                     color: "red",
                     }}
-                />
+                    />
+                     
+                    :
+                    <AnimatedNumbers
+                    // ancestor = {ancestor}
+                    // className=""          
+                    key = {124}       
+                    transitions={(index) => ({
+                    type: "spring",
+                    duration: index + 0.15 
+                    })}
+                    animateToNumber={num}
+                    fontStyle={{
+                    fontSize: 40,
+                    color: "red",                    
+                    }}                    
+                    />
+                    
+
+                }
+                
+                
             </div>
-            <div className = "timeline-container">
+
+            <div ref = {timeLineContainer} className = "timeline-container">
+             
+            
+           
+            <div  className = "view-box"
+
+                style = {{transform:`translateX(${translateAmount}px)`}}
+                
+                >
+                       
             {events.map((year,index)=>{
                     return(
-                        <div className = ''>
+                        <div key = {index}>
 
                         <div>{year}</div>
-                        <div className = "year-marker"/>
+
+                        <div key = {year} className = "year-marker"/>
                         {
                             index=== events.length-1
                             ?
                             null
                             :
-                            <div key = {index} className = "timeline-connector"/>
-                        }
-
-                                        
+                            <div className = "timeline-connector"/>
+                        }                                        
 
                         </div>
                     
                     )
                 })
-            }            
+            }   
+                          
             </div>
-            <div className = "row d-flex justify-content-center">
-            <div className ="loader"/>
+            
+        </div>
+
+        <div className = "d-flex justify-content-center">
+
+           
+
+            <div ref = {centerLine} className = "center-line"/>
             </div>
+            <div className = {timeWarp? "loader" : "d-none"}
+            
+            /> 
+
             
         </div>
 

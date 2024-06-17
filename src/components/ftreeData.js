@@ -5,7 +5,7 @@ export const DATA =
       id: "O-6066",
       parentId: "",
       imageUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      year:1894,
+      year:1879,
       lifeSpan: " 1879-1890",
       shortDescription:"I'm baby cronut kale chips fingerstache, \
       activated charcoal YOLO four dollar toast lumbersexual \
@@ -62,8 +62,8 @@ export const DATA =
       positionName: "CTO",
       id: "O-6069",
       parentId: "O-6066",
-      year:1985,
-      lifeSpan: " 1985-1890",
+      year:1980,
+      lifeSpan: " 1980-1890",
       shortDescription:"I'm baby cronut kale chips fingerstache, \
       activated charcoal YOLO four dollar toast lumbersexual \
       flexitarian cred praxis. Butcher vaporware beard tattooed \

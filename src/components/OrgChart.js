@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { OrgChart } from 'd3-org-chart';
+import { OrgChart } from './d3-org-chart-mod';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Dialog } from 'primereact/dialog';
 import { Tooltip } from 'primereact/tooltip';       
@@ -17,28 +17,10 @@ export const OrgChartComponent = (props, ref) => {
   
   const op = useRef(null);
   const treeContainer = useRef(null)
+
+  let chart
+
  
-  let chart;
-
-
- const zoomed = (e)=>{
-
-  let attr = chart.getChartState();
-  // from
-  let x = e.x ; 
-  let y = e.y ; 
-  let k = attr.lastTransform.k
-
-  let from  = [x,y,k] ; 
-
-  // to 
-
-  let to = [ 364,484,1.5] 
-
-  console.log(attr.lastTransform.k , [x,y])
-  let interpolator = d3.interpolateZoom(from,to)
- }
-
   // We need to manipulate DOM
   useLayoutEffect(() => {
     if (props.data && d3Container.current) {
@@ -47,12 +29,14 @@ export const OrgChartComponent = (props, ref) => {
       }
       chart 
         .container(d3Container.current)
+        .compact(false)
         .svgHeight(500)
         .data(props.data)
         .nodeWidth((d) => 200)
         .nodeHeight((d) => 120)        
         // .layout( props.orientation == "landscape"?"left":"top") 
-        .layout("top")               
+        .layout("top") 
+        .duration(500)              
         .nodeContent(function (d, i, arr, state) {
           const color = '#263144';
           const imageDiffVert = 25 + 2;
@@ -82,24 +66,50 @@ export const OrgChartComponent = (props, ref) => {
         })
         
         .onNodeClick((d, i, arr) => {
-          // let attrs = chart.getChartState();
+          let attrs = chart.getChartState();
           chart.setCentered(d.id).initialZoom(1.5).render()
-          setFocus(d.data)
-          props.setAncestor(d.data)
-                 
-          // console.log(d)
+
+           
+           
+           
+
+        
+          // setFocus(d.data)
+          props.setAncestor(d.data)   
+
+          // props.setTimeWarp(true)
+          // // setTimeout(()=>props.setTimeWarp(false),2000)   
         
         })
+        // .onZoom((e)=>{
+
+        //   console.log(chart.lastTransform())
+
+        // })
+        .onZoomStart(()=>{
+          // console.log(chart.lastTransform().k)
+
+          // chart.initialZoom(chart.lastTransform().k)
+ 
+
+        })
+        // .onZoomEnd((e)=>{
+        //   console.log(chart.lastTransform().k)
+        //   chart.scaleBy(1.5)
+
+        // })
+
+
         .nodeUpdate(function (d) {
           const currentlyHoveredElement = this;
           currentlyHoveredElement.addEventListener('click', (e) => {
-            // console.log(e);
+            // chart.zoomIn()
+            // console.log(e.target);
             setFocus(e.target)
             // op.current.toggle(e.target)
             // zoomed(e)
-             setTimeout(()=>setVisible(true),1000);
-
-            
+            //  setTimeout(()=>setVisible(true),1000);
+         
             
           })})
         .scaleExtent([.5,3.5]) 
@@ -124,58 +134,27 @@ useEffect(()=>{
 
 },[treeContainer])
 
-// console.log(containerWidth)
+let zoom = d3.zoom()
+	.scaleExtent([0.25, 10])
+	.on('zoom', handleZoom);
+
+  function handleZoom(e) {
+    d3.select('svg g')
+      .attr('transform', e.transform);
+      console.log(e)
+  }
+
+const center = ()=>{
+  let width = treeContainer.current.clientWidth
+  let height = 500 ; 
+  console.log(width, height)
+  d3.select('svg')
+		.transition()
+		.call(zoom.translateBy,0,0);
+
+}
 
 
-// // handle mask clicks 
-
-// const handleMaskClick = (e)=>{
-//   console.log(e.pageX,e.pageY)
-//   // panLeft(e)
-//   center()
-// }
-
-
-// // create zoom behavior
-// // set scale extent
-// // call handleZoom func
-// let zoom = d3.zoom()
-// 	.scaleExtent([0.25, 10])
-// 	.on('zoom', handleZoom);
-
-  
-// //  attach zoom behavior to svg graph
-//   function initZoom() {
-//     d3.select('svg')
-//       .call(zoom);
-//   }
-  
-//   // call 
-//   function handleZoom(e) {
-//     d3.select('svg g')
-//       .attr('transform', e.transform);
-//   }
-
-
-//   //  move graph to the left 50px
-//   function panLeft() {
-//     d3.select('svg')
-//       .transition()
-//       .call(zoom.translateBy, -50,0);
-//   }
-
-  
-  
-
-//   function center() {
-//     d3.select('svg')
-//       .transition()
-//       .call(zoom.translateTo, 0.5 * 500, 0.5 * containerWidth);
-//   }
-  
-
-
-//   initZoom();
 
   return (
     <React.Fragment>
@@ -191,7 +170,7 @@ useEffect(()=>{
     null
     :
       <>
-      <div className = "mask-left"
+      {/* <div className = "mask-left"
         style = 
           {{
             height:`${maskHeight}px`,
@@ -220,14 +199,12 @@ useEffect(()=>{
             top: `${offset+500-50}px`,
             // backgroundColor:"red"        
           }}
-        />
+        /> */}
 
         </>
         }
-     
-      {/* <button onClick = { ()=> panLeft()}>Pan Left</button> */}
-      {/* <div className = "mask" onClick = {e=>handleMaskClick(e)}>
-      </div> */}
+    
+    
     </React.Fragment>
 
 

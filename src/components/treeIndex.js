@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState, setState } from "react";
-import ANCESTORS from "../assets/ansestors";
 import person from '../assets/icons/person.png'
 import { Link } from "react-router-dom";
 
@@ -29,7 +28,12 @@ const TreeIndexPage = (props) => {
                                     <div className=' col-lg-6 col-sm-12 pb-2' >
 
                                         <Link
-                                            to={"/family-tree-index/" + ancestor.name.replace(/\s/g, '')} >
+                                            
+                                            to={ "/family-tree-index/" + ancestor.name.replace(/\s/g, '') } 
+                                            
+                                            // to={ `/family-tree-index/${ancestor.name.replace(/\s/g, '')}`} 
+                                            
+                                            >
 
                                             <div className=' ancestor-card'>
                                                 

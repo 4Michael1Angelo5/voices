@@ -278,11 +278,21 @@ a.icon-set:hov{
   border:1px solid
 }
 
+.view-box{
+  transition: transform 2s ease-in-out;
+  display: flex;
+    // overflow-x: hidden;
+    flex-wrap: nowrap;
+}
+
 .timeline-container{
 
     display: flex;
     overflow-x: hidden;
     flex-wrap: nowrap;
+    transition: transform 2s ease-in-out;
+
+    
 }
 .year-marker{
 
@@ -304,30 +314,42 @@ a.icon-set:hov{
 .animated-numbers{
   display: flex;
   justify-content: center;
+  height:60px;
 }
 
 .tree-container{
   overflow: hidden;
-  height:500px;
-border-width: 4px;
-border-style: solid;
-scrollbar-width: 10px;
-scrollbar-color: white;
-
-border: 1px solid ; 
-border-radius: 15px;
-
+  min-height:500px;
+  max-height: 50vh;  
+  border-width: 4px;
+  border-style: solid;
+  scrollbar-width: 10px;
+  scrollbar-color: white;
+  border: 1px solid ; 
+  border-radius: 15px;
+ 
 }
 
 // .ancestor-graph-node{
   
 // }
 
+// animated number line
+
+.center-line{
+  width: 1px;
+  height: 30px;
+  background: red;
+  position: relative;
+  top:-15px;
+}
+
 .loader{
   position: relative;
-  width: 400px;
+  width: 50%;
   height: 4px;
   background-color: black;
+  top:-33px;
 }
 
 .loader::before{
@@ -335,9 +357,10 @@ border-radius: 15px;
   position: absolute;
   width: 100%; ; 
   height: 100% ; 
-  background: #0bec7c;
+  background: #e8f096;
   transform-origin: left;
-  animation: animate 8s linear infinite ;  
+  box-shadow: 1px 0px 6px 0px;
+  // animation: animate 8s linear infinite ;  
 }
 
 @keyframes animate {
@@ -357,7 +380,7 @@ border-radius: 15px;
     transform: scaleX(1);
     transform-origin: right;
   }
-  80%
+  80%,100%
   {
     transform: scaleX(0);
     transform-origin: right;
@@ -368,13 +391,14 @@ border-radius: 15px;
 .loader::after{
   content: '' ; 
   position:absolute;
-  top: 50% ; 
+  top: 50%; 
+  left:calc(100% - 5px);
   transform: translateY(-50%) ; 
   width: 10px ; 
   height: 10px ; 
-  background: #0bec7c;
+  background: #e8f096;
   border-radius:50% ; 
-  animation: animateDot 8s linear infinite ; 
+  animation: animateDot 2s linear infinite ; 
 
 }
 
@@ -382,30 +406,43 @@ border-radius: 15px;
 {
   0%
   {
-    transform: translateY(-50%)scale(0)
+    transform: translateY(-50%)scale(0) 
+    
 
   }
   5%
   {
     transform: translateY(-50%)scale(1)
+    // transform: scale(1)
+
   }  
   15%,20%
   {
     transform: translateY(-50%) scale(1);
-    box-shadow: 0 0 0 4px #0bec7c22,
-    0 0 0 10px #0bec7c22, 
+    // transform: scale(1);
+    // dark green
+    // box-shadow: 0 0 0 4px #0bec7c22,
+    box-shadow: 0 0 0 4px #ced862,
+    // dark green
+    // 0 0 0 10px #0bec7c22, 
+     0 0 0 10px #ced862,
+    // lighter green
     0 0 20px #0bec7c, 
     0 0 40px 5px #0bec7c,
     0 0 60px 10px #0bec7c ; 
   }
   40%
   {
-    transform: translateY(-50%) scale(1) translateX(395px)
+    transform: translateY(-50%) scale(1)
+    //  translateX(50%)
+    
 
   }
   80%
   {
-    transform: translateY(-50%) scale(1) translateX(395px);
+    transform: translateY(-50%) scale(1) ;
+    // translateX(50%);
+    // translateX(395px);
     box-shadow: 0 0 0 4px #0bec7c22,
     0 0 0 10px #0bec7c22, 
     0 0 20px #0bec7c, 
@@ -415,12 +452,16 @@ border-radius: 15px;
   }
   95%
   {
-    transform:translateY(-50%) scale(1) translateX(395px);
+    transform:translateY(-50%) scale(1) ;
+    // translateX(50%);
+    // translateX(395px);
     box-shadow: none;
   }
   100%
   {
-    transform: translateY(-50%)scale(0) translateX(395px)
+    transform: translateY(-50%)scale(0) ;
+    // translateX(50%);
+    // translateX(395px)
 
   }
 
