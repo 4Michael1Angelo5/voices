@@ -10,6 +10,7 @@ import BurgerMenu from './components/burgerMenuComponent';
 import Header from './components/headerComponent';
 import AncestorFamilyTree from './components/ancestorFamilyTreePage';
 import ANCESTORS from './assets/ansestors';
+import AuthorPage from './components/authorComponent';
 
 // const ancestors = ANCESTORS ; 
 
@@ -42,6 +43,7 @@ function App() {
             })
 
           }
+          <Route path = '/voices/author' element={<AuthorPage/>}/>
         </Routes>
       </BrowserRouter>
 

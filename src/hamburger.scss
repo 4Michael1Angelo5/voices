@@ -76,11 +76,13 @@ $text-contrast-for-blanchedAlmond: #4d4944;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: $text-contrast-for-blanchedAlmond;
+  
 }
 .menu a{
   font-size:calc( 2 * calc(1.375rem + 1.5vw) ) ;
   font-family: header;
+  color: $text-contrast-for-blanchedAlmond;
+
 }
 
 

@@ -33,8 +33,7 @@ export const OrgChartComponent = (props, ref) => {
         .svgHeight(500)
         .data(props.data)
         .nodeWidth((d) => 200)
-        .nodeHeight((d) => 120)        
-        // .layout( props.orientation == "landscape"?"left":"top") 
+        .nodeHeight((d) => 120)
         .layout("top") 
         .duration(500)              
         .nodeContent(function (d, i, arr, state) {
@@ -67,51 +66,39 @@ export const OrgChartComponent = (props, ref) => {
         
         .onNodeClick((d, i, arr) => {
           let attrs = chart.getChartState();
+          // console.log(chart.lastTransform().k)
           chart.setCentered(d.id).initialZoom(1.5).render()
-
-           
-           
-           
-
         
           // setFocus(d.data)
           props.setAncestor(d.data)   
-
           // props.setTimeWarp(true)
-          // // setTimeout(()=>props.setTimeWarp(false),2000)   
+          // props.setUseless(false)
+          
         
         })
-        // .onZoom((e)=>{
-
-        //   console.log(chart.lastTransform())
-
+        
+        // .onZoomEnd(()=>{
+        //   setTimeout(()=>props.setTimeWarp(false),3000);
+        //   // setTimeout(()=>props.setTimeWarp(true),4000);
         // })
-        .onZoomStart(()=>{
-          // console.log(chart.lastTransform().k)
-
-          // chart.initialZoom(chart.lastTransform().k)
- 
-
-        })
-        // .onZoomEnd((e)=>{
-        //   console.log(chart.lastTransform().k)
-        //   chart.scaleBy(1.5)
-
-        // })
+  
 
 
-        .nodeUpdate(function (d) {
-          const currentlyHoveredElement = this;
-          currentlyHoveredElement.addEventListener('click', (e) => {
+        // .nodeUpdate(function (d) {
+          // const currentlyHoveredElement = this;
+          // currentlyHoveredElement.addEventListener('click', (e) => {
             // chart.zoomIn()
             // console.log(e.target);
-            setFocus(e.target)
+            // setFocus(e.target)
+            
+          // props.setTimeWarp(true)
+          // setTimeout(()=>props.setTimeWarp(false),2000) 
             // op.current.toggle(e.target)
-            // zoomed(e)
+             
             //  setTimeout(()=>setVisible(true),1000);
          
             
-          })})
+          // })})
         .scaleExtent([.5,3.5]) 
         
       
@@ -133,26 +120,6 @@ useEffect(()=>{
 
 
 },[treeContainer])
-
-let zoom = d3.zoom()
-	.scaleExtent([0.25, 10])
-	.on('zoom', handleZoom);
-
-  function handleZoom(e) {
-    d3.select('svg g')
-      .attr('transform', e.transform);
-      console.log(e)
-  }
-
-const center = ()=>{
-  let width = treeContainer.current.clientWidth
-  let height = 500 ; 
-  console.log(width, height)
-  d3.select('svg')
-		.transition()
-		.call(zoom.translateBy,0,0);
-
-}
 
 
 

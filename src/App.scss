@@ -42,6 +42,15 @@ $dawnBlue: rgba(1,84,164,1) ;
 
 }
 
+.app-header.author-header{
+  position: absolute ;
+  top:0;
+  background: rgb(0,30,87);
+  background: linear-gradient(90deg, #062b4a 0% ,  #000B0E   100%);
+  transition: all 2s ease-in-out;
+
+}
+
 .app-header.family-tree-index{
   position: absolute ;
   top:0;
@@ -64,6 +73,7 @@ $dawnBlue: rgba(1,84,164,1) ;
 .active-header{
   opacity: 1;
 }
+
 
 // ---------------------Landing Page---------------------------
 
@@ -182,26 +192,31 @@ a.icon-set:hov{
 
 //------------------Shape Divders For Header--------------------
 
+.custom-shape-divider-top-1713657617 {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: translateX(0px) rotate(180deg);
+  transition: opacity 2s ease-in-out;
+}
+.custom-shape-divider-top-1713657617 svg {
+  position: relative;
+  display: block;
+  width: calc(125% + 1.3px);
+}
+
 // -- shape-divider for tree index page
 
-  .custom-shape-divider-top-1713657617.tree-index{
-    background-image: linear-gradient(360deg, #163fa0, #c26d6d);
+  // .custom-shape-divider-top-1713657617.tree-index{
+  //   background-image: linear-gradient(360deg, #163fa0, #c26d6d);
    
-  }
-  
-  
-  .custom-shape-divider-top-1713657617 {
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: translateX(0px) rotate(180deg);
-    transition: opacity 2s ease-in-out;
-  }
+  // }
 
   .custom-shape-divider-top-1713657617.tree-divider{
     
     fill: white;
     background: linear-gradient(0deg, blue  0% , red 100%);
+    position: absolute;
 
   }
 
@@ -209,13 +224,6 @@ a.icon-set:hov{
 
   .custom-shape-divider-top-1713657617.landing-divider{
     background: linear-gradient(90deg, $forest-green  0%, $deep-jade 100%);
-  }
-  
-  .custom-shape-divider-top-1713657617 svg {
-    position: relative;
-    display: block;
-    width: calc(125% + 1.3px);
-    // height: 197px;
   }
 
   .custom-shape-divider-bottom-1714357161{
@@ -227,9 +235,12 @@ a.icon-set:hov{
     background: linear-gradient(90deg, $deep-jade  0%, $forest-green 100%);
   }
 
+  // ------shape-divider for author page
 
-
-
+  .custom-shape-divider-top-1713657617.author-divider{
+    background: linear-gradient(90deg, #000B0E  0%, #062b4a 100%);
+  }
+  
 
 //---------------------------------- family tree index page
 
@@ -507,6 +518,27 @@ a.icon-set:hov{
   // background-image: ("https://raw.githubusercontent.com/bumbeishvili/coronavirus.davidb.dev/master/glow.png") ;
 }
 
+// --------------Author Page----------------
+
+
+.author-page{
+  min-height: 100vh;
+  background:#091e2f;
+  color: cornflowerblue;
+  font-family: landingPage-text;
+  
+}
+
+.author-page h1{
+  font-weight: 300;
+  font-size:90px;
+}
+ 
+.author-page h2{
+  font-weight:350 ; 
+  font-size:30px
+
+}
 
 
 

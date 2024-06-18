@@ -1,16 +1,17 @@
-import React  from "react"; ; 
+import React  from "react"; 
+import {Link} from 'react-router-dom';
 
 const Menu = (props)=>{
 
 
-   
-
     return(
         <div id={"menu"}onClick={e=>props.toggle(e)}className= {props.isOpen? "menu menu-open " :"menu"} >
-            <a>Home</a>
+            <Link to = "/voices/"> Home </Link>
+            <Link to = '/family-tree-index'>Ancestors</Link>
             <a>The Book</a>
-            <a>The Author</a>
+            <Link to = '/voices/author'>The Author</Link>
             <a>The History</a>
+
             
             
         </div>
@@ -41,7 +42,8 @@ class BurgerMenu extends React.Component{
         return(
             <React.Fragment>
 
-             <Menu  isOpen = {this.state.isOpen} toggle = {this.toggle}/> 
+             <Menu  isOpen = {this.state.isOpen} toggle = {this.toggle}
+             onClick = {this.toggle}/> 
                            
             <div>
             <div onClick={e=>this.toggle(e)} id = "burger"className = {this.state.isOpen? "burger-menu open" : "burger-menu"}>

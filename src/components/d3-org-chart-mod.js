@@ -578,8 +578,8 @@ export class OrgChart {
 
         behaviors.zoom = d3.zoom().interpolate(d3.interpolateZoom.rho(3)) 
         .clickDistance(10)
-        // .on('start', (event, d) => {attrs.onZoomStart(event)})
-        // .on('end', (event, d) => {attrs.onZoomEnd(event)})
+        .on('start', (event, d) => {attrs.onZoomStart(event)})
+        .on('end', (event, d) => {attrs.onZoomEnd(event)})
         // 0.9 for less curvature 
         .on('zoom', (event, d) =>{ 
             attrs.onZoom(event);                
@@ -1555,11 +1555,13 @@ export class OrgChart {
         // Get d3 event's transform object
         const transform = event.transform;
 
-        // Store it
-        attrs.lastTransform = transform;
+          // Store it
+          attrs.lastTransform = transform;
 
         // Reposition and rescale chart accordingly
         chart.attr("transform", transform);
+
+      
 
         // Apply new styles to the foreign object element
         if (this.isEdge()) {
