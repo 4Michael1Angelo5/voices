@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.7102ff29.css",
-    "main.js": "/voices/static/js/main.e34a550d.js",
+    "main.css": "/voices/static/css/main.0e06e421.css",
+    "main.js": "/voices/static/js/main.9898c30b.js",
     "static/js/453.3ce130f5.chunk.js": "/voices/static/js/453.3ce130f5.chunk.js",
     "static/media/Jacquard12Charted-Regular.ttf": "/voices/static/media/Jacquard12Charted-Regular.0de6e1d1c91485def831.ttf",
     "static/media/Newsreader-VariableFont_opsz,wght.ttf": "/voices/static/media/Newsreader-VariableFont_opsz,wght.5032d4be14f4a0091c82.ttf",
     "static/media/ALLOVER MODERN DEMO.ttf": "/voices/static/media/ALLOVER MODERN DEMO.b4cb3bcd1489e79bee01.ttf",
     "static/media/map.png": "/voices/static/media/map.7b6905ea8260e3118f13.png",
+    "static/media/russLow.jpg": "/voices/static/media/russLow.cca25a00cfbf0d2690cf.jpg",
     "static/media/person.png": "/voices/static/media/person.bcc74561d38db661b53f.png",
     "index.html": "/voices/index.html",
-    "main.7102ff29.css.map": "/voices/static/css/main.7102ff29.css.map",
-    "main.e34a550d.js.map": "/voices/static/js/main.e34a550d.js.map",
+    "main.0e06e421.css.map": "/voices/static/css/main.0e06e421.css.map",
+    "main.9898c30b.js.map": "/voices/static/js/main.9898c30b.js.map",
     "453.3ce130f5.chunk.js.map": "/voices/static/js/453.3ce130f5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7102ff29.css",
-    "static/js/main.e34a550d.js"
+    "static/css/main.0e06e421.css",
+    "static/js/main.9898c30b.js"
   ]
 }
