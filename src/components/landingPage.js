@@ -1,4 +1,5 @@
 import Book from "./bookComponent";
+import LinkBtnComponent from "./linkBtnComponent";
 import { Link} from 'react-router-dom';
 
 
@@ -25,6 +26,7 @@ const LandingPage = () => {
                                 heirloom copper mug health goth readymade
                                 chambray
                             </p>
+                            <LinkBtnComponent text = {'Learn More'} pathName = '/voices/author'/>
                         </div>
                         <div className='col-4 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
                             
@@ -33,7 +35,7 @@ const LandingPage = () => {
                                     <Link to = '/family-tree-index'className='icon-set family-tree'></Link>
                              
                                     <label className ="text-center">About the Author </label>                                
-                                    <Link className='icon-set author'></Link>
+                                    <Link  to = '/voices/author'className='icon-set author'></Link>
                                
                                     <label className ="text-center"> Chapters </label>
                                     <Link className='icon-set chapters-link'></Link>
@@ -59,9 +61,6 @@ const LandingPage = () => {
                     </div>
 
                     <div className ="container">
-
-                    
-                   
                     
                     <div className="row d-flex justify-content-center">
                         <h1 className = "ml-2">Context</h1>

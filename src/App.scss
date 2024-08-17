@@ -341,11 +341,7 @@ a.icon-set:hov{
  
 }
 
-// .ancestor-graph-node{
-  
-// }
-
-// animated number line
+//---------------------------------- animated number line
 
 .center-line{
   width: 1px;
@@ -526,6 +522,8 @@ a.icon-set:hov{
   background:#091e2f;
   color: cornflowerblue;
   font-family: landingPage-text;
+  opacity:0 ; 
+  transition: opacity 2s ease-out;
   
 }
 

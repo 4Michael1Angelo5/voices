@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
-const TreeIndexPage = (props) => {
+const AncestorPage = (props) => {
  
 
     return (
@@ -16,7 +16,6 @@ const TreeIndexPage = (props) => {
                 <h1> FAMILY TREE PAGE</h1>
 
                 <div className='container'>
-
 
                     {
                         props.ancestors.map((ancestor, index) => {
@@ -79,4 +78,4 @@ const TreeIndexPage = (props) => {
 
 };
 
-export default TreeIndexPage
+export default AncestorPage

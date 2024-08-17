@@ -33,19 +33,14 @@ const AnimatedNumber = ({
   const numberDivRef = React.useRef(null);
 
   React.useEffect(() => {
-    console.log("fired here 1")
     const rect = numberDivRef.current.getClientRects()?.[0];
-    console.log([rect.height,rect.width])
     if (rect) {
       setNumberHeight(rect.height);
-      setNumberWidth(rect.width);      
+      setNumberWidth(rect.width);
     }
-   
-
   }, [animateToNumber, fontStyle]);
 
   React.useEffect(() => {
-    console.log("fired here 2")
     if (isInView) {
       controls.start("visible");
     }
@@ -81,8 +76,7 @@ const AnimatedNumber = ({
                       },
                     }}
                     animate={controls}
-                    transition={transitions?.(index)}
-                    // onTransitionEnd={console.log("transition ended")}
+                    transition={transitions?.(index)} 
                   >
                     {number}
                   </motion.div>
@@ -111,6 +105,4 @@ const AnimatedNumber = ({
 //   );
 // });
 
-// export default Enhanced;
-
-export default AnimatedNumber
+export default AnimatedNumber;

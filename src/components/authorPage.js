@@ -1,29 +1,57 @@
 import russLow from '../assets/russLow.jpg'
+import { useState , useEffect} from 'react';
+import CarouselComponent from './carouselComponent';
+import mom from '../assets/mom.jpg'
+ 
+
+
 const AuthorPage = ()=>{
 
+    const [opacity,setOpacity] = useState(0) ;
+
+    useEffect( ()=>{
+
+        setOpacity(1)
+
+    }
+    ,[])
+
+    useEffect( ()=>{
+
+        return ()=>setOpacity(0)
+
+    }
+    ,[])
+
+
     return(
-        <div className = 'author-page'>
+        <div className = 'author-page'
+            style={
+                {opacity:opacity}
+                 
+
+            }>
 
             <div className = ' container'>
 
                 <h1 className = ' text-center'>Author Page</h1>
 
-                <h2>Russ N Low</h2>
+                <h2>Sue Lee</h2>
 
                 <div className = 'row d-flex justify-content-center'>
-                    <div className = 'col-6'>
+                    <div className = 'col-6 col-lg-4'>
                         
                         <img 
-                            src={russLow}
+                            src={mom}
                             style = {{
                                 width:"100%",
                                 borderRadius:"10px",
-                                border:'2px solid'
+                                border:'1px solid'
                             }}                            
                         />
 
                     </div>
-                    <div className = 'col-12'>
+                    <div className = 'col-12 col-lg-8'>
 
                         
                         
@@ -42,9 +70,12 @@ const AuthorPage = ()=>{
 
                     </div>
 
+                    
+
                 </div>
 
             </div>
+            <CarouselComponent/>
 
         </div>
 

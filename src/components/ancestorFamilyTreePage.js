@@ -1,10 +1,11 @@
 
 import { useLayoutEffect, useRef, useState,useEffect , useCallback} from 'react';
 // import AnimatedNumbers from "react-animated-numbers";
-import AnimatedNumber from './animated-numbers-mod';
-import { DATA } from './ftreeData';
+import Enhanced from './animated-numbers-mod';
+import { DATA } from '../assets/data/ftreeData';
 import { OrgChartComponent } from './OrgChart';
 import { useLocation } from 'react-router-dom';
+import AnimatedNumber from './animated-numbers-mod';
 
 
 
@@ -65,7 +66,8 @@ const AncestorFamilyTree = (props)=>{
 
     let location = useLocation();
 
-
+    
+    // ----------------------------------------------------------------
 
     // setTranslate Amount for animated number slider on first render
 
@@ -75,32 +77,39 @@ const AncestorFamilyTree = (props)=>{
     if(firstDraw && timeLineContainer.current!=null && centerLine.current!=null){
         let dif = ancestor.year - num ; 
         let firstDif = ancestor.year - 1800 ; 
-        console.log("on mount error")
+        console.log("on mount render")
         setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )
         setFirstDraw(false)
 
         }
     }    
-    ,[])
+    ,[firstDraw])
+
+    // ----------------------------------------------------------------
 
     // set inner Width of window on mount
-    useEffect( ()=>{
-        setScreenWidth(window.innerWidth)
-        }
-    ,[])
+    // useEffect( ()=>{
+    //     setScreenWidth(window.innerWidth)
+    //     }
+    // ,[])
     
     // setTranslate Amount when ancestor or number changes 
     // AFTER first render for subsequent renders. 
 
     useEffect(()=>{
-
+        
+        if(!firstDraw){
+            console.log("rerendering translate amount")
             let dif = ancestor.year - num ;   
-            setTranslate(translateAmount - dif*17.6) 
+            setTranslate(translateAmount - dif*17.6) }
            
-    },[ancestor])
+    },[ancestor,num])
+
+    // -----------------------------------------------------------
 
     // handle window resize events for slider 
     // But only when window width changes and not the window height
+    //    @TODOS: remove resize event listeners!!
 
     useEffect( ()=>{
 
@@ -111,57 +120,69 @@ const AncestorFamilyTree = (props)=>{
                   clearTimeout(resized);
                   resized = setTimeout(resizedWindow, 100);
                 };
-
-
-//    @TODOS: remove resize event listeners!!
-
         
     }
     ,[ancestor])
 
-    // useEffect( ()=>{
+    // -------------------------------------------------
 
-    //     if (location!== "/family-tree-index/" + props.ancestor.name.replace(/\s/g, '')){
-    //         return () => window.removeEventListener("resize", resizedWindow,handleResize);
+    // remove event Listeners
 
-    //     }
 
-    // }
-    // ,[location])
+    useEffect( ()=>{
+
+        if (location!== "/family-tree-index/" + props.ancestor.name.replace(/\s/g, '')){
+            return () => window.removeEventListener("resize", resizedWindow,handleResize);
+
+        }
+    }
+    ,[])
+    
+    // -------------------------------------------------
 
     // handle resize events to repostion the slider
     // only when window width changes
 
     const handleResize = ()=>{
- 
+        
+        // only re-animate numbers if device width changes     
         
         if (screenWidth!==window.innerWidth && centerLine.current!=null &&timeLineContainer.current!=null ){
             setScreenWidth(window.innerWidth)
-            console.log("on resize error")
+            // console.log("on resize error")
             let firstDif = ancestor.year - 1800 ; 
             setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )  
+            setFirstDraw(true)
         
         }        
     }
-    useEffect( ()=>{
+    // ---------------------------------------------------
 
-        // set number/year for animated numbers when ancestor changes
+    // set number/year for animated numbers when ancestor changes
+
+    useEffect( ()=>{        
 
        let dif = ancestor.year - num ; 
-        //    console.log(dif)
+        
         console.log("change in number detected, number is ", num)
        handleNumber()
         
     },[ancestor,num])
+
+    // -------------------------------------------------
+
 
     const handleNumber = ()=>{
 
         let dif = ancestor.year - num ;
         if (dif!==0){
             setNum(dif + num)
-            console.log("setNum was called")
-           }else console.log("set num was not called")
+           } 
        }  
+
+    // -------------------------------------------------
+
+    // handle resize events
     
     function resizedWindow(){
 
@@ -170,88 +191,15 @@ const AncestorFamilyTree = (props)=>{
     console.log("resive EVENT BEING TRACKED")
 
         if(window.innerWidth!= screenWidth){
-            // only re-animate numbers if device width changes            
+                   
             setNum(num)
             handleResize()
-            // handleNumber()
+           
         }
 
     }   
-  
 
-    // above is attempt at sorting side effects and fixxing bugs
-    // bellow is old crap code
-    
-
- 
-    // useLayoutEffect(() => {
-    //     // set Translate amount for animated number slider
-
-    //     let dif = ancestor.year - num ; 
-
-    //     //  hack for getting animated numbers to render correctly
-    //     // @TODOs this is a bull shit fix and really need to figure out why it is
-    //     // not animating correctly 
-    //     if (firstDraw){
-
-    //         let firstDif = ancestor.year - 1800 ; 
-
-    //         setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )
-    //         setFirstDraw(false)
-
-    //     }else{
-
-    //         setTranslate(translateAmount - dif*17.6  )
-    //         setFirstDraw(true)
-           
-    //     }
-
-    // }, [ancestor]); 
-
-
-    // function handleOrientation() {
-
-    //     // reposition the slider on window resize
-    //     // reset the number/ year for animated number
-       
-    //     let firstDif = ancestor.year - 1800 ; 
-        
-
-    //     if(window.innerWidth != screenWidth){
-            
-    //         console.log("screen width changed")
-    //         setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )
-    //         setScreenWidth(window.innerWidth)           
-      
-    //     }
-        
-    //     if (window.innerHeight<window.innerWidth){
-    //         setOrientation("landscape")
-    //     }else setOrientation("portrait")
-       
-         
-    // }
-
-
-    // useLayoutEffect(()=>{
-        
-    //     // Add event listener
-    //     window.addEventListener("resize", handleOrientation);
-    //     // Call handler right away so state gets updated with initial window size
-    //     handleOrientation();
-    //     var doit;
-    //     window.onresize = function(){
-    //       clearTimeout(doit);
-    //       doit = setTimeout(resizedw, 100);
-    //     };
-
-
-    //     // Remove event listener on cleanup
-    //     return () => window.removeEventListener("resize", handleOrientation);
-
-    // },[firstDraw,ancestor])
-
-  
+    // -------------------------------------------------
 
 
 
@@ -341,13 +289,10 @@ const AncestorFamilyTree = (props)=>{
                     color: "red",                    
                     }}                    
                     />
-                    
-
                 } */}
-                   <AnimatedNumber
-                    // ancestor = {ancestor}
-                    // className=""    
-                    key = {123}               
+
+                   <AnimatedNumber   
+                   ancestor ={ancestor}         
                     transitions={(index) => ({
                     type: "spring",
                     duration: index + 0.15
@@ -357,8 +302,7 @@ const AncestorFamilyTree = (props)=>{
                     fontSize: 40,
                     color: "red",
                     }}
-                    />
-                    
+                    />                    
                 
             </div>
 
@@ -398,7 +342,11 @@ const AncestorFamilyTree = (props)=>{
             <div className = "d-flex justify-content-center">
                 <div ref = {centerLine} className = "center-line"/>
             </div>    
-             {/* <div className = {timeWarp? "loader" : " d-none loader"} />  */}        
+             {/* <div className =  "loader"  
+             style={{
+                opacity: timeWarp?1:0
+             }}
+             />          */}
 
             
         </div>

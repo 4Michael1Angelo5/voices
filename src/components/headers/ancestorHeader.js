@@ -1,6 +1,6 @@
 import React from "react";
 
-const TreeIndexHeader = (props) => {
+const AncestorHeader = (props) => {
 
     let active = props.active;
     let DISPLAY = props.active? "inline-block":"none";
@@ -52,4 +52,4 @@ const TreeIndexHeader = (props) => {
     );
 }
 
-export default TreeIndexHeader
+export default AncestorHeader
