@@ -1,21 +1,28 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.0e06e421.css",
-    "main.js": "/voices/static/js/main.9898c30b.js",
+    "main.css": "/voices/static/css/main.63adeb4c.css",
+    "main.js": "/voices/static/js/main.51c2fce5.js",
     "static/js/453.3ce130f5.chunk.js": "/voices/static/js/453.3ce130f5.chunk.js",
+    "static/media/Three_Coins_Illustrated_Book_Cover.png": "/voices/static/media/Three_Coins_Illustrated_Book_Cover.080ccaee34aefac80b61.png",
+    "static/media/Avengers_Wildcats_and_Crickets.png": "/voices/static/media/Avengers_Wildcats_and_Crickets.5f7ae1c927e171fc8390.png",
     "static/media/Jacquard12Charted-Regular.ttf": "/voices/static/media/Jacquard12Charted-Regular.0de6e1d1c91485def831.ttf",
+    "static/media/Cover_Iron_Road_and_Steam_Breathing_Dragon_Smaller.jpg": "/voices/static/media/Cover_Iron_Road_and_Steam_Breathing_Dragon_Smaller.90833da96bf52df5524c.jpg",
     "static/media/Newsreader-VariableFont_opsz,wght.ttf": "/voices/static/media/Newsreader-VariableFont_opsz,wght.5032d4be14f4a0091c82.ttf",
     "static/media/ALLOVER MODERN DEMO.ttf": "/voices/static/media/ALLOVER MODERN DEMO.b4cb3bcd1489e79bee01.ttf",
+    "static/media/Cover_Three_Coins_2nd_Edition.jpg": "/voices/static/media/Cover_Three_Coins_2nd_Edition.3d4efa9aa8742ead951f.jpg",
+    "static/media/Cover_A_Willow_Tree_Became_a_Forest.jpg": "/voices/static/media/Cover_A_Willow_Tree_Became_a_Forest.e6a26d112cf682570341.jpg",
+    "static/media/The_All_Amrerican_Crew_Cover.webp": "/voices/static/media/The_All_Amrerican_Crew_Cover.268c2dc22ae292caa05c.webp",
     "static/media/map.png": "/voices/static/media/map.7b6905ea8260e3118f13.png",
+    "static/media/mom.jpg": "/voices/static/media/mom.0d6f01ce9de21e1df3c8.jpg",
     "static/media/russLow.jpg": "/voices/static/media/russLow.cca25a00cfbf0d2690cf.jpg",
     "static/media/person.png": "/voices/static/media/person.bcc74561d38db661b53f.png",
     "index.html": "/voices/index.html",
-    "main.0e06e421.css.map": "/voices/static/css/main.0e06e421.css.map",
-    "main.9898c30b.js.map": "/voices/static/js/main.9898c30b.js.map",
+    "main.63adeb4c.css.map": "/voices/static/css/main.63adeb4c.css.map",
+    "main.51c2fce5.js.map": "/voices/static/js/main.51c2fce5.js.map",
     "453.3ce130f5.chunk.js.map": "/voices/static/js/453.3ce130f5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e06e421.css",
-    "static/js/main.9898c30b.js"
+    "static/css/main.63adeb4c.css",
+    "static/js/main.51c2fce5.js"
   ]
 }
