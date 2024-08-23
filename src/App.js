@@ -13,6 +13,7 @@ import Header from './components/headerComponent';
 import AncestorFamilyTree from './components/ancestorFamilyTreePage';
 import ANCESTORS from './assets/data/ansestors';
 import AuthorPage from './components/authorPage';
+import ChaptersPage from './components/chaptersComponent';
 
 
 // const ancestors = ANCESTORS ; 
@@ -25,7 +26,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <BurgerMenu />
-        <Header />
+        <Header/>
         <Routes>
           <Route path='/voices/' element={<LandingPage />} />
           <Route path='/family-tree-index' element={<AncestorPage ancestors = {ancestors}/>} />
@@ -47,6 +48,7 @@ function App() {
 
           }
           <Route path = '/voices/author' element={<AuthorPage/>}/>
+          <Route path = '/voices/chapters' element ={<ChaptersPage/>}/>
         </Routes>
       </BrowserRouter>
 

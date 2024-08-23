@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import LandingHeader from "./headers/landingHeader";
 import AncestorHeader from "./headers/ancestorHeader";
 import AuthorHeader from "./headers/authorHeader";
+import ChaptersHeader from "./headers/chaptersHeader";
 
 const Header = ()=>{
 
@@ -16,6 +17,7 @@ const Header = ()=>{
                 <AncestorHeader active = {location.pathname.substring(1,7) === 'family'? true:false}/>
                 {/* <FamilyTreeHeader active ={location.pathname.substring(1,7) === 'family'? true:false}/> */}
                 <AuthorHeader active = {location.pathname ==='/voices/author'?true:false}/>
+                <ChaptersHeader active = {location.pathname ==='/voices/chapters'? true: false}/>
             </div>
         
     );

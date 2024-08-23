@@ -14,7 +14,7 @@ const LandingPage = () => {
                         , top: "-120px"
                     }}>
                     <div className="row">
-                        <Book />
+                        <Book/>
                     </div>
                     <div className="row">
                         <div className="col-8 col-lg-6 frame about-the-author">
@@ -38,7 +38,7 @@ const LandingPage = () => {
                                     <Link  to = '/voices/author'className='icon-set author'></Link>
                                
                                     <label className ="text-center"> Chapters </label>
-                                    <Link className='icon-set chapters-link'></Link>
+                                    <Link  to = '/voices/chapters' className='icon-set chapters-link'></Link>
                              
                         </div>
                     </div>

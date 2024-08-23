@@ -44,7 +44,7 @@ const AncestorPage = (props) => {
 
                                                     <div className='person-container'>
 
-                                                        <img src={person}
+                                                        <img  src={person}
                                                             style={{ width: '100%' }}
                                                         />
 

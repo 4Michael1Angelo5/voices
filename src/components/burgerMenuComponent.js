@@ -8,7 +8,9 @@ const Menu = (props)=>{
         <div id={"menu"}onClick={e=>props.toggle(e)}className= {props.isOpen? "menu menu-open " :"menu"} >
             <Link to = "/voices/"> Home </Link>
             <Link to = '/family-tree-index'>Ancestors</Link>
-            <a>The Book</a>
+         
+            <Link to = './voices/chapters'>The Book</Link>
+        
             <Link to = '/voices/author'>The Author</Link>
             <a>The History</a>
 
