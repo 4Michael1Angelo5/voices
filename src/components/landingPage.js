@@ -19,12 +19,14 @@ const LandingPage = () => {
                     <div className="row">
                         <div className="col-8 col-lg-6 frame about-the-author">
                             <h1>About the Author</h1>
-                            <p>'m baby intelligentsia organic thundercats
-                                raclette yr pop-up tonx church-key gastropub
-                                authentic fit ethical vape meggings. Palo
-                                santo kombucha single-origin coffee gatekeep
-                                heirloom copper mug health goth readymade
-                                chambray
+                            <p>
+                                During her tenure as Executive Director of the Chinese 
+                                Historical Society of America (2004-2017), Sue Lee co-edited
+                                “Voices from the Railroads” with Connie Young Yu. “Voices”
+                                is a compilation of accounts of Chinese railroad workers
+                                on the first Transcontinental Railroad completed in 1869.
+                                The book was envisioned to launch a new chapter of the
+                                American historical narrative
                             </p>
                             <LinkBtnComponent text = {'Learn More'} pathName = '/voices/author'/>
                         </div>
@@ -63,21 +65,34 @@ const LandingPage = () => {
                     <div className ="container">
                     
                     <div className="row d-flex justify-content-center">
-                        <h1 className = "ml-2">Context</h1>
+                        {/* <h1 className = "ml-2">Context</h1> */}
                         <div className="col-10 col-lg-8">
                             
-                                <h1> The Transcontinental Rail Road</h1>
+                                <h1> About The Book</h1>
                                 <p>
-                                Hexagon polycomo GH-pages lomo VHS quinoa helvetica, 3 wolf moon DIY actually 
-                                sartorial mukbang hammock waistcoat selvage slow-carb tousled. 
-                                Pop-up neutral milk hotel ethical iPhone tattooed typewriter 
-                                air plant, glossier slow-carb vice adaptogen distillery af. 
-                                Big mood forage DIY, green juice fam iceland chillwave +1 
-                                brunch gochujang paleo jianbing thundercats. Tofu af four 
-                                loko, readymade artisan brunch taxidermy subway tile irony 
-                                PBR&B chartreuse. Food truck iceland whatever copper mug 
-                                enamel pin ethical bicycle rights squid raw denim. 
-                                Thundercats craft beer dreamcatcher typewriter organic occupy.
+                                    For many years, the only named railroad worker of note was foreman Chin Lin Sou of Denver.
+                                    And there was no “proof” or documentation of an identified worker. TODAY, we can identify 
+                                    names on the incomplete collection of Central Pacific Railroad payrolls of specific individuals 
+                                    and name more than a dozen descendant families who have stories about their railroad ancestors. 
+                                    Some were inspired to share family heirlooms and photographs, conduct more research, and 
+                                    interview far-flung family members. Their accounts are the foundation of a new chapter in 
+                                    the overall American historical narrative — the Chinese in America.
+                                </p>
+                                <p>
+                                    We now have the broadest opportunity to give our laboring ancestors the recognition and 
+                                    credit, and above all, the humanity they deserve. While they did not leave journals of 
+                                    their ordeals or speak for themselves in the hearings on Chinese labor, we have learned 
+                                    from oral history interviews of descendants who can speak for their forebearers. 
+                                    Incredibly, the great-grandchildren and even great-great-grandchildren have given us 
+                                    documentation and insight into the character of their railroad worker ancestors.
+                                    This book presents stories from the descendants of some of these families. 
+                                    We have asked nine descendants to give us accounts of their ancestors and family histories. 
+                                    These short accounts evoke the breadth and scope of the experience of these early Chinese 
+                                    American pioneers. They outline humble and arduous beginnings and their legacy to seven 
+                                    generations of descendants, who now add their history of the Chinese American experience. 
+                                    We are honored to include their stories here.
+
+
                                 </p>
                            
                         </div>

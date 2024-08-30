@@ -12,10 +12,8 @@ const Menu = (props)=>{
             <Link to = './voices/chapters'>The Book</Link>
         
             <Link to = '/voices/author'>The Author</Link>
-            <a>The History</a>
 
-            
-            
+            <Link to = '/voices/history'>The History</Link>             
         </div>
     );
 }

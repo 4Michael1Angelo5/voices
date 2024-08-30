@@ -1,3 +1,4 @@
+import Jow_Kee from '../ancestors/Jow_Kee.jpg'
 const ANCESTORS = [
     {
     name: "Him Mark Lai",
@@ -9,13 +10,14 @@ const ANCESTORS = [
     gochujang. Post-ironic mukbang cloud bread ramps bitters actually.",
     },
     {
-    name:"Won Kow Loun",
-    year:1979,
-    lifeSpan: "1879-1890",
+    name:"JOW KEE (JIM KING)",
+    year:1840,
+    lifeSpan: "1840-1898",
+    image:Jow_Kee,
     shortDescription:"Bodega boys swag chicharrones, semiotics mustache \
     sustainable bitters glossier vibecession la croix. Quinoa narwhal \
     retro, pickled DSA JOMO mustache marfa bodega boys pok pok next level",
-
+    
     },
     {
     name: "Jared Letto",

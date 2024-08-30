@@ -62,11 +62,37 @@ $dawnBlue: rgba(1,84,164,1) ;
 .app-header.chapters-header{
   position: absolute ;
   top:0;
-  background: rgb(87, 10, 0);
+  background: rgb(87, 0, 67);
   background: linear-gradient(90deg, rgb(9 5 5) 0%, rgb(151, 1, 59) 50%, rgb(125 56 119) 100%);
   transition: all 2s ease-in-out;
 
 }
+
+.app-header.history-header{
+  position: absolute ;
+  top:0;
+  transition: all 2s ease-in-out;
+  background-color: #ffbd77;
+  background-image: linear-gradient(270deg, #ffbd77 0%, #f0f4a4 37%, #acfcd9 100%);
+  color:black 
+}
+
+.history-header h1{
+
+  padding-left: 5px;
+  color: black !important;
+
+}
+
+.history-header p{
+  color:black !important;
+}
+
+
+
+
+
+
 
  // note the headers needs to be positions absolute except the first one
 
@@ -256,11 +282,20 @@ a.icon-set:hov{
   //-------shape-divider for chapters page
 
   .custom-shape-divider-top-1713657617.chapters-divider{
-    position:relative;
-    background: linear-gradient(109deg, rgb(125, 56, 119) 0%, rgb(151, 1, 59) 50%, rgb(9, 5, 5) 100%)
+    position:absolute;
+    background: linear-gradient(90deg, rgb(125, 56, 119) 0%, rgb(151, 1, 59) 50%, rgb(9, 5, 5) 100%)
   }
 
   // note the last divider needs to be position relative and all others position absolute
+
+  .custom-shape-divider-top-1713657617.history-divider{
+    position:relative;
+    background-color: #acfcd9;
+    background-image: linear-gradient(270deg, #acfcd9 0%, #f0f4a4 63%, #ffbd77 100%);
+  }
+
+
+
 
   
 
@@ -542,8 +577,7 @@ a.icon-set:hov{
 .author-page{
   min-height: 100vh;
   background:#091e2f;
-  color: cornflowerblue;
-  font-family: landingPage-text;
+  color: #8795a1;  font-family: landingPage-text;
   opacity:0 ; 
   transition: opacity 2s ease-out;
   
@@ -552,6 +586,7 @@ a.icon-set:hov{
 .author-page h1{
   font-weight: 300;
   font-size:90px;
+  color: #4d2893;
 }
  
 .author-page h2{
@@ -571,49 +606,46 @@ a.icon-set:hov{
   transition: opacity 2s ease-out;
   background-image: url('./assets/railRoadTracks2.png');    
   background-repeat: repeat-y;
+  overflow: hidden;
+  position: relative;
 }
 
-.wrapper{
-    // set up for paralaxx 
-    overflow-y: auto;
-    overflow-x: hidden;
-    perspective: 10px;
-    transform-style: preserve-3d;
-}
-
-.story-line{
-
-  width:2px;
-  height: 1000px;
-  background-color: black;
-}
 
 .chapters-main-image{
 
   transform: perspective(10px) translateZ(-5px) scale(1.5);
   // position: absolute;
   object-fit: contain;
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  border-radius: 10px;
+  z-index: 100;
+  position: relative;
+  // border: 1px solid #472d2d;
+  // box-shadow: #181827 0px 6px 6px 1px;
+}
+
+.chapters-description{
+  background-image: linear-gradient(90deg, rgb(13 13 13) 0%, rgb(34 38 53 / 51%) 100%);
+  border: 1px solid #472d2d;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  z-index: 100;
+  box-shadow: #181827 0px 6px 6px 1px;
+
 }
 
 .rail-road-workers{
   object-fit: contain;
   transform:   perspective(10px) (-30px) scale(3);
   position: absolute;
-
 }
 
 .section{ 
 
   transform-style: preserve-3d;
-}
-
-.background, .forground{
-  position: absolute;
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-
+  position: relative;
+  z-index: 100;
 }
 
 // for spacing in between sections in chapters page
@@ -626,16 +658,58 @@ height: 250px;
   position: relative;
 }
 
-.chapters-description{
-  background-image: linear-gradient(90deg, rgb(13 13 13) 0%, rgb(34 38 53 / 51%) 100%);
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-chapter-description-container{
+.chapter-description-container{
   position: relative;
-  z-index: 1;
+  z-index: 100;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstRow-container-for-parallax{
+  position:absolute;
+  height:200px;
+  width:100%;
+  left:0px;
+}
+
+.first_layer-parrallax-image{
+  margin:10px;
+  transition: all .3s ease-out;
+}
+
+.secondary-parallax-image{
+  margin:10px;  
+  transition: all .3s ease-out;
 }
 
 
+// ===================================History Page=======================================
+
+
+.history-page{
+
+  background:#babad2;
+  color: #2e2f37;
+  font-family: landingPage-text;
+  opacity:0 ; 
+  transition: opacity 2s ease-out;
+  background-image: url('./assets/railRoadTracks2.png');    
+  background-repeat: repeat-y;
+  overflow: hidden;
+  position: relative;
+}
+
+.events-description{
+  
+  background-image:linear-gradient(315deg, #6f5e8bfc 0%, #9c9cc1 74%);
+  // border: 1px solid #472d2d;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  z-index: 100;
+  // box-shadow: #181827 0px 6px 6px 1px;
+  color:#160226;
+  font-size: 18px;
+
+}

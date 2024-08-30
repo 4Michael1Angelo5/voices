@@ -30,8 +30,6 @@ const AncestorPage = (props) => {
                                             
                                             to={ "/family-tree-index/" + ancestor.name.replace(/\s/g, '') } 
                                             
-                                            // to={ `/family-tree-index/${ancestor.name.replace(/\s/g, '')}`} 
-                                            
                                             >
 
                                             <div className=' ancestor-card'>

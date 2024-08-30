@@ -238,7 +238,7 @@ const AncestorFamilyTree = (props)=>{
 
             {/*
             -------------------- ancestor information to be displayed -----------------------
-            ---------------------to be displayed when user click chart node---------------------
+            ---------------------when user clicks on chart node---------------------
             */}
 
             <div className = 'row d-flex justify-content-center'>
@@ -292,7 +292,7 @@ const AncestorFamilyTree = (props)=>{
                 } */}
 
                    <AnimatedNumber   
-                   ancestor ={ancestor}         
+                    ancestor ={ancestor}         
                     transitions={(index) => ({
                     type: "spring",
                     duration: index + 0.15

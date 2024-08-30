@@ -1,10 +1,12 @@
 import { useState, useEffect ,useRef, createRef} from "react";
-import hammer from '../assets/hammer.webp';
+// import hammer from '../assets/hammer.webp';
 import greenMountains from '../assets/greenMountains.png';
 import railRoadWorkers from '../assets/railRoadWorkers.jpg'
 import {useInView , inView } from "framer-motion";
-import birds from '../assets/birds.png'
-import  clounds_1 from '../assets/clouds_1.png' 
+import birds from '../assets/birds.png';
+import hammer from '../assets/hammer.png';
+import clouds_9 from '../assets/clouds_9.png';
+
 
 
 const CHAPTER_IMAGES = [hammer,railRoadWorkers,hammer,railRoadWorkers,hammer,railRoadWorkers]
@@ -34,7 +36,7 @@ const ChaptersPage = ()=>{
     // create array of boolean values for each element being viewable or not.
     const chaptRefsIsInView = [Chap1IsInView,Chap2IsInView,Chap3IsInView,Chap4IsInView,Chap5IsInView,Chap6IsInView]
 
-    // animations for exiting the page
+  
 
     // opacity and height of entire page below header
 
@@ -45,26 +47,16 @@ const ChaptersPage = ()=>{
         // set height to viewport inner height on mount
         setScreenHeight(window.innerHeight)
         // set opacity of body on unmount (clean up)
-        return ()=>setOpacity(0)
+        return ()=>setOpacity(0);
        
     }
     ,[])
 
-    useEffect( ()=>{
-
-        if(chapterRefernces.current[0]){
-
-            console.log(chapterRefernces.current[0].style)
-
-        }
-
-    },[])
 
     const handleScroll =()=>{
         
         // set state variable to current scroll posiiton
         setScrollY(window.scrollY);
-
 
     }
 
@@ -91,8 +83,6 @@ const ChaptersPage = ()=>{
    const getTranslation = (scrollPosition,idx) =>{
     //  calculate translate amount in Y direction 
     //  relative to scroll posiiton 
-
-    // return (scrollPosition / (10 + idx)) * Math.sin(scrollY / 400) + idx * 20
 
     return (scrollPosition)/((10-idx))*(-1)**(idx) 
 
@@ -129,6 +119,44 @@ const ChaptersPage = ()=>{
 
                         return(
                         <>
+                            <div className= {idx%2==0? "row d-flex  firstRow-container-for-parallax" : "row d-flex flex-row-reverse firstRow-container-for-parallax"}>
+
+                                <div className = 'col-6'>
+                                <div className= {"first-left-col-parralax-container col-12  d-flex align-items-start justify-content-start"}>
+                                         
+                                        <img 
+                                        // bird images for parallax effect to add texture/ layers 
+                                            className = "birds first_layer-parrallax-image"
+                                            src={idx%2===0?clouds_9:birds}
+                                            width={"40%"}
+                                            style = {{
+                                                // see getTranslation() function for description
+                                                transform: `translateY(${getTranslation(scrollY,idx)}px)`,
+                                                zIndex: 1
+                                            }} 
+                                        />
+                                       
+                                    </div>
+                                    <div className="first-right-col-parralax-container col-12  d-flex align-items-baseline justify-content-end" >
+                                    <img 
+                                        // bird images for parallax effect to add texture/ layers 
+                                            className = "birds first_layer-parrallax-image"
+                                            src={idx%2===0?birds:clouds_9}
+                                            width={"40%"}
+                                            style = {{
+                                                // see getTranslation() function for description
+                                                transform: `translateY(${getTranslation(scrollY,-idx)}px)`,
+                                                zIndex: 1
+                                            }} 
+                                        />
+
+                                    </div>
+
+                                </div>
+                                <div className = 'col-6'>
+                                    
+                                </div>  
+                            </div>
                         
                         {/* // alternate  between left right pattern on larger devices                                 */}
                         <div className= {idx%2==1? 'section d-flex row flex-row-reverse':'section d-flex row'}  //   creates this pattern:
@@ -153,55 +181,9 @@ const ChaptersPage = ()=>{
                                     transform:chaptRefsIsInView[idx]? ` translateY(0px) scale(1)`:"  translateY(200px) scale(.5)",
                                 }}                                  
                                 /> 
-
-                                {/*======== background images container to add paralax effect ==============================================*/}
-
-                                <div className= {idx/2==0? "firstRow-container-for-parallax d-flex row":"firstRow-container-for-parallax d-flex row flex-row-reverse"}
-                                
-                                    style = {{
-                                        position:"absolute",
-                                        height:"200px",
-                                        width:"100%"
-                                    }}
-                                    >
-                                    <div className= {"first-left-col-parralax-container col-6 col-lg-12 d-flex align-items-start justify-content-start"}>
-                                        
-                                        <img 
-                                        // bird images for parallax effect to add texture/ layers 
-                                            className = "birds first_layer-parrallax-image"
-                                            src={idx/2==0?clounds_1:birds}
-                                            width={"40%"}
-                                            style = {{
-                                                // position:"absolute",
-                                                // see getTranslation() function for description
-                                                transform: `translateY(${getTranslation(scrollY,idx)}px)`,
-                                                zIndex: -1
-                                            }} 
-                                        />
-                                       
-                                    </div>
-                                    <div className="first-right-col-parralax-container col-6 col-lg-12 d-flex align-items-baseline justify-content-end" >
-                                    <img 
-                                        // bird images for parallax effect to add texture/ layers 
-                                            className = "birds first_layer-parrallax-image"
-                                            src={idx/2==0?birds:clounds_1}
-                                            width={"40%"}
-                                            style = {{
-                                                // position:"absolute",
-                                                // see getTranslation() function for description
-                                                transform: `translateY(${getTranslation(scrollY,-idx)}px)`,
-                                                zIndex: -1
-                                            }} 
-                                        />
-
-                                    </div>
-                                </div>
-
-                                {/* ============================================================================================= */}
-
                             </div>
 
-                            <div className = 'chapter-description-container col-12 col-lg-6 d-flex align-items-center'>
+                            <div className = 'chapter-description-container col-12 col-lg-6'>
                                 <p
                                 className = "chapters-description"
                                 style={{
@@ -235,20 +217,19 @@ const ChaptersPage = ()=>{
                             style ={{
                                 position:"relative",
                                 // width:"100vw",
-                                height:"200px",
+                                // height:"200px",
+                                
                             }}
                             >
                             <div className = "second-left-col-parralax-container col-6  d-flex justify-content-start align-items-baseline ">
                                 <img    
                                     className="secondary-parallax-image"
-                                    src = {idx/2==0?clounds_1:birds}
+                                    src = {idx%2==0?clouds_9:birds}
                                     width="20%"
                                     style ={{
                                         objectFit: "cover",
                                         position:"relative",
                                         transform: `translateY(${getTranslation(scrollY,idx)}px)`,
-                                        transition: "transfrom .3s ease-in-out"
-                                        // zIndex:-1
                                     }}                                      
                                 />
                                 
@@ -256,30 +237,26 @@ const ChaptersPage = ()=>{
                             <div className="second-right-col-parralax-container col-6 d-flex justify-content-end align-items-start">
                                 <img    
                                     className="secondary-parallax-image"
-                                    src = {idx/2==0?birds:clounds_1}
+                                    src = {idx%2==0?birds:clouds_9}
                                     width="20%"
                                     style ={{
                                         objectFit: "cover",
                                         position:"relative",
                                         transform: `translateY(${getTranslation(scrollY,idx+1)}px)`,
-                                        transition: "transfrom .3s ease-in-out"
-                                        // zIndex:-1
                                     }}
                                 />
 
                             </div>
 
                         </div>
+                        <div className = "buffer"/>
                         {/* =========================================================================================================== */}
 
                         </>
                                 
                         );                        
                         })                      
-                                                
-
-
-
+                     
                     }
 
                     </>
@@ -287,8 +264,6 @@ const ChaptersPage = ()=>{
                 </div>
 
         </div>
-
-
 
     );
 }
