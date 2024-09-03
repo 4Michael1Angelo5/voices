@@ -8,14 +8,8 @@ import { mask } from 'primereact/utils';
 
 export const OrgChartComponent = (props, ref) => {
   const d3Container = useRef(null);
-  const [focus,setFocus] = useState(null)
-  const [visible, setVisible] = useState(false);
-  const [container , setContainer] = useState(null);
-  const [offset, setOffset] = useState(0) ; 
-  const [maskHeight, setMaskHeight] = useState(0);
-
-  
-  const op = useRef(null);
+  const [offset, setOffset] = useState(0) ;  
+   
   const treeContainer = useRef(null)
 
   let chart
@@ -67,15 +61,25 @@ export const OrgChartComponent = (props, ref) => {
         .onNodeClick((d, i, arr) => {
           let attrs = chart.getChartState();
           // console.log(chart.lastTransform().k)
-          chart.setCentered(d.id).initialZoom(1.5).render()
-        
-          // setFocus(d.data)
-          props.setAncestor(d.data)   
-          // props.setTimeWarp(true)
-          // props.setUseless(false)
-          
+          chart.setCentered(d.id).initialZoom(1.5).render()        
+          props.setAncestor(d.data)  
+          console.log(attrs.lastTransform)        
         
         })
+
+        .onZoomStart( (d=>{
+          let attrs = chart.getChartState();
+          console.log(attrs.lastTransform) 
+
+        }))
+
+        .onZoomEnd( (d=>{
+          let attrs = chart.getChartState();
+          console.log(attrs.lastTransform) 
+
+        }))
+
+        
         
         // .onZoomEnd(()=>{
         //   setTimeout(()=>props.setTimeWarp(false),3000);
@@ -84,21 +88,14 @@ export const OrgChartComponent = (props, ref) => {
   
 
 
-        // .nodeUpdate(function (d) {
-          // const currentlyHoveredElement = this;
-          // currentlyHoveredElement.addEventListener('click', (e) => {
-            // chart.zoomIn()
-            // console.log(e.target);
-            // setFocus(e.target)
+        .nodeUpdate(function (d) {
+          const currentlyHoveredElement = this;
+          currentlyHoveredElement.addEventListener('click', (e) => {
+          
+            console.log(e.target);
             
-          // props.setTimeWarp(true)
-          // setTimeout(()=>props.setTimeWarp(false),2000) 
-            // op.current.toggle(e.target)
-             
-            //  setTimeout(()=>setVisible(true),1000);
-         
-            
-          // })})
+          })})
+
         .scaleExtent([.5,3.5]) 
         
       
@@ -107,71 +104,15 @@ export const OrgChartComponent = (props, ref) => {
 
 }, [props.orientation]);
 
-// get width of container for family tree graph
-useEffect(()=>{
-
-  if (treeContainer != null){
-
-    setOffset(treeContainer.current.offsetTop); 
-    setMaskHeight(treeContainer.current.clientHeight)
-
- 
-  }
-
-
-},[treeContainer])
-
-
 
   return (
     <React.Fragment>
       <div className = 'tree-container'
         ref = {treeContainer}        
         >
-      <div ref={d3Container} >
-      </div>
-      </div>   
-    {  
-    offset==0
-    ?
-    null
-    :
-      <>
-      {/* <div className = "mask-left"
-        style = 
-          {{
-            height:`${maskHeight}px`,
-            top: `${offset}px`,
-            // backgroundColor:"red"        
-          }}
-        />
-      <div className = 'mask-right'
-        style = 
-          {{
-            height:`${maskHeight}px`,
-            top: `${offset}px`,
-            // backgroundColor:"red"        
-          }}
-        />
-      <div className = 'mask-top'
-        style = 
-          {{
-            top: `${offset}px`,
-            // backgroundColor:"red"        
-          }}
-        />
-      <div className = 'mask-bottom'
-        style = 
-          {{
-            top: `${offset+500-50}px`,
-            // backgroundColor:"red"        
-          }}
-        /> */}
-
-        </>
-        }
-    
-    
+        <div ref={d3Container} />
+     
+      </div>    
     </React.Fragment>
 
 

@@ -1,8 +1,7 @@
 import { useState, useEffect ,useRef, createRef} from "react";
 // import hammer from '../assets/hammer.webp';
-import greenMountains from '../assets/greenMountains.png';
 import railRoadWorkers from '../assets/railRoadWorkers.jpg'
-import {useInView , inView } from "framer-motion";
+import {useInView} from "framer-motion";
 import birds from '../assets/birds.png';
 import hammer from '../assets/hammer.png';
 import clouds_9 from '../assets/clouds_9.png';

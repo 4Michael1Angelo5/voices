@@ -1,17 +1,6 @@
-/* * { box-sizing: border-box; } */
+
 
 /* FlipBook */
-
-/* body {
-  margin: 0;
-  display: flex;
-  min-height: 100dvh;
-  perspective: 1000px;
-  font: 1em/1.4 "Poppins", sans-serif;
-  overflow: hidden;
-  color: hsl(180 68% 5%);
-  background-image: radial-gradient(circle farthest-corner at 50% 50%, hsl(187 20% 88%) 30%, hsl(149 20% 94%) 100%);
-} */
 
 .book {
   position: relative;
@@ -130,8 +119,12 @@
 
 .cover {
   background: radial-gradient(circle farthest-corner at 80% 20%, hsl(150 80% 20% / .3) 0%, hsl(170 60% 10% / .1) 100%),
-    hsl(231, 32%, 29%) url("https://chcp.org/resources/Pictures/News/2020.11.16_Voices-from-the-Railroad-768x942.jpeg") 50% / cover;
+    hsl(231, 32%, 29%) url("./assets/authors/voices.jpeg") 50% / cover;
   color: hsl(200 30% 98%);
 }
 
+.swiper-slide img{
+  object-fit: cover;
+  aspect-ratio: 1.5/2;
+}
 

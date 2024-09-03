@@ -54,16 +54,18 @@ $dawnBlue: rgba(1,84,164,1) ;
 .app-header.family-tree-index{
   position: absolute ;
   top:0;
-  background: rgb(0,30,87);
-  background: linear-gradient(180deg, rgba(0,30,87,1) 0%, rgba(89,1,151,1) 69%, blue 100%);
+  background-color: purple;
+  background-image: linear-gradient(180deg, rgb(8 45 115) 0%, rgb(89 1 151 / 92%) 69%, #ff00682e 100%);
   transition: all 2s ease-in-out;
 }
 
 .app-header.chapters-header{
   position: absolute ;
   top:0;
-  background: rgb(87, 0, 67);
-  background: linear-gradient(90deg, rgb(9 5 5) 0%, rgb(151, 1, 59) 50%, rgb(125 56 119) 100%);
+  background-color: rgb(87, 0, 67);
+
+  // background-image: linear-gradient(90deg, rgb(9 5 5) 0%, rgb(151, 1, 59) 50%, rgb(125 56 119) 100%);
+  background-image:linear-gradient(90deg, rgb(9 5 5 / 58%) 0%, rgb(151, 1, 59) 68%, rgb(41 24 99 / 30%) 100%) ;
   transition: all 2s ease-in-out;
 
 }
@@ -192,7 +194,6 @@ $dawnBlue: rgba(1,84,164,1) ;
 a.icon-set:hov{
 
   background: red !important ; 
-
   
 }
 
@@ -244,15 +245,12 @@ a.icon-set:hov{
 
 // -- shape-divider for tree index page
 
-  // .custom-shape-divider-top-1713657617.tree-index{
-  //   background-image: linear-gradient(360deg, #163fa0, #c26d6d);
-   
-  // }
 
   .custom-shape-divider-top-1713657617.tree-divider{
     
     fill: white;
-    background: linear-gradient(0deg, blue  0% , red 100%);
+    background-color: purple;
+    background-image: linear-gradient(180deg, #c20d0d 0%, #ff00682e 100%);;
     position: absolute;
 
   }
@@ -283,7 +281,9 @@ a.icon-set:hov{
 
   .custom-shape-divider-top-1713657617.chapters-divider{
     position:absolute;
-    background: linear-gradient(90deg, rgb(125, 56, 119) 0%, rgb(151, 1, 59) 50%, rgb(9, 5, 5) 100%)
+    // background: linear-gradient(90deg, rgb(125, 56, 119) 0%, rgb(151, 1, 59) 50%, rgb(9, 5, 5) 100%)
+    background-image: linear-gradient(270deg, rgba(9, 5, 5, 0.58) 0%, rgb(151, 1, 59) 69%, rgba(41, 24, 99, 0.3) 100%);
+    background-color: rgb(87, 0, 67);
   }
 
   // note the last divider needs to be position relative and all others position absolute
@@ -293,10 +293,6 @@ a.icon-set:hov{
     background-color: #acfcd9;
     background-image: linear-gradient(270deg, #acfcd9 0%, #f0f4a4 63%, #ffbd77 100%);
   }
-
-
-
-
   
 
 //---------------------------------- family tree index page
@@ -587,6 +583,7 @@ a.icon-set:hov{
   font-weight: 300;
   font-size:90px;
   color: #4d2893;
+  text-shadow:  6px 2px #0f102e;
 }
  
 .author-page h2{

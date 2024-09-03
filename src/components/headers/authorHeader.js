@@ -12,13 +12,19 @@ const AuthorHeader = (props) => {
                 <div className='row d-flex justify-content-center m-2'>
 
                     <div className=' col-6 col-lg-4'>
-                        <h1 className="left-line"> About The Author</h1>
+                        <h1 
+                            className="left-line"
+                            style={{borderImage:"linear-gradient(181deg, #021826, #a0a5a8) 30"}}
+
+                            > 
+                            About The Authors
+                        </h1>
 
                     </div>
                     <div className='col-6 col-lg-4'>
 
                         <p> 
-                            "The Life and History of Author Russell N Low"
+                            "The Creative Journey of Authors Sue Lee and Connie Yu"
                         </p>
 
                     </div>

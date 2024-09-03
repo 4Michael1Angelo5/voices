@@ -560,7 +560,8 @@ export class OrgChart {
             const behaviors = {
                 zoom: null
             };
-
+        // ================== original zoom behavior ==================       
+    
             // Get zooming function
         //     behaviors.zoom = attrs.createZoom()
         //         .clickDistance(10)
@@ -574,6 +575,8 @@ export class OrgChart {
         //     attrs.zoomBehavior = behaviors.zoom;
         // }
 
+        // ==================================================================
+        
         // modified zooming behavior 
 
         behaviors.zoom = d3.zoom().interpolate(d3.interpolateZoom.rho(3)) 
@@ -591,6 +594,7 @@ export class OrgChart {
         
         
         }
+        // ===================================================================
 
         //****************** ROOT node work ************************
 

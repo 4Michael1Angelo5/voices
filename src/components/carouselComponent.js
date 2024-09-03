@@ -1,67 +1,78 @@
-import Cover_A_Willow_Tree_Became_a_Forest from "../assets/Cover_A_Willow_Tree_Became_a_Forest.jpg";
-import Avengers_Wildcats_and_Crickets from "../assets/Avengers_Wildcats_and_Crickets.png";
-import Cover_Iron_Road_and_Steam_Breathing_Dragon_Smaller from '../assets/Cover_Iron_Road_and_Steam_Breathing_Dragon_Smaller.jpg' ; 
-import Cover_Three_Coins_2nd_Edition from '../assets/Cover_Three_Coins_2nd_Edition.jpg';
-import The_All_Amrerican_Crew_Cover from '../assets/The_All_Amrerican_Crew_Cover.webp';
-import Three_Coins_Illustrated_Book_Cover from '../assets/Three_Coins_Illustrated_Book_Cover.png';
-import React , { useState, useRef,useEffect } from "react";
-
-
+import React , { useState,useRef} from "react";
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import '../styles/carouselStyles.scss';
-import { Swiper, SwiperSlide , useSwiper} from 'swiper/react';
-// import required modules
-import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { motion, useScroll } from "framer-motion"
-import Book from "./bookComponent";
- 
 
+import { Swiper, SwiperSlide , useSwiper} from 'swiper/react';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
+
+// books
+import HakoneEstateAndGardens from "../assets/authors/HakoneEstateAndGardens.jpg"
+import patchWorkHistroy from "../assets/authors/patchWorkHistroy.jpeg"
+import ProfilesInExcellence from "../assets/authors/ProfilesInExcellence.jpg"
+import MakingWaves from "../assets/authors/MakingWaves.jpg"
+import voices from "../assets/authors/voices.jpeg"
+import chinatownsanjose from "../assets/authors/chinatownsanjose.jpg"
+import chineseInNappaValley from "../assets/authors/chineseInNappaValley.jpg"
 
 const cards = [
-  Cover_A_Willow_Tree_Became_a_Forest,
-  Avengers_Wildcats_and_Crickets,
-  Cover_Iron_Road_and_Steam_Breathing_Dragon_Smaller,
-  Cover_Three_Coins_2nd_Edition,
-  The_All_Amrerican_Crew_Cover,
-  Three_Coins_Illustrated_Book_Cover
+  HakoneEstateAndGardens,
+  voices, 
+  ProfilesInExcellence,
+  MakingWaves,
+  patchWorkHistroy,
+  chinatownsanjose,
+  chineseInNappaValley  
 
 ]
 
-const SwiperButtonNext = ({ children }) => {
-  const swiper = useSwiper();
-  return( <button 
-    className = 'swiper-right-btn'
-    onClick={() => swiper.slideNext()}
-    > {children}
-    </button>
-);
-};
 
-const SwiperButtonPrev = () => {
+const SwiperButtonPrev =()=>{
   const swiper = useSwiper();
+  const [rightTranslate,setRightTranslate] = useState(0);
+  const [animating,setAnimation] = useState(false);
+  const arrowRight = useRef(null);
+
+  const handleClick =()=>{
+    setRightTranslate(-10);
+    setAnimation(true);
+    setTimeout(()=>setRightTranslate(0),300);
+    setTimeout(()=>setAnimation(false),300);
+    swiper.slidePrev();
+  }
+
+  const scale = animating? 1.5:1 ;
+  return(
+    <>
+      <div  className= "arrowRight" 
+          onClick = {handleClick}
+            ref = {arrowRight}
+          style = {{
+            transform:`rotate(125deg) translate(${12}px , ${12+rightTranslate}px) scale(${scale})`,
+            }}
+          
+        />
+    </>
+  )
+
+}
+
+const SwiperButtonNext = () => {
+  const swiper = useSwiper()
   const [leftTranslate,setLeftTranslate] = useState(0 ); 
   const [animating,setAnimation] = useState(false);
-  const arrow = useState(null);
-
- 
-  
+  const arrow = useRef(null);  
   
   const handleClick=()=>{
-
-    // const swiper = useSwiper();
     
     setLeftTranslate(-10);
     setAnimation(true);
     setTimeout(()=>setLeftTranslate(0),300);
     setTimeout(()=>setAnimation(false),300);
-    swiper.slidePrev();
-
+    swiper.slideNext();
  
   }
-  const color = animating?'blue':'red'
-  const transform = animating?'rotate(0deg) scale(1.4)' :'rotate(0deg) scale(1)';
 
   const scale = animating? 1.5:1 ;
 
@@ -73,16 +84,12 @@ const SwiperButtonPrev = () => {
               style = {{
                 transform:`rotate(-55deg) translate(${leftTranslate}px , ${leftTranslate}px) scale(${scale})`,
                  
-       
               }}
               
           />
-          </>
+      </>
   );
 };
-
-
-
 
 
 const CarouselComponent = () => {
@@ -116,19 +123,17 @@ const CarouselComponent = () => {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        <div className = 'container d-flex justify-content-center'>
-         
-         
-         {/* <SwiperButtonNext> next slide</SwiperButtonNext> */}
-         
-         </div>
+      
         {
           cards.map((item,index)=>{
 
            return ( 
            <SwiperSlide 
             key = {index}>
-            <img src={item} />
+            <img 
+              src={item} 
+              alt={"book_by_connnie_yu_"+item}
+            />
           
             <div
               className="reflection"
@@ -142,8 +147,8 @@ const CarouselComponent = () => {
         }
      
 
-          <SwiperButtonPrev
-          /> 
+          <SwiperButtonPrev/> 
+          <SwiperButtonNext/>
           
       </Swiper>
     

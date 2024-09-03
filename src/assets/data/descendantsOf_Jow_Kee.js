@@ -1,20 +1,20 @@
-// data to be shown on family tree graph 
-// this is currently just a placeholder 
-// actual data for ancestors and descendants will use this conventions
+// descendants of Jow Kee data for family tree graph 
 
-export const DATA = 
+import Jow_Kee from '../ancestors/Jow_Kee.jpg' 
+
+export const DESCENDANTS_OF_JOW_KEE_DATA = 
 [
     {
-      name: "Him Mark Lai",
+      name: "Jow Kee",
       id: "O-6066",
       parentId: "",
       imageUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
       year:1879,
       lifeSpan: " 1879-1890",
-      shortDescription:"I'm baby cronut kale chips fingerstache, \
-      activated charcoal YOLO four dollar toast lumbersexual \
-      flexitarian cred praxis. Butcher vaporware beard tattooed \
-      gochujang. Post-ironic mukbang cloud bread ramps bitters actually.",
+      shortDescription:" Born in 1840, arrived in California at age 15. \
+      Worked as a miner, learned to speak English, and became a labor \
+      contractor. He was hired by the Central Pacific Railroad in 1865 \
+      to bring on workers.  Afterward, he became a tenant farmer in Courtland.",
      
     },
     {

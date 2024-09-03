@@ -1,13 +1,7 @@
-
-import { useLayoutEffect, useRef, useState,useEffect , useCallback} from 'react';
-// import AnimatedNumbers from "react-animated-numbers";
-import Enhanced from './animated-numbers-mod';
-import { DATA } from '../assets/data/ftreeData';
+import { useLayoutEffect, useRef, useState,useEffect} from 'react';
+import AnimatedNumber from './animated-numbers-mod'; 
 import { OrgChartComponent } from './OrgChart';
-import { useLocation } from 'react-router-dom';
-import AnimatedNumber from './animated-numbers-mod';
-
-
+import { DATA } from '../assets/data/ftreeData';
 
 // Ancestor Detail displaying information about currently selected Ancesetor
 
@@ -17,191 +11,139 @@ const AncestorCard = (props) => {
     return(
         <div className = "row d-flex justify-content-center">
 
-<div className = "backdrop">
-            
+            <div className  = 'ancestor-detail col-12 col-lg-6'>
+
+                <h1>
+                    {props.ancestor.name}            
+                </h1>
+
+                <p>{props.ancestor.lifeSpan}</p>
+
+                <p>
+                    {props.ancestor.shortDescription}
+                </p>
+
             </div>
-
-        
-        <div className  = 'ancestor-detail col-12 col-lg-6'>
-
-            <h1>
-                {props.ancestor.name}            
-            </h1>
-
-            <p>{props.ancestor.lifeSpan}</p>
-
-            <p>
-                {props.ancestor.shortDescription}
-            </p>
-
-        </div>
         
 
         </div>
     )
 }
+// ==========================Ancestor Family Tree Component==============================
 
-const NumberLine = ()=>{
-   return(
-    <h1 className = "text-center">
-    Hello World
-</h1>
-   )
-
-}
-        
 
 const AncestorFamilyTree = (props)=>{
 
-   
-    const [ orientation , setOrientation] = useState("portrait") ; 
-    const [ancestor, setAncestor] = useState(DATA[0]) ; 
-    const [num, setNum] = useState(ancestor.year);
-    const [translateAmount,setTranslate] = useState(0) ; 
-    const [firstDraw,setFirstDraw] = useState(true) ; 
-    const [screenWidth, setScreenWidth] = useState(100);
+    const [ancestor, setAncestor] = useState(DATA[0]) ;
+    // const [ancestor, setAncestor] = useState(props.ancestor) ;  
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [translateAmount, setTranslate] = useState(0);
+
     const timeLineContainer = useRef(null) ; 
     const centerLine = useRef(null);
-    const [timeWarp,setTimeWarp] = useState(false) ;  
 
-    let location = useLocation();
+    // ===============================================================
 
-    
-    // ----------------------------------------------------------------
+    useEffect(() => {
 
-    // setTranslate Amount for animated number slider on first render
+        // update screenWidth state on mount:
+        setScreenWidth(window.innerWidth); 
+        console.log(props.ancestor.descendants)
 
-    useEffect( () =>{
-        
-    // ensure ref to timeLineContainer and CenteLine is not null
-    if(firstDraw && timeLineContainer.current!=null && centerLine.current!=null){
-        let dif = ancestor.year - num ; 
-        let firstDif = ancestor.year - 1800 ; 
-        console.log("on mount render")
-        setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )
-        setFirstDraw(false)
+    }, []);
 
-        }
-    }    
-    ,[firstDraw])
-
-    // ----------------------------------------------------------------
-
-    // set inner Width of window on mount
-    // useEffect( ()=>{
-    //     setScreenWidth(window.innerWidth)
-    //     }
-    // ,[])
-    
-    // setTranslate Amount when ancestor or number changes 
-    // AFTER first render for subsequent renders. 
-
-    useEffect(()=>{
-        
-        if(!firstDraw){
-            console.log("rerendering translate amount")
-            let dif = ancestor.year - num ;   
-            setTranslate(translateAmount - dif*17.6) }
-           
-    },[ancestor,num])
-
-    // -----------------------------------------------------------
-
-    // handle window resize events for slider 
-    // But only when window width changes and not the window height
-    //    @TODOS: remove resize event listeners!!
-
-    useEffect( ()=>{
-
-        // window.addEventListener('resize',handleResize); 
-        // handleResize()
-        var resized;
-        window.onresize = function(){
-                  clearTimeout(resized);
-                  resized = setTimeout(resizedWindow, 100);
-                };
-        
-    }
-    ,[ancestor])
-
-    // -------------------------------------------------
-
-    // remove event Listeners
-
-
-    useEffect( ()=>{
-
-        if (location!== "/family-tree-index/" + props.ancestor.name.replace(/\s/g, '')){
-            return () => window.removeEventListener("resize", resizedWindow,handleResize);
-
-        }
-    }
-    ,[])
-    
-    // -------------------------------------------------
-
-    // handle resize events to repostion the slider
-    // only when window width changes
-
-    const handleResize = ()=>{
-        
-        // only re-animate numbers if device width changes     
-        
-        if (screenWidth!==window.innerWidth && centerLine.current!=null &&timeLineContainer.current!=null ){
-            setScreenWidth(window.innerWidth)
-            // console.log("on resize error")
-            let firstDif = ancestor.year - 1800 ; 
-            setTranslate(- firstDif *17.6 + centerLine.current.offsetLeft - timeLineContainer.current.offsetLeft )  
-            setFirstDraw(true)
-        
-        }        
-    }
-    // ---------------------------------------------------
-
-    // set number/year for animated numbers when ancestor changes
+    //=================================================================
+    // handle resize events 
 
     useEffect( ()=>{        
+        // handle resize needs to be inside the useEfffect or else 
+        // it will use "stale" state comparisons between window.innerWidth and screenwidth2
 
-       let dif = ancestor.year - num ; 
-        
-        console.log("change in number detected, number is ", num)
-       handleNumber()
-        
-    },[ancestor,num])
+        const handleResize=()=>{
+            // handle changes in screen width
 
-    // -------------------------------------------------
+            var resizeTimeout;
+            clearTimeout(resizeTimeout);
 
+            // Set a new timeout to delay the execution by 100ms
+            resizeTimeout = setTimeout(() => {
+                // Only execute this block if no resize events have occurred in the last 100ms
 
-    const handleNumber = ()=>{
+                if (window.innerWidth !== screenWidth) {
 
-        let dif = ancestor.year - num ;
-        if (dif!==0){
-            setNum(dif + num)
-           } 
-       }  
+                    // Only update state when screen width changes
+                    setScreenWidth(window.innerWidth);
+                }
+            }, 100); // 100ms delay
+        };
 
-    // -------------------------------------------------
+        // add resize event listener, call handleResize whene event triggers; 
+        window.addEventListener("resize",handleResize)  
+            
+        // clean up: remove event listener on unmount
+        return ()=>{window.removeEventListener("resize",handleResize)}
 
-    // handle resize events
+        }
+    ,[])
+
+    // ===================================================================
+    // update translate amount for Animated number line on mount
     
-    function resizedWindow(){
+    useLayoutEffect( ()=>{
 
-    // Haven't resized in 100ms!
+        // calculation performed before first paint       
 
-    console.log("resive EVENT BEING TRACKED")
+        if(timeLineContainer.current!=null && centerLine.current!=null){
 
-        if(window.innerWidth!= screenWidth){
-                   
-            setNum(num)
-            handleResize()
-           
+            let firstDif = ancestor.year - 1800 ; 
+
+            const newTranslateAmount =  - firstDif *17.6 
+                                        + centerLine.current.offsetLeft 
+                                        - timeLineContainer.current.offsetLeft;
+
+            setTranslate(newTranslateAmount);
+
         }
 
-    }   
+    },[ancestor])
 
-    // -------------------------------------------------
+    // useEffect( ()=> {console.log("translate amount has changed" , translateAmount)},[translateAmount])
 
 
+    // ==================================================================
+    // side effect when screen width changes.
+    // update translate amount for animated number line when screen width changes
+
+    useEffect( ()=>{
+
+        let firstDif = ancestor.year - 1800 ; 
+        // the differneces between the current ancestor's birth year and 1800 (the begining of our number line)
+
+        const newTranslateAmount =  - firstDif *17.6                        // number of years times pixels (pixels/year)
+                                    + centerLine.current.offsetLeft         // number of pixels from left of screen
+                                    - timeLineContainer.current.offsetLeft; // number of pixels from left of screen
+        
+        // formula explanation: 
+        // 17.6
+        // the number line is made of segments called "time-line-connectors".
+        // each timeline connector is 176px, this span represents 10 years. 
+        // there for one year is 17.6px 
+
+        // centerLine.current.offsetLeft:
+        // the distance in the x direction from the left of the screen to the 
+        // center where we need the number line to move 
+
+        // timeLineContainer.current.offsetLeft:
+        // the distance in the x diection from the left of the screen to the current timeline container  
+    
+    
+        setTranslate(newTranslateAmount)
+         
+        }
+    ,[screenWidth])
+
+    // =============================================================================
+    // creating array of years for animated number line
 
     let events=  [] ;
 
@@ -209,9 +151,6 @@ const AncestorFamilyTree = (props)=>{
 
         events.push(years)
     }
-
-
-
 
     return(
 
@@ -222,27 +161,19 @@ const AncestorFamilyTree = (props)=>{
       
 
             {/*-------------------- d3-org-chart --------------------*/}
-
           
-                <OrgChartComponent
-                    
-                    data = {DATA}
-                    // orientation = {orientation}
-                    setTimeWarp = {setTimeWarp}
+                <OrgChartComponent 
+                    data = {props.ancestor.descendants}
                     setAncestor = {setAncestor}
                     ancestor = {ancestor} 
-
-
                 />
           
-
             {/*
             -------------------- ancestor information to be displayed -----------------------
             ---------------------when user clicks on chart node---------------------
             */}
 
-            <div className = 'row d-flex justify-content-center'>
-                      
+            <div className = 'row d-flex justify-content-center'>                      
 
                 <AncestorCard ancestor = {ancestor} />
 
@@ -255,14 +186,8 @@ const AncestorFamilyTree = (props)=>{
             */}
 
              <div className='animated-numbers'>
-                {/* {
-                    
-                    firstDraw 
-                    ?
-                    <AnimatedNumbers
-                    // ancestor = {ancestor}
-                    // className=""    
-                    key = {123}               
+
+                    <AnimatedNumber        
                     transitions={(index) => ({
                     type: "spring",
                     duration: index + 0.15
@@ -272,39 +197,11 @@ const AncestorFamilyTree = (props)=>{
                     fontSize: 40,
                     color: "red",
                     }}
-                    />
-                     
-                    :
-                    <AnimatedNumbers
-                    // ancestor = {ancestor}
-                    // className=""          
-                    key = {124}       
-                    transitions={(index) => ({
-                    type: "spring",
-                    duration: index + 0.15 
-                    })}
-                    animateToNumber={num}
-                    fontStyle={{
-                    fontSize: 40,
-                    color: "red",                    
-                    }}                    
-                    />
-                } */}
-
-                   <AnimatedNumber   
-                    ancestor ={ancestor}         
-                    transitions={(index) => ({
-                    type: "spring",
-                    duration: index + 0.15
-                    })}
-                    animateToNumber={num}
-                    fontStyle={{
-                    fontSize: 40,
-                    color: "red",
-                    }}
-                    />                    
-                
-            </div>
+                    />  
+                    
+            </div>        
+                 
+            {/* ======================== Animated number time line ======================*/}
 
             <div ref = {timeLineContainer} className = "timeline-container">
 
@@ -338,16 +235,11 @@ const AncestorFamilyTree = (props)=>{
                 </div>
                 
             </div>
+            {/*============================ Marker for current year of ancestor's birth ====================== */}
 
             <div className = "d-flex justify-content-center">
                 <div ref = {centerLine} className = "center-line"/>
             </div>    
-             {/* <div className =  "loader"  
-             style={{
-                opacity: timeWarp?1:0
-             }}
-             />          */}
-
             
         </div>
 

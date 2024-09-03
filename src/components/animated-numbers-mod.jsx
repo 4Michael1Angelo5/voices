@@ -6,7 +6,6 @@ const NUMBERS = [
   6, 7, 8, 9,
 ];
 
-// lib
 const AnimatedNumber = ({
   className,
   animateToNumber,
@@ -19,12 +18,13 @@ const AnimatedNumber = ({
   const isInView = useInView(ref, { once: true });
 
   const controls = useAnimation();
-  const keyCount = React.useRef(0);
-  const animateTonumberString = includeComma
+
+  const animateToNumberString = includeComma
     ? Math.abs(animateToNumber).toLocaleString(locale || "en-US")
     : String(Math.abs(animateToNumber));
-  const animateToNumbersArr = Array.from(animateTonumberString, Number).map(
-    (x, idx) => (isNaN(x) ? animateTonumberString[idx] : x)
+
+  const animateToNumbersArr = Array.from(animateToNumberString, Number).map(
+    (x, idx) => (isNaN(x) ? animateToNumberString[idx] : x)
   );
 
   const [numberHeight, setNumberHeight] = React.useState(0);
@@ -44,7 +44,7 @@ const AnimatedNumber = ({
     if (isInView) {
       controls.start("visible");
     }
-  }, [isInView, animateToNumber]);
+  }, [isInView, animateToNumber, controls]);
 
   return (
     <span ref={ref}>
@@ -59,24 +59,36 @@ const AnimatedNumber = ({
         >
           {animateToNumbersArr.map((n, index) => {
             if (typeof n === "string") {
-              return <div key={index} style={{ ...fontStyle, fontVariantNumeric: "tabular-nums" }}>{n}</div>;
+              return (
+                <div
+                  key={index}
+                  style={{ ...fontStyle, fontVariantNumeric: "tabular-nums" }}
+                >
+                  {n}
+                </div>
+              );
             }
 
             return (
-              <div key={index} style={{ height: numberHeight, width: numberWidth }}>
-                {NUMBERS.map((number) => (
+              <div
+                key={index}
+                style={{ height: numberHeight, width: numberWidth }}
+              >
+                {NUMBERS.map((number, numIndex) => (
                   <motion.div
                     style={{ ...fontStyle, fontVariantNumeric: "tabular-nums" }}
-                    key={`${keyCount.current++}`}
+                    key={numIndex} // Use numIndex as key for individual numbers
                     initial="hidden"
                     variants={{
                       hidden: { y: 0 },
                       visible: {
-                        y: -1 * (numberHeight * animateToNumbersArr[index]) - numberHeight * 20,
+                        y:
+                          -1 * (numberHeight * animateToNumbersArr[index]) -
+                          numberHeight * 20,
                       },
                     }}
                     animate={controls}
-                    transition={transitions?.(index)} 
+                    transition={transitions?.(index)}
                   >
                     {number}
                   </motion.div>
@@ -97,12 +109,12 @@ const AnimatedNumber = ({
   );
 };
 
-// const Enhanced = React.memo(AnimatedNumber, (prevProps, nextProps) => {
-//   return (
-//     prevProps.animateToNumber === nextProps.animateToNumber &&
-//     prevProps.fontStyle === nextProps.fontStyle &&
-//     prevProps.includeComma === nextProps.includeComma
-//   );
-// });
+const Enhanced = React.memo(AnimatedNumber, (prevProps, nextProps) => {
+  return (
+    prevProps.animateToNumber === nextProps.animateToNumber &&
+    prevProps.fontStyle === nextProps.fontStyle &&
+    prevProps.includeComma === nextProps.includeComma
+  );
+});
 
-export default AnimatedNumber;
+export default Enhanced;

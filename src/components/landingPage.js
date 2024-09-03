@@ -17,7 +17,7 @@ const LandingPage = () => {
                         <Book/>
                     </div>
                     <div className="row">
-                        <div className="col-8 col-lg-6 frame about-the-author">
+                        <div className="col-9 col-lg-6 frame about-the-author">
                             <h1>About the Author</h1>
                             <p>
                                 During her tenure as Executive Director of the Chinese 
@@ -30,7 +30,7 @@ const LandingPage = () => {
                             </p>
                             <LinkBtnComponent text = {'Learn More'} pathName = '/voices/author'/>
                         </div>
-                        <div className='col-4 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
+                        <div className='col-3 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
                             
                                     <label className ="text-center">Family Tree </label>
 
@@ -70,29 +70,20 @@ const LandingPage = () => {
                             
                                 <h1> About The Book</h1>
                                 <p>
-                                    For many years, the only named railroad worker of note was foreman Chin Lin Sou of Denver.
-                                    And there was no “proof” or documentation of an identified worker. TODAY, we can identify 
-                                    names on the incomplete collection of Central Pacific Railroad payrolls of specific individuals 
-                                    and name more than a dozen descendant families who have stories about their railroad ancestors. 
-                                    Some were inspired to share family heirlooms and photographs, conduct more research, and 
-                                    interview far-flung family members. Their accounts are the foundation of a new chapter in 
-                                    the overall American historical narrative — the Chinese in America.
+                                    For years after the completion of the First Transcontinental Railroad (TCCR), 
+                                    Chinese workers were nameless.  We would learn that the Chinese helped build the 
+                                    railroad, but we weren’t told who they were or what they did. In preparation to 
+                                    celebrate the 150th anniversary of the completion of the TCRR in 2019,  many organizations 
+                                    and individuals worked to research and identify Chinese workers.  Their efforts resulted in 
+                                    more than a dozen descendants of families coming forward with stories about their railroad 
+                                    ancestors. 
+                              
                                 </p>
                                 <p>
-                                    We now have the broadest opportunity to give our laboring ancestors the recognition and 
-                                    credit, and above all, the humanity they deserve. While they did not leave journals of 
-                                    their ordeals or speak for themselves in the hearings on Chinese labor, we have learned 
-                                    from oral history interviews of descendants who can speak for their forebearers. 
-                                    Incredibly, the great-grandchildren and even great-great-grandchildren have given us 
-                                    documentation and insight into the character of their railroad worker ancestors.
-                                    This book presents stories from the descendants of some of these families. 
-                                    We have asked nine descendants to give us accounts of their ancestors and family histories. 
-                                    These short accounts evoke the breadth and scope of the experience of these early Chinese 
-                                    American pioneers. They outline humble and arduous beginnings and their legacy to seven 
-                                    generations of descendants, who now add their history of the Chinese American experience. 
-                                    We are honored to include their stories here.
-
-
+                                    Some were inspired to share family heirlooms and photographs, 
+                                    conduct more research, and interview far-flung family members. 
+                                    Their accounts are the foundation of a new chapter in the American 
+                                    historical narrative — the Chinese in America.
                                 </p>
                            
                         </div>

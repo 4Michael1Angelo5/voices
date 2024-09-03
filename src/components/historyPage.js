@@ -32,7 +32,7 @@ const HistoryPage =(props)=>{
     const event2isInView = useInView(events_images_references.current[1], {once:true,amount:0.5});
     const event3isInView = useInView(events_images_references.current[2], {once:true,amount:0.5});
     const event4isInView  = useInView(events_images_references.current[3], {once:true,amount:0.5});
-    const event5isInView = useInView(events_images_references.current[3], {once:true,amount:0.5});
+    const event5isInView = useInView(events_images_references.current[4], {once:true,amount:0.5});
     
      
     // create array of boolean values for each element being viewable or not

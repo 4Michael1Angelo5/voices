@@ -18,7 +18,7 @@ const ChaptersHeader = (props) => {
                     <div className='col-6 col-lg-4'>
 
                         <p> 
-                            "The Life and History of Author Russell N Low"
+                            "Explore Chapters of The Book"
                         </p>
 
                     </div>
