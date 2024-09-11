@@ -32,14 +32,14 @@ const LandingPage = () => {
                         </div>
                         <div className='col-3 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
                             
-                                    <label className ="text-center">Family Tree </label>
+                                    <label className ="btn-label text-center">Family Tree </label>
 
-                                    <Link to = '/family-tree-index'className='icon-set family-tree'></Link>
+                                    <Link to = '/voices/ancestors'className='icon-set family-tree'></Link>
                              
-                                    <label className ="text-center">About the Author </label>                                
+                                    <label className ="btn-label text-center">The Authors </label>                                
                                     <Link  to = '/voices/author'className='icon-set author'></Link>
                                
-                                    <label className ="text-center"> Chapters </label>
+                                    <label className ="btn-label text-center"> Chapters </label>
                                     <Link  to = '/voices/chapters' className='icon-set chapters-link'></Link>
                              
                         </div>

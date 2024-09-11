@@ -1,5 +1,16 @@
 import React from "react";
 
+import page1 from "../assets/book_scans/page1.png";
+import page2 from "../assets/book_scans/page2.png";
+import page3 from "../assets/book_scans/page3.png";
+import page4 from "../assets/book_scans/page4.png";
+import page5 from "../assets/book_scans/page5.png";
+import page6 from "../assets/book_scans/page6.png";
+import page7 from "../assets/book_scans/page7.png";
+import page8 from "../assets/book_scans/page8.png";
+import page9 from "../assets/book_scans/page9.png";
+import page10 from "../assets/book_scans/page10.png";
+
 const flipBook = (elBook) => {
   elBook.style.setProperty("--c", 0); // Set current page
   elBook.querySelectorAll(".page").forEach((page, idx) => {
@@ -81,64 +92,51 @@ class Book extends React.Component{
                     <div className="front cover">
                     </div>
                     <div className="back">
-                      <h2>Responsive</h2>
-                      <p>Fully responsive CSS flip book, thanks to the <code>cqmin</code> unit.</p>
+                      <img src = {page1}/>
                     </div>
                   </div>
 
                   <div className="page">
                     <div className="front">
-                      <p>Even more, the book height is dicated by the amount of content in the tallest page.
-                        The only thing you need to take care of is how much text you put into a page.</p>
+                      <img src = {page2}/>
+                      
                     </div>
                     <div className="back">
-                      <img src= {"https://picsum.photos/id/24/600/600"} alt="Img 1"/>
+                      <img src= {page3} alt="Img 1"/>
                     </div>
                   </div>
 
                   <div className="page">
                     <div className="front">
-                      <h2>JS at its minimum</h2>
-                      <p>JavaScript is at its minimum. Basically it's only used to set the initial
-                        page index and assign click listeners to the pages. Modifies the CSS <b>Var</b>
-                        for the <i>current</i> page, and the rest is handled entirely by CSS.</p>
+                      <img src = {page4}/>
                   </div>
 
                   <div className="back">
-                      <p>Additionally JavaScript allows you to click on an anchor link in your
-                        text — without turning the page. You can also have multiple independent
-                        flip books in a single document. You're all covered.</p>
+                      <img src = {page5}/>
                     </div>
                   </div>
 
                   <div className="page">
                     <div className="front">
-                      <h2>Crafting CSS magic</h2>
-                      <p>The opened (<i>viewing</i>) pages of the flip book are always kept at the same elevation.
-                      This is necessary if your book has no inclination (is top-down-view).
-                      Have you noticed that you can also click on the pages edge? CSS will nicely animate the group
-                        of pages to skip with a staggered animation.</p>
+                      <img src = {page6} />
                     </div>
                     <div className="back">
-                      <p>Like in this demo, you can change the perspective of the parent container and change the
-                        X axis rotation of the book for extra effect.</p>
+                      <img src = {page7}/>
                     </div>
                   </div>
 
                   <div className="page">
                     <div className="front">
-                      <p>The necessary FlipBook's CSS is barely 30 lines, there is no swipe, natural page flip angling,
-                        complex shadows, etc. in order to keep it as simple as possible.</p>
+                       <img src = {page8} alt = "page 9 from book"/>
                     </div>
                     <div className="back">
-                      <p>Feel free to use and abuse this code. Drop me a line if you find it cool or useful, or just
-                        want to say <i>hi</i>.</p>
+                      <img src = {page9} />
                     </div>
                   </div>
 
                   <div className="page">
                     <div className="front">
-                      <img src="https://picsum.photos/id/1073/600/600" alt="Img 2"/>
+                      <img src={page10} alt="Img 2"/>
                     </div>
                   <div className="back cover"/>
                   </div>

@@ -1,6 +1,17 @@
 // descendants of Jow Kee data for family tree graph 
 
+// place holder images when no image available
+import man_descendant from "../icons/man_descendant.png"
+
+// Jow Kee
 import Jow_Kee from '../ancestors/Jow_Kee.jpg' 
+import Jow_Kee_profile_pic from "../ancestors/Jow_Kee_profile_pic.jpg";
+
+// Gene O Chan
+import Gene_O_Chan_profile_pic from "../ancestors/jow_kee_descendents/Gene_O_Chan_profile_pic.jpg"
+
+
+
 
 export const DESCENDANTS_OF_JOW_KEE_DATA = 
 [
@@ -8,9 +19,11 @@ export const DESCENDANTS_OF_JOW_KEE_DATA =
       name: "Jow Kee",
       id: "O-6066",
       parentId: "",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      year:1879,
-      lifeSpan: " 1879-1890",
+      relationship: "",
+      imageUrl: Jow_Kee_profile_pic,
+      profileUrl: Jow_Kee, 
+      year:1840,
+      lifeSpan: "1840-1898",
       shortDescription:" Born in 1840, arrived in California at age 15. \
       Worked as a miner, learned to speak English, and became a labor \
       contractor. He was hired by the Central Pacific Railroad in 1865 \
@@ -18,63 +31,22 @@ export const DESCENDANTS_OF_JOW_KEE_DATA =
      
     },
     {
-      name: "Davolio Nancy",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      area: "Corporate",
-      profileUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      office: "CEO office",
-      tags: "Ceo,tag1, tag2",
-      isLoggedUser: false,
-      positionName: "CTO",
+      name: "Gene O. Chan",
       id: "O-6067",
-      parentId: "O-6066",
-      year:1944,
-      lifeSpan: " 1944-1890",
-      shortDescription:"I'm baby cronut kale chips fingerstache, \
-      activated charcoal YOLO four dollar toast lumbersexual \
-      flexitarian cred praxis. Butcher vaporware beard tattooed \
-      gochujang. Post-ironic mukbang cloud bread ramps bitters actually.",
+      parentId: "O-6066",           
+      relationship: "Son of Jow Kee",
+      imageUrl: Gene_O_Chan_profile_pic,
+      profileUrl: Gene_O_Chan_profile_pic,      
+      year:1940,
+      lifeSpan: "1940-2022",
+      shortDescription:"Gene O. Chan, born in Locke, is the fourth generation \
+      of his family in the Sacramento Delta. He had a successful career as a \
+      rocket propulsion designer, retiring after 34 years at Aerojet. His quest \
+      to document the history of his aviator uncle, William King, led to the \
+      discovery that his great-grandfather, Jim King, worked on the \
+      transcontinental railroad.",
      
     },
-    {
-      name: "Leverling Janet",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      area: "Corporate",
-      profileUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      office: "CEO office",
-      tags: "Ceo,tag1, tag2",
-      isLoggedUser: false,
-      positionName: "CTO",
-      id: "O-6068",
-      parentId: "O-6066",
-      year:1923,
-      lifeSpan: " 1923-1890",
-      shortDescription:"I'm baby cronut kale chips fingerstache, \
-      activated charcoal YOLO four dollar toast lumbersexual \
-      flexitarian cred praxis. Butcher vaporware beard tattooed \
-      gochujang. Post-ironic mukbang cloud bread ramps bitters actually.",
-     
-    },
-    {
-      name: "Leverling Janet",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      area: "Corporate",
-      profileUrl: "https://cdn-icons-png.flaticon.com/512/4975/4975733.png",
-      office: "CEO office",
-      tags: "Ceo,tag1, tag2",
-      isLoggedUser: false,
-      positionName: "CTO",
-      id: "O-6069",
-      parentId: "O-6066",
-      year:1980,
-      lifeSpan: " 1980-1890",
-      shortDescription:"I'm baby cronut kale chips fingerstache, \
-      activated charcoal YOLO four dollar toast lumbersexual \
-      flexitarian cred praxis. Butcher vaporware beard tattooed \
-      gochujang. Post-ironic mukbang cloud bread ramps bitters actually.",
-     
-    }
-   
 
 
   ]

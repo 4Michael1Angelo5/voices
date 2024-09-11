@@ -6,7 +6,7 @@ import './styles/headerStyles.scss' ;
 import './styles/arrow.scss';
 
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import BurgerMenu from './components/burgerMenuComponent';
 
@@ -35,18 +35,21 @@ function App() {
 
   const [ancestors] = useState(ANCESTORS)
   const [events] = useState(HISTORY)
+
+  console.log(process.env.BASE_URL)
+  console.log(window.location)
   
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <BurgerMenu />
         <Header/>
         <Routes>
-          <Route  path='/voices/' element={<LandingPage />} />   
+          <Route path='/voices/' element={<LandingPage />} />   
 
           {/* ==========================>  pass ancestors as props to AncestorPage */}   
           {/* this is the page with all the rail road ancestors */}
-          <Route  path='/family-tree-index' element={<AncestorPage ancestors = {ancestors}/>} /> 
+          <Route  path='/voices/ancestors' element={<AncestorPage ancestors = {ancestors}/>} /> 
 
           {
             // dynamically create routes based on data from ancestors
@@ -56,7 +59,7 @@ function App() {
 
                 <Route
                   key={index}
-                  path={"/family-tree-index/" + ancestor.name.replace(/\s/g, '')}
+                  path={"/voices/ancestors/" + ancestor.name.replace(/\s/g, '')}
                   // =======================> pass ancestor as prop to ancestor page
                   // this page shows a graph of a specif ancestor and their descendents
                   element={<AncestorFamilyTree ancestor={ancestor}  />
@@ -74,8 +77,9 @@ function App() {
           {/* ==========================>  pass historical events as props to HistoryPage */}
           <Route path = '/voices/history'  element = {<HistoryPage events = {events} />}/>
 
-        </Routes>
+        </Routes> 
       </BrowserRouter>
+      
 
     </div>
   );

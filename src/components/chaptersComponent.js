@@ -5,6 +5,7 @@ import {useInView} from "framer-motion";
 import birds from '../assets/birds.png';
 import hammer from '../assets/hammer.png';
 import clouds_9 from '../assets/clouds_9.png';
+// import tunnel from '../assets/icons/tunnel.png'
 
 
 
@@ -109,6 +110,14 @@ const ChaptersPage = ()=>{
             >                 
 
                 <div className = 'container '>
+                    {/* <div className = "row d-flex justify-content-center">
+                        
+                        <img 
+                            src = {tunnel}
+                            width = "70px"
+                            />
+                             
+                    </div> */}
                                    
                     <>  
 

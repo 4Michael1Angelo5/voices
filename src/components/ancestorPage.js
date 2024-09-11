@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState, setState } from "react";
+import React from "react";
 import person from '../assets/icons/person.png'
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const AncestorPage = (props) => {
 
                                         <Link
                                             
-                                            to={ "/family-tree-index/" + ancestor.name.replace(/\s/g, '') } 
+                                            to={ "/voices/ancestors/" + ancestor.name.replace(/\s/g, '') } 
                                             
                                             >
 
@@ -42,9 +42,22 @@ const AncestorPage = (props) => {
 
                                                     <div className='person-container'>
 
-                                                        <img  src={person}
+                                                        {
+                                                            //if the ancestor has an image associted with
+                                                            ancestor.image                                                             
+                                                            ?
+                                                            // then return it's image
+                                                            <img  src={ancestor.image}
+                                                            style={{ width: '100%', borderRadius:"100%"}}
+                                                            />
+                                                            :
+                                                            // otherwise use placeholder
+                                                            <img  src={person}
                                                             style={{ width: '100%' }}
-                                                        />
+                                                            />
+                                                        
+                                                        }
+                                                      
 
                                                     </div>
 

@@ -1,7 +1,13 @@
 import { useLayoutEffect, useRef, useState,useEffect} from 'react';
 import AnimatedNumber from './animated-numbers-mod'; 
 import { OrgChartComponent } from './OrgChart';
-import { DATA } from '../assets/data/ftreeData';
+
+// I think I will not end up using this descendant data
+// import { DATA } from '../assets/data/ftreeData';
+
+// I think the convention should be to have a particular ancestors data attached to the ancestors data
+// ex: ancestors.js will have a field descendants which will have the descenant data. 
+// this will be imported in ancestors.js 
 
 // Ancestor Detail displaying information about currently selected Ancesetor
 
@@ -34,7 +40,9 @@ const AncestorCard = (props) => {
 
 const AncestorFamilyTree = (props)=>{
 
-    const [ancestor, setAncestor] = useState(DATA[0]) ;
+    let root = props.ancestor.descendants[0]
+
+    const [ancestor, setAncestor] = useState(root) ;
     // const [ancestor, setAncestor] = useState(props.ancestor) ;  
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [translateAmount, setTranslate] = useState(0);

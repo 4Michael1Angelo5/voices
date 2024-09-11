@@ -1554,10 +1554,10 @@ export class OrgChart {
     // Zoom handler function
     zoomed(event, d) {
         const attrs = this.getChartState();
-        const chart = attrs.chart;
+        const chart = attrs.chart;       
 
         // Get d3 event's transform object
-        const transform = event.transform;
+        const transform = event.transform;        
 
           // Store it
           attrs.lastTransform = transform;
@@ -1565,7 +1565,6 @@ export class OrgChart {
         // Reposition and rescale chart accordingly
         chart.attr("transform", transform);
 
-      
 
         // Apply new styles to the foreign object element
         if (this.isEdge()) {
