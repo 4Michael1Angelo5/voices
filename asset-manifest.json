@@ -1,10 +1,20 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.93807111.css",
-    "main.js": "/voices/static/js/main.fa1aa5c8.js",
-    "static/js/453.3ce130f5.chunk.js": "/voices/static/js/453.3ce130f5.chunk.js",
+    "main.css": "/voices/static/css/main.95ffc440.css",
+    "main.js": "/voices/static/js/main.e150603c.js",
+    "static/js/453.2ea725eb.chunk.js": "/voices/static/js/453.2ea725eb.chunk.js",
+    "static/media/page9.png": "/voices/static/media/page9.b7866814406b3d7b6dc4.png",
+    "static/media/page1.png": "/voices/static/media/page1.0acc347a52f4b7d646a8.png",
+    "static/media/page2.png": "/voices/static/media/page2.8a2c2536231982e32d81.png",
+    "static/media/page3.png": "/voices/static/media/page3.df7dd1605dab0f8e5be3.png",
+    "static/media/page4.png": "/voices/static/media/page4.ab09549090c63915e379.png",
+    "static/media/page6.png": "/voices/static/media/page6.3aef7a24c8ab68aac8ac.png",
     "static/media/hammer.png": "/voices/static/media/hammer.f06ff3da91a1c494483b.png",
+    "static/media/page7.png": "/voices/static/media/page7.b335a0d88dde72d94535.png",
+    "static/media/page8.png": "/voices/static/media/page8.aea0be8f1c97061a2453.png",
+    "static/media/page5.png": "/voices/static/media/page5.e19420ae06d2968a3187.png",
     "static/media/Jacquard12Charted-Regular.ttf": "/voices/static/media/Jacquard12Charted-Regular.0de6e1d1c91485def831.ttf",
+    "static/media/page10.png": "/voices/static/media/page10.32e9fd633f49d7d05dfb.png",
     "static/media/chinatownsanjose.jpg": "/voices/static/media/chinatownsanjose.b28e38ea071fcf296a54.jpg",
     "static/media/Newsreader-VariableFont_opsz,wght.ttf": "/voices/static/media/Newsreader-VariableFont_opsz,wght.5032d4be14f4a0091c82.ttf",
     "static/media/backgroundOfChinese.png": "/voices/static/media/backgroundOfChinese.4ed3181a758c46bff390.png",
@@ -22,21 +32,29 @@
     "static/media/clouds_9.png": "/voices/static/media/clouds_9.01f255b0fe34a71db488.png",
     "static/media/HakoneEstateAndGardens.jpg": "/voices/static/media/HakoneEstateAndGardens.59c5c7f4e09203fc589a.jpg",
     "static/media/chineseInNappaValley.jpg": "/voices/static/media/chineseInNappaValley.b2af3477f6d28b3643c9.jpg",
+    "static/media/Russ_Low_profile_pic.jpg": "/voices/static/media/Russ_Low_profile_pic.2742f3de589d9465c251.jpg",
     "static/media/MakingWaves.jpg": "/voices/static/media/MakingWaves.b48cf531e5eb91a9f5b4.jpg",
     "static/media/mom.jpg": "/voices/static/media/mom.0d6f01ce9de21e1df3c8.jpg",
+    "static/media/Art_Lym_image.jpg": "/voices/static/media/Art_Lym_image.f4da306d1d0268c05e19.jpg",
+    "static/media/woman_descendant.png": "/voices/static/media/woman_descendant.a761d9f6b32a2c8f700c.png",
     "static/media/railRoadTracks2.png": "/voices/static/media/railRoadTracks2.b598636e90fa9aee02fc.png",
+    "static/media/Lum_Ah_Chew_profile_pic.jpg": "/voices/static/media/Lum_Ah_Chew_profile_pic.20c4c8e524dc66c6159d.jpg",
+    "static/media/man_descendant.png": "/voices/static/media/man_descendant.3187e58456de26aa6938.png",
     "static/media/patchWorkHistroy.jpeg": "/voices/static/media/patchWorkHistroy.271c175ffd0d374f795a.jpeg",
+    "static/media/Lim_Lip_Hong_profile_pic.jpg": "/voices/static/media/Lim_Lip_Hong_profile_pic.10e8abd344a47d8e6e32.jpg",
     "static/media/person.png": "/voices/static/media/person.bcc74561d38db661b53f.png",
+    "static/media/Gene_O_Chan_profile_pic.jpg": "/voices/static/media/Gene_O_Chan_profile_pic.7c9413221754b72335af.jpg",
     "static/media/ProfilesInExcellence.jpg": "/voices/static/media/ProfilesInExcellence.ee74a3d5a34a44a4f05e.jpg",
+    "static/media/Jow_Kee_profile_pic.jpg": "/voices/static/media/Jow_Kee_profile_pic.f974d9981aad3ef45a4f.jpg",
     "static/media/birds_1.png": "/voices/static/media/birds_1.758c969c29f769267f2b.png",
     "static/media/birds.png": "/voices/static/media/birds.fceed944d1c8c61fd848.png",
     "index.html": "/voices/index.html",
-    "main.93807111.css.map": "/voices/static/css/main.93807111.css.map",
-    "main.fa1aa5c8.js.map": "/voices/static/js/main.fa1aa5c8.js.map",
-    "453.3ce130f5.chunk.js.map": "/voices/static/js/453.3ce130f5.chunk.js.map"
+    "main.95ffc440.css.map": "/voices/static/css/main.95ffc440.css.map",
+    "main.e150603c.js.map": "/voices/static/js/main.e150603c.js.map",
+    "453.2ea725eb.chunk.js.map": "/voices/static/js/453.2ea725eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.93807111.css",
-    "static/js/main.fa1aa5c8.js"
+    "static/css/main.95ffc440.css",
+    "static/js/main.e150603c.js"
   ]
 }
