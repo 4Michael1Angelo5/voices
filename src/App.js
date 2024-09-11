@@ -36,20 +36,19 @@ function App() {
   const [ancestors] = useState(ANCESTORS)
   const [events] = useState(HISTORY)
 
-  console.log(process.env.BASE_URL)
-  console.log(window.location)
-  
+  const BASENAME ="/voices"
+
   return (
     <div className="App">
-      <BrowserRouter basename="/">
+      <BrowserRouter basename={BASENAME}>
         <BurgerMenu />
         <Header/>
         <Routes>
-          <Route path='/voices/' element={<LandingPage />} />   
+          <Route path='/' element={<LandingPage />} />   
 
           {/* ==========================>  pass ancestors as props to AncestorPage */}   
           {/* this is the page with all the rail road ancestors */}
-          <Route  path='/voices/ancestors' element={<AncestorPage ancestors = {ancestors}/>} /> 
+          <Route  path='/ancestors' element={<AncestorPage ancestors = {ancestors}/>} /> 
 
           {
             // dynamically create routes based on data from ancestors
@@ -59,7 +58,7 @@ function App() {
 
                 <Route
                   key={index}
-                  path={"/voices/ancestors/" + ancestor.name.replace(/\s/g, '')}
+                  path={"/ancestors/" + ancestor.name.replace(/\s/g, '')}
                   // =======================> pass ancestor as prop to ancestor page
                   // this page shows a graph of a specif ancestor and their descendents
                   element={<AncestorFamilyTree ancestor={ancestor}  />
@@ -71,11 +70,11 @@ function App() {
             })
           }
 
-          <Route path = '/voices/author'   element = {<AuthorPage/>}/>
-          <Route path = '/voices/chapters' element = {<ChaptersPage/>}/>
+          <Route path = '/author'   element = {<AuthorPage/>}/>
+          <Route path = '/chapters' element = {<ChaptersPage/>}/>
 
           {/* ==========================>  pass historical events as props to HistoryPage */}
-          <Route path = '/voices/history'  element = {<HistoryPage events = {events} />}/>
+          <Route path = '/history'  element = {<HistoryPage events = {events} />}/>
 
         </Routes> 
       </BrowserRouter>

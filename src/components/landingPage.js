@@ -34,13 +34,13 @@ const LandingPage = () => {
                             
                                     <label className ="btn-label text-center">Family Tree </label>
 
-                                    <Link to = '/voices/ancestors'className='icon-set family-tree'></Link>
+                                    <Link to = '/ancestors'className='icon-set family-tree'></Link>
                              
                                     <label className ="btn-label text-center">The Authors </label>                                
-                                    <Link  to = '/voices/author'className='icon-set author'></Link>
+                                    <Link  to = '/author'className='icon-set author'></Link>
                                
                                     <label className ="btn-label text-center"> Chapters </label>
-                                    <Link  to = '/voices/chapters' className='icon-set chapters-link'></Link>
+                                    <Link  to = '/chapters' className='icon-set chapters-link'></Link>
                              
                         </div>
                     </div>

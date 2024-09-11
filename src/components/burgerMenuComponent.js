@@ -6,14 +6,14 @@ const Menu = (props)=>{
 
     return(
         <div id={"menu"}onClick={e=>props.toggle(e)}className= {props.isOpen? "menu menu-open " :"menu"} >
-            <Link to = "/voices/"> Home </Link>
-            <Link to = '/voices/ancestors'>Ancestors</Link>
+            <Link to = "/"> Home </Link>
+            <Link to = '/ancestors'>Ancestors</Link>
          
-            <Link to = './voices/chapters'>The Book</Link>
+            <Link to = '/chapters'>The Book</Link>
         
-            <Link to = '/voices/author'>The Author</Link>
+            <Link to = '/author'>The Author</Link>
 
-            <Link to = '/voices/history'>The History</Link>             
+            <Link to = '/history'>The History</Link>             
         </div>
     );
 }

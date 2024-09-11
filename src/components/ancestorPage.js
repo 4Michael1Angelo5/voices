@@ -28,7 +28,7 @@ const AncestorPage = (props) => {
 
                                         <Link
                                             
-                                            to={ "/voices/ancestors/" + ancestor.name.replace(/\s/g, '') } 
+                                            to={ "/ancestors/" + ancestor.name.replace(/\s/g, '') } 
                                             
                                             >
 

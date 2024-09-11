@@ -15,21 +15,22 @@ const Header = ()=>{
 
     useEffect(()=>{
 
-       console.log(location.pathname.substring(8,16))
+       console.log(location.pathname)
+       console.log(location.pathname.substring(0,9))
 
-    },[])
+    },[location.pathname])
    
    
 
     return (
 
             <div>
-                <LandingHeader active = {location.pathname ===('/voices/') ?true:false}/>
-                <AncestorHeader active = {location.pathname.substring(8,16) === 'ancestor'? true:false}/>
+                <LandingHeader active = {location.pathname ===('/') ?true:false}/>
+                <AncestorHeader active = {location.pathname.substring(0,9) === '/ancestor'? true:false}/>
                 {/* <FamilyTreeHeader active ={location.pathname.substring(1,7) === 'family'? true:false}/> */}
-                <AuthorHeader active = {location.pathname ==='/voices/author'?true:false}/>
-                <ChaptersHeader active = {location.pathname ==='/voices/chapters'? true: false}/>
-                <HistoryHeader active = {location.pathname ==='/voices/history'?true:false}/>
+                <AuthorHeader active = {location.pathname ==='/author'?true:false}/>
+                <ChaptersHeader active = {location.pathname ==='/chapters'? true: false}/>
+                <HistoryHeader active = {location.pathname ==='/history'?true:false}/>
             </div>
         
     );
