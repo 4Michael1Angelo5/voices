@@ -2,8 +2,12 @@ import Book from "./bookComponent";
 import LinkBtnComponent from "./linkBtnComponent";
 import { Link} from 'react-router-dom';
 
+import { useState , useLayoutEffect} from "react";
+
 
 const LandingPage = () => {
+
+   
    
     return (
         <div className="landing-page">
@@ -28,7 +32,7 @@ const LandingPage = () => {
                                 The book was envisioned to launch a new chapter of the
                                 American historical narrative
                             </p>
-                            <LinkBtnComponent text = {'Learn More'} pathName = '/voices/author'/>
+                            <LinkBtnComponent text = {'Learn More'} pathName = '/author'/>
                         </div>
                         <div className='col-3 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
                             

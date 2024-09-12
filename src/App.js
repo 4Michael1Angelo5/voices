@@ -1,7 +1,8 @@
+
+import './book.css' ;
+import './landingPage.scss'
 import './hamburger.scss';
 import './App.scss';
-import './book.css' ;
-import "primereact/resources/themes/bootstrap4-dark-blue/theme.css";
 import './styles/headerStyles.scss' ; 
 import './styles/arrow.scss';
 

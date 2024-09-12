@@ -1,15 +1,23 @@
 import React from "react";
 
-import page1 from "../assets/book_scans/page1.png";
-import page2 from "../assets/book_scans/page2.png";
-import page3 from "../assets/book_scans/page3.png";
-import page4 from "../assets/book_scans/page4.png";
-import page5 from "../assets/book_scans/page5.png";
-import page6 from "../assets/book_scans/page6.png";
-import page7 from "../assets/book_scans/page7.png";
-import page8 from "../assets/book_scans/page8.png";
-import page9 from "../assets/book_scans/page9.png";
-import page10 from "../assets/book_scans/page10.png";
+
+import page1 from "../assets/book_scans/optimized/page1.webp";
+import page2 from "../assets/book_scans/optimized/page2.webp";
+import page3 from "../assets/book_scans/optimized/page3.webp";
+import page4 from "../assets/book_scans/optimized/page4.webp";
+import page5 from "../assets/book_scans/optimized/page5.webp";
+import page6 from "../assets/book_scans/optimized/page6.webp";
+import page7 from "../assets/book_scans/optimized/page7.webp";
+import page8 from "../assets/book_scans/optimized/page8.webp";
+import page9 from "../assets/book_scans/optimized/page9.webp";
+import page10 from "../assets/book_scans/optimized/page10.webp";
+
+const pages = [ 
+                [page2,page3] , 
+                [page4,page5] , 
+                [page6,page7] , 
+                [page8,page9]                 
+              ];
 
 const flipBook = (elBook) => {
   elBook.style.setProperty("--c", 0); // Set current page
@@ -41,7 +49,7 @@ class Book extends React.Component{
         document.querySelectorAll(".book").forEach(flipBook);
         const elBook = document.querySelector(".book");
         const pages = elBook.querySelectorAll(".page");
-    const totalPages = pages.length;
+        const totalPages = pages.length;
 
     // Initialize the flipBook
     // this.flipBook(elBook, pages);
@@ -49,7 +57,7 @@ class Book extends React.Component{
     // Start the automatic page flipping
     this.flipInterval = setInterval(() => {
       this.flipPages(elBook, totalPages);
-    }, 300); // Flip every 1.5 seconds, adjust as needed
+    }, 300); // Flip every .3 seconds, adjust as needed
     }
     componentWillUnmount() {
       // Clear the interval when the component is unmounted to avoid memory leaks
@@ -85,63 +93,58 @@ class Book extends React.Component{
       {    
           
         return (
-            <div>
+          // front cover and first page
+            <>
               <div className="book">
 
                   <div className="page">
                     <div className="front cover">
                     </div>
                     <div className="back">
-                      <img src = {page1}/>
+                      <img src = {page1}
+                           alt = {"page_1"}
+                      />
                     </div>
                   </div>
+
+                  {
+                    // inside part of book                    
+
+                    pages.map( (el,idx)=>{
+                      return(
+
+                        <div className="page" key ={idx}>
+                        <div className="front">
+                          <img 
+                            src = {el[0]}
+                            alt = {"page_"+idx+2}
+                            loading="lazy"
+                          />                      
+                        </div>
+                        <div className="back">
+                          <img 
+                            src= {el[1]} 
+                            alt={"page_"+ idx+3}
+                            loading= "lazy"
+                          />
+                        </div>
+                        </div>
+                      );
+                    })
+                  }
+
+                  {/* last page and back cover */}
 
                   <div className="page">
                     <div className="front">
-                      <img src = {page2}/>
-                      
-                    </div>
-                    <div className="back">
-                      <img src= {page3} alt="Img 1"/>
-                    </div>
-                  </div>
-
-                  <div className="page">
-                    <div className="front">
-                      <img src = {page4}/>
-                  </div>
-
-                  <div className="back">
-                      <img src = {page5}/>
-                    </div>
-                  </div>
-
-                  <div className="page">
-                    <div className="front">
-                      <img src = {page6} />
-                    </div>
-                    <div className="back">
-                      <img src = {page7}/>
-                    </div>
-                  </div>
-
-                  <div className="page">
-                    <div className="front">
-                       <img src = {page8} alt = "page 9 from book"/>
-                    </div>
-                    <div className="back">
-                      <img src = {page9} />
-                    </div>
-                  </div>
-
-                  <div className="page">
-                    <div className="front">
-                      <img src={page10} alt="Img 2"/>
+                      <img 
+                        src={page10} 
+                        alt="page_10"/>
                     </div>
                   <div className="back cover"/>
                   </div>
           </div>
-        </div>
+        </>
 
         );
       }        
