@@ -51,6 +51,7 @@ function App() {
   const [ancestors] = useState(ANCESTORS)
   const [events] = useState(HISTORY)
   const [loading,setLoading] = useState(true);
+  const [messageComplete, setMessageComplete] = useState(false);
 
   const BASENAME ="/voices"
 
@@ -81,9 +82,9 @@ function App() {
   return (
     <div className="App">
       {
-        loading
+        !messageComplete
         ? 
-        <SplashPage/>
+        <SplashPage setMessageComplete = {setMessageComplete}/>
         :
       <BrowserRouter basename={BASENAME}>
         <BurgerMenu />

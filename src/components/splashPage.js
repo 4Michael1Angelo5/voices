@@ -3,7 +3,7 @@ import LoadingComponent from "./loadingComponent";
 
 const greeting = 'Hello! Welcome to Voices, a website dedicated to the book, "Voices from the Railroad", a collection of stories about the Chinese Americans who built the railroads.';
 
-const SplashPage = () => {
+const SplashPage = (props) => {
   const [message, setMessage] = useState("");
   const intervalIdRef = useRef(null); // Use useRef to store interval ID
 
@@ -19,12 +19,14 @@ const SplashPage = () => {
                 i +=1;
                 return newMessage
             }else{
+
                 clearInterval(intervalIdRef.current)
+                setTimeout(()=>props.setMessageComplete(true),1700)
                 return prev;
             }            
 
         });
-      }, 200);
+      }, 150);
     };
 
     handleMessage(greeting);
