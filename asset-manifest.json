@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.af96b494.css",
-    "main.js": "/voices/static/js/main.fa2d5c66.js",
+    "main.css": "/voices/static/css/main.daba72ef.css",
+    "main.js": "/voices/static/js/main.af932990.js",
     "static/js/453.2ea725eb.chunk.js": "/voices/static/js/453.2ea725eb.chunk.js",
     "static/media/hammer.png": "/voices/static/media/hammer.f06ff3da91a1c494483b.png",
     "static/media/Jacquard12Charted-Regular.ttf": "/voices/static/media/Jacquard12Charted-Regular.0de6e1d1c91485def831.ttf",
@@ -34,6 +34,7 @@
     "static/media/MakingWaves.jpg": "/voices/static/media/MakingWaves.b48cf531e5eb91a9f5b4.jpg",
     "static/media/page6.webp": "/voices/static/media/page6.9c780fdf6ca15b9a3d16.webp",
     "static/media/mom.jpg": "/voices/static/media/mom.0d6f01ce9de21e1df3c8.jpg",
+    "static/media/logo.png": "/voices/static/media/logo.dc89f48f7c9719f2174b.png",
     "static/media/Art_Lym_image.jpg": "/voices/static/media/Art_Lym_image.f4da306d1d0268c05e19.jpg",
     "static/media/woman_descendant.png": "/voices/static/media/woman_descendant.a761d9f6b32a2c8f700c.png",
     "static/media/railRoadTracks2.png": "/voices/static/media/railRoadTracks2.b598636e90fa9aee02fc.png",
@@ -49,12 +50,12 @@
     "static/media/birds_1.png": "/voices/static/media/birds_1.758c969c29f769267f2b.png",
     "static/media/birds.png": "/voices/static/media/birds.fceed944d1c8c61fd848.png",
     "index.html": "/voices/index.html",
-    "main.af96b494.css.map": "/voices/static/css/main.af96b494.css.map",
-    "main.fa2d5c66.js.map": "/voices/static/js/main.fa2d5c66.js.map",
+    "main.daba72ef.css.map": "/voices/static/css/main.daba72ef.css.map",
+    "main.af932990.js.map": "/voices/static/js/main.af932990.js.map",
     "453.2ea725eb.chunk.js.map": "/voices/static/js/453.2ea725eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.af96b494.css",
-    "static/js/main.fa2d5c66.js"
+    "static/css/main.daba72ef.css",
+    "static/js/main.af932990.js"
   ]
 }
