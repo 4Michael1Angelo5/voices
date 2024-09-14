@@ -1,6 +1,6 @@
 import React from "react";
 
-
+import voices from "../assets/book_scans/optimized/voices.webp"; 
 import page1 from "../assets/book_scans/optimized/page1.webp";
 import page2 from "../assets/book_scans/optimized/page2.webp";
 import page3 from "../assets/book_scans/optimized/page3.webp";
@@ -94,9 +94,13 @@ class Book extends React.Component{
           // front cover and first page
             <>
               <div className="book">
-
-                  <div className="page">
+                  <div className="page">                    
                     <div className="front cover">
+                      <img 
+                        src = {voices}
+                        alt ={"front cover of book"}
+
+                      />
                     </div>
                     <div className="back">
                       <img src = {page1}
@@ -139,7 +143,13 @@ class Book extends React.Component{
                         src={page10} 
                         alt="page_10"/>
                     </div>
-                  <div className="back cover"/>
+                  <div className=" cover"/>  
+                  <div className = "back">
+                  <img 
+                        src = {voices}
+                        alt = "back cover of book"
+                      />    
+                      </div>              
                   </div>
           </div>
         </>

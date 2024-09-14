@@ -121,7 +121,7 @@
 
 .cover {
   background: radial-gradient(circle farthest-corner at 80% 20%, hsl(150 80% 20% / .3) 0%, hsl(170 60% 10% / .1) 100%),
-    hsl(231, 32%, 29%) url("./assets/authors/voices.jpeg") 50% / cover;
+    hsl(231, 32%, 29%) / cover;
   color: hsl(200 30% 98%);
 }
 

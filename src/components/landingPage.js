@@ -1,9 +1,9 @@
 import Book from "./bookComponent";
 import LinkBtnComponent from "./linkBtnComponent";
 import { Link} from 'react-router-dom'; 
-import LoadingComponent from "./loadingComponent";
-import { useState, useLayoutEffect } from "react";
-import SplashPage from "./splashPage";
+// import LoadingComponent from "./loadingComponent";
+// import { useState, useLayoutEffect } from "react";
+// import SplashPage from "./splashPage";
 
 const LandingPage = () => {
     // landing page component
