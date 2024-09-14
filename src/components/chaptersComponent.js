@@ -1,18 +1,12 @@
-import { useState, useEffect ,useRef, createRef} from "react";
-// import hammer from '../assets/hammer.webp';
+import { useState, useEffect ,useRef, createRef} from "react"; 
 import railRoadWorkers from '../assets/railRoadWorkers.jpg'
 import {useInView} from "framer-motion";
 import birds from '../assets/birds.png';
 import hammer from '../assets/hammer.png';
-import clouds_9 from '../assets/clouds_9.png';
-// import tunnel from '../assets/icons/tunnel.png'
+import clouds_9 from '../assets/clouds_9.png'; 
 
+const CHAPTER_IMAGES = [hammer,railRoadWorkers,hammer,railRoadWorkers,hammer,railRoadWorkers];
 
-
-const CHAPTER_IMAGES = [hammer,railRoadWorkers,hammer,railRoadWorkers,hammer,railRoadWorkers]
-
-
-  
 const ChaptersPage = ()=>{
 
     const [opacity,setOpacity] = useState(0) ;
@@ -34,16 +28,14 @@ const ChaptersPage = ()=>{
     const Chap6IsInView = useInView(chapterRefernces.current[5], {once:true,amount:0.5});
     
     // create array of boolean values for each element being viewable or not.
-    const chaptRefsIsInView = [Chap1IsInView,Chap2IsInView,Chap3IsInView,Chap4IsInView,Chap5IsInView,Chap6IsInView]
-
-  
+    const chaptRefsIsInView = [Chap1IsInView,Chap2IsInView,Chap3IsInView,Chap4IsInView,Chap5IsInView,Chap6IsInView];
 
     // opacity and height of entire page below header
 
     useEffect( ()=>{
-        // set opacity of body on mount 
-        setOpacity(1)
 
+        // set opacity of body on mount 
+        setOpacity(1);
         // set height to viewport inner height on mount
         setScreenHeight(window.innerHeight)
         // set opacity of body on unmount (clean up)
@@ -102,22 +94,12 @@ const ChaptersPage = ()=>{
             style= {{
                 opacity:opacity,
                 backgroundPosition: `center ${(scrollY*2)}px`, 
-                //backgroun image of train tracks move twice the speeed of the user scrolling
-                minHeight: screenHeight,
-                // transition:"all 2s ease-in-out"
-
+                //background image of train tracks move twice the speeed of the user scrolling
+                minHeight: screenHeight, 
             }}           
             >                 
 
-                <div className = 'container '>
-                    {/* <div className = "row d-flex justify-content-center">
-                        
-                        <img 
-                            src = {tunnel}
-                            width = "70px"
-                            />
-                             
-                    </div> */}
+                <div className = 'container '>                  
                                    
                     <>  
 
@@ -127,7 +109,7 @@ const ChaptersPage = ()=>{
 
                         return(
                         <>
-                            <div className= {idx%2==0? "row d-flex  firstRow-container-for-parallax" : "row d-flex flex-row-reverse firstRow-container-for-parallax"}>
+                            <div className= {idx%2===0? "row d-flex  firstRow-container-for-parallax" : "row d-flex flex-row-reverse firstRow-container-for-parallax"}>
 
                                 <div className = 'col-6'>
                                 <div className= {"first-left-col-parralax-container col-12  d-flex align-items-start justify-content-start"}>
@@ -136,6 +118,7 @@ const ChaptersPage = ()=>{
                                         // bird images for parallax effect to add texture/ layers 
                                             className = "birds first_layer-parrallax-image"
                                             src={idx%2===0?clouds_9:birds}
+                                            alt = {"parallax effect background"}
                                             width={"40%"}
                                             style = {{
                                                 // see getTranslation() function for description
@@ -150,6 +133,7 @@ const ChaptersPage = ()=>{
                                         // bird images for parallax effect to add texture/ layers 
                                             className = "birds first_layer-parrallax-image"
                                             src={idx%2===0?birds:clouds_9}
+                                            alt = {"parallax effect background"}
                                             width={"40%"}
                                             style = {{
                                                 // see getTranslation() function for description
@@ -167,7 +151,7 @@ const ChaptersPage = ()=>{
                             </div>
                         
                         {/* // alternate  between left right pattern on larger devices                                 */}
-                        <div className= {idx%2==1? 'section d-flex row flex-row-reverse':'section d-flex row'}  //   creates this pattern:
+                        <div className= {idx%2===1? 'section d-flex row flex-row-reverse':'section d-flex row'}  //   creates this pattern:
                             style={{                                                                            //   o x   o = text x =images
                                 minHeight:screenHeight  // AVOID PITFALLS OF VH units on mobile                 //   x o
                             }}                                                                                  //   0 x
@@ -181,6 +165,7 @@ const ChaptersPage = ()=>{
                                 ref = {chapterRefernces.current[idx]}                                    
                                 className = 'chapters-main-image'
                                 src = {el} 
+                                alt = {"chatper " + idx+ " image"}
                                 width = "100%"    
                                 style = {{
                                     // chaptRefsIsInView is an array of boolean values for each isInView() of every chapter                                                                       
@@ -232,7 +217,8 @@ const ChaptersPage = ()=>{
                             <div className = "second-left-col-parralax-container col-6  d-flex justify-content-start align-items-baseline ">
                                 <img    
                                     className="secondary-parallax-image"
-                                    src = {idx%2==0?clouds_9:birds}
+                                    src = {idx%2===0?clouds_9:birds} //alternate between pictures of clouds and birds
+                                    alt = {"parallax effect background"}
                                     width="20%"
                                     style ={{
                                         objectFit: "cover",
@@ -245,7 +231,8 @@ const ChaptersPage = ()=>{
                             <div className="second-right-col-parralax-container col-6 d-flex justify-content-end align-items-start">
                                 <img    
                                     className="secondary-parallax-image"
-                                    src = {idx%2==0?birds:clouds_9}
+                                    src = {idx%2===0?birds:clouds_9} //alternate between pictures of clouds and birds
+                                    alt = {"parallax effect background"}
                                     width="20%"
                                     style ={{
                                         objectFit: "cover",

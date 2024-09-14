@@ -51,9 +51,7 @@ class Book extends React.Component{
         const pages = elBook.querySelectorAll(".page");
         const totalPages = pages.length;
 
-    // Initialize the flipBook
-    // this.flipBook(elBook, pages);
-
+    // Initialize the flipBook 
     // Start the automatic page flipping
     this.flipInterval = setInterval(() => {
       this.flipPages(elBook, totalPages);

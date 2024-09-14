@@ -9,8 +9,7 @@ const HistoryPage =(props)=>{
 
     const [opacity,setOpacity] = useState(0);
     const [scrollY, setScrollY] = useState(0)
-    const [screenHeight, setScreenHeight] = useState(800);
-    const [num, setNum] = useState(1800)
+    const [screenHeight, setScreenHeight] = useState(800); 
 
     // set events to props.events so that I don't have to write props.events everytime
     const events = props.events;    
@@ -20,7 +19,6 @@ const HistoryPage =(props)=>{
     
     // create array of references for each image
     const events_images_references = useRef(events_images.map(() => createRef())); 
-    console.log(events_images_references.current)
    
     // =============================================================================
     //  I can't figure out a better way to do this so here it goes: 
@@ -45,14 +43,7 @@ const HistoryPage =(props)=>{
     }
     
     // set opacity and screen height on mount 
-    useEffect(()=>{
-
-        const person = {
-            firstName : "booty"
-        }
-
-        // testing
-        console.log(person.firstName)
+    useEffect(()=>{      
         
         // set opacity to 1 on mount
         setOpacity(1);
@@ -121,7 +112,7 @@ const HistoryPage =(props)=>{
 
         {/*====================================================paralax=================================================================  */}
 
-        <div className= {idx%2==0? "row d-flex  firstRow-container-for-parallax" : "row d-flex flex-row-reverse firstRow-container-for-parallax"}>
+        <div className= {idx%2===0? "row d-flex  firstRow-container-for-parallax" : "row d-flex flex-row-reverse firstRow-container-for-parallax"}>
 
             <div className = 'col-6'>
             <div className= {"first-left-col-parralax-container col-12  d-flex align-items-start justify-content-start"}>
@@ -131,6 +122,7 @@ const HistoryPage =(props)=>{
                         className = "birds first_layer-parrallax-image"
                         src={idx%2===0?clouds_7:birds_1}
                         width={"40%"}
+                        alt = "parralax effect backgound"
                         style = {{
                             // see getTranslation() function for description
                             transform: `translateY(${getTranslation(scrollY,idx)}px)`,
@@ -144,6 +136,7 @@ const HistoryPage =(props)=>{
                     // bird images for parallax effect to add texture/ layers 
                         className = "birds first_layer-parrallax-image"
                         src={idx%2===0?birds_1:clouds_7}
+                        alt ="parralax effect backgound"
                         width={"40%"}
                         style = {{
                             // see getTranslation() function for description
@@ -164,7 +157,7 @@ const HistoryPage =(props)=>{
     
     {/* Begin historical event image and decription section: alternate  between left right pattern on larger devices  
                                    */}
-    <div className= {idx%2==1? 'section d-flex row flex-row-reverse':'section d-flex row'}  //   creates this pattern:
+    <div className= {idx%2===1? 'section d-flex row flex-row-reverse':'section d-flex row'}  //   creates this pattern:
         style={{                                                                            //   o x   o = text x =images
             minHeight:screenHeight  // AVOID PITFALLS OF VH units on mobile                 //   x o
         }}                                                                                  //   0 x
@@ -178,6 +171,7 @@ const HistoryPage =(props)=>{
             ref = {events_images_references.current[idx]}                                    
             className = 'chapters-main-image'
             src = {el.image} 
+            alt = {"historical event number " + idx}
             width = "100%"    
             style = {{
                 // chaptRefsIsInView is an array of boolean values for each isInView() of every chapter                                                                       
@@ -226,6 +220,7 @@ const HistoryPage =(props)=>{
                 className="secondary-parallax-image"
                 src = {idx%2==0?clouds_7:birds_1}
                 width="20%"
+                alt = "secondary parallax background"
                 style ={{
                     objectFit: "cover",
                     position:"relative",
@@ -238,6 +233,7 @@ const HistoryPage =(props)=>{
             <img    
                 className="secondary-parallax-image"
                 src = {idx%2==0?birds_1:clouds_7}
+                alt = "secondary parallax background"
                 width="20%"
                 style ={{
                     objectFit: "cover",
@@ -250,6 +246,7 @@ const HistoryPage =(props)=>{
 
     </div>
     <div className = "buffer"/>
+    {/* buffer for more space inbetween chapters */}
     {/* =========================================================================================================== */}
 
     </>

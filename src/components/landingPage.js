@@ -1,14 +1,16 @@
 import Book from "./bookComponent";
 import LinkBtnComponent from "./linkBtnComponent";
-import { Link} from 'react-router-dom';
-
-import { useState , useLayoutEffect} from "react";
-
+import { Link} from 'react-router-dom'; 
+import LoadingComponent from "./loadingComponent";
+import { useState, useLayoutEffect } from "react";
+import SplashPage from "./splashPage";
 
 const LandingPage = () => {
+    // landing page component
 
-   
-   
+    // const [loading,setLoading] = useState(true);
+ 
+
     return (
         <div className="landing-page">
             <div className="first-section">
@@ -17,7 +19,9 @@ const LandingPage = () => {
                         position: "relative"
                         , top: "-120px"
                     }}>
-                    <div className="row">
+                    <div className="row d-flex justify-content-center">
+                        {/* {loading? <LoadingComponent/> : <Book/>} */}
+                        {/* <SplashPage/> */}
                         <Book/>
                     </div>
                     <div className="row">

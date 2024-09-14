@@ -9,6 +9,11 @@ $duskPurple:rgba(0,30,87,1);
 $dawnBlue: rgba(1,84,164,1) ;
 // ---------------------Landing Page---------------------------
 
+@font-face{
+  font-family: landingPage-text;
+  src: url('./assets/fonts/Newsreader/Newsreader-VariableFont_opsz\,wght.ttf')
+}
+
 .landing-page{
     font-family: landingPage-text;
     color: $text-contrast-for-blanchedAlmond;
@@ -63,4 +68,211 @@ $dawnBlue: rgba(1,84,164,1) ;
     border-left: 5px solid ;
     border-image: linear-gradient(181deg, $forest-green, $deep-jade) 30;
   }
+
+  //========================== Loading Component=================================
+
+  .loading-container{ 
+    display: flex;
+    justify-content: center;
+    min-height: 50svh;
+  }
+
+  .message-container{
+    min-height: 50svh;
+  }
+
+  @keyframes spin3D {
+    from {
+      transform: rotate3d(.5,.5,.5, 360deg);
+    }
+    to{
+      transform: rotate3d(0deg);
+    }
+  }
+
+  .spinner-box {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .blue-orbit {
+    width: 165px;
+    height: 165px;
+    border: 6px solid #91daffa5;
+    animation: spin3D 3s linear .2s infinite;
+    -webkit-animation: spin3D 3s linear .2s infinite;
+  }
+
+  .green-orbit {
+    width: 120px;
+    height: 120px;
+    border: 3px solid #91ffbfa5;
+    animation: spin3D 2s linear 0s infinite;
+    -webkit-animation: spin3D 2s linear 0s infinite;
+  }
+
+  .red-orbit {
+    width: 90px;
+    height: 90px;
+    border: 5px solid #ffca91a5;
+    animation: spin3D 1s linear 0s infinite;
+    -webkit-animation: spin3D 1s linear 0s infinite;
+  }
   
+  .white-orbit { 
+	width: 60px;
+	height: 60px;
+  border: 2px solid #ffffff;
+  animation: spin3D 10s linear 0s infinite;
+  -webkit-animation: spin3D 10s linear 0s infinite;
+}
+
+.leo {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+}
+
+@keyframes blink {
+
+  0%{
+    display: none;
+  }  
+  100%{
+    display: block;
+  }
+  
+}
+
+.splash-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 300;
+  font-family:  landingPage-text; 
+	background: linear-gradient(-45deg, #0f0c29, #302b63, #282a37, #1d1b22); 
+  background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+.loading-text{
+  animation: fadeInOut 3s ease infinite;
+
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity:1
+  }
+  100%{
+    opacity:.02
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.text-typewriter {
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid black; /* This creates the effect of the cursor */
+  animation: typing 4s steps(30, end) 1s 1 normal both, blink-caret 500ms step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+
+#wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0px auto;
+  height: 100px;
+  width: 200px;
+  top: 35%;
+}
+
+.ball {
+  position: absolute;
+  bottom: 0px;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  bottom: 10px;
+  float: left;
+  -webki-animation: bounce 3.5s infinite;
+  -moz-animation: bounce 3.5s infinite;
+  -ms-animation: bounce 3.5s infinite;
+  -o-animation: bounce 3.5s infinite;
+  animation: bounce 3.5s infinite;
+}
+
+.ball:nth-child(2) {
+  margin-left: 30%;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.ball:nth-child(3) {
+  margin-left: 60%;
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -ms-animation-delay: 1s;
+  -o-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.ball:nth-child(4) {
+  margin-left: 89%;
+  -webkit-animation-delay: 1.5s;
+  -moz-animation-delay: 1.5s;
+  -ms-animation-delay: 1.5s;
+  -o-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+
+
+ 
+ 
+@keyframes bounce {
+  0% {
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-bottom: 50px;
+  }
+  100% {
+    margin-bottom: 0px;
+  }
+}

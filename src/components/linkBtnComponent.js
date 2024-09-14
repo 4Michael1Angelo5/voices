@@ -1,6 +1,7 @@
-import { Link
+import { Link } from "react-router-dom";
 
- } from "react-router-dom";
+// link button for landing page for user to navigate to author page
+
 const LinkBtnComponent =(props)=>{
     return (
 
@@ -8,12 +9,12 @@ const LinkBtnComponent =(props)=>{
 
         <ul>
             <li>
-            < Link to = {props.pathName}  className='animated-arrow' href='https://google.com'>
+            < Link to = {props.pathName}  className='animated-arrow' href='https://4michael1angelo5.github.io/voices/author'>
                 <span className='the-arrow -left'>
                 <span className='shaft'></span>
                 </span>
                 <span className='main'>
-                <span className='text'>
+                <span className='text'>                    
                     {props.text}
                 </span>
                 <span className='the-arrow -right'>
