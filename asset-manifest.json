@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.daba72ef.css",
-    "main.js": "/voices/static/js/main.6475b413.js",
+    "main.css": "/voices/static/css/main.262143f9.css",
+    "main.js": "/voices/static/js/main.29ed37a5.js",
     "static/js/453.2ea725eb.chunk.js": "/voices/static/js/453.2ea725eb.chunk.js",
     "static/media/hammer.png": "/voices/static/media/hammer.f06ff3da91a1c494483b.png",
     "static/media/Jacquard12Charted-Regular.ttf": "/voices/static/media/Jacquard12Charted-Regular.0de6e1d1c91485def831.ttf",
@@ -22,6 +22,7 @@
     "static/media/tenMileDay.jpg": "/voices/static/media/tenMileDay.55ee22b9d704a3a7cd74.jpg",
     "static/media/page3.webp": "/voices/static/media/page3.96d2b58c4f4b0152252d.webp",
     "static/media/ConnieYu.jpg": "/voices/static/media/ConnieYu.6dda0b84c8199f2a8a5f.jpg",
+    "static/media/logo.png": "/voices/static/media/logo.82d9f3e4cbb78808e2fb.png",
     "static/media/page4.webp": "/voices/static/media/page4.cfcd0ea8c8d92aacba60.webp",
     "static/media/strike.webp": "/voices/static/media/strike.2f2872a6bebd16fc07fb.webp",
     "static/media/clouds_7.png": "/voices/static/media/clouds_7.388edc23a65d4a603a2f.png",
@@ -34,10 +35,10 @@
     "static/media/MakingWaves.jpg": "/voices/static/media/MakingWaves.b48cf531e5eb91a9f5b4.jpg",
     "static/media/page6.webp": "/voices/static/media/page6.9c780fdf6ca15b9a3d16.webp",
     "static/media/mom.jpg": "/voices/static/media/mom.0d6f01ce9de21e1df3c8.jpg",
-    "static/media/logo.png": "/voices/static/media/logo.dc89f48f7c9719f2174b.png",
     "static/media/Art_Lym_image.jpg": "/voices/static/media/Art_Lym_image.f4da306d1d0268c05e19.jpg",
     "static/media/woman_descendant.png": "/voices/static/media/woman_descendant.a761d9f6b32a2c8f700c.png",
     "static/media/railRoadTracks2.png": "/voices/static/media/railRoadTracks2.b598636e90fa9aee02fc.png",
+    "static/media/voices.webp": "/voices/static/media/voices.f9b6181d7790a136c7b9.webp",
     "static/media/Lum_Ah_Chew_profile_pic.jpg": "/voices/static/media/Lum_Ah_Chew_profile_pic.20c4c8e524dc66c6159d.jpg",
     "static/media/man_descendant.png": "/voices/static/media/man_descendant.3187e58456de26aa6938.png",
     "static/media/patchWorkHistroy.jpeg": "/voices/static/media/patchWorkHistroy.271c175ffd0d374f795a.jpeg",
@@ -50,12 +51,12 @@
     "static/media/birds_1.png": "/voices/static/media/birds_1.758c969c29f769267f2b.png",
     "static/media/birds.png": "/voices/static/media/birds.fceed944d1c8c61fd848.png",
     "index.html": "/voices/index.html",
-    "main.daba72ef.css.map": "/voices/static/css/main.daba72ef.css.map",
-    "main.6475b413.js.map": "/voices/static/js/main.6475b413.js.map",
+    "main.262143f9.css.map": "/voices/static/css/main.262143f9.css.map",
+    "main.29ed37a5.js.map": "/voices/static/js/main.29ed37a5.js.map",
     "453.2ea725eb.chunk.js.map": "/voices/static/js/453.2ea725eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.daba72ef.css",
-    "static/js/main.6475b413.js"
+    "static/css/main.262143f9.css",
+    "static/js/main.29ed37a5.js"
   ]
 }
