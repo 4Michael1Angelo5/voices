@@ -24,8 +24,8 @@ const LandingPage = () => {
                         {/* <SplashPage/> */}
                         <Book/>
                     </div>
-                    <div className="row">
-                        <div className="col-9 col-lg-6 frame about-the-author">
+                    <div className="row d-flex justify-content-center">
+                        {/* <div className="col-9 col-lg-6 frame about-the-author">
                             <h1>About the Author</h1>
                             <p>
                                 During her tenure as Executive Director of the Chinese 
@@ -37,8 +37,8 @@ const LandingPage = () => {
                                 American historical narrative
                             </p>
                             <LinkBtnComponent text = {'Learn More'} pathName = '/author'/>
-                        </div>
-                        <div className='col-3 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
+                        </div> */}
+                        {/* <div className='col-3 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
                             
                                     <label className ="btn-label text-center">Family Tree </label>
 
@@ -50,6 +50,25 @@ const LandingPage = () => {
                                     <label className ="btn-label text-center"> Chapters </label>
                                     <Link  to = '/chapters' className='icon-set chapters-link'></Link>
                              
+                        </div> */}
+
+                        <div className = "d-flex col-12 col-lg-6 mt-4">
+
+                        <div className = "col-4 flex-column align-items-center  d-flex justify-content-center">
+                        <label className ="btn-label text-center">Family Tree </label>
+                        <Link to = '/ancestors'className='icon-set family-tree'></Link>
+                        </div>
+
+                        <div className = "col-4 flex-column align-items-center d-flex  justify-content-center">
+                        <label className ="btn-label text-center">The Authors </label>                                
+                        <Link  to = '/author'className='icon-set author'></Link>                            
+                        </div>
+
+                        <div className = "col-4 flex-column align-items-center d-flex  justify-content-center">
+                        <label className ="btn-label text-center"> Chapters </label>
+                        <Link  to = '/chapters' className='icon-set chapters-link'></Link>
+                        
+                        </div>
                         </div>
                     </div>
 
@@ -76,7 +95,9 @@ const LandingPage = () => {
                         {/* <h1 className = "ml-2">Context</h1> */}
                         <div className="col-10 col-lg-8">
                             
-                                <h1> About The Book</h1>
+                                <h1 className="text-center"
+                                    style={{fontSize:"90px",lineHeight:"1"}}
+                                    > About The Book</h1>
                                 <p>
                                     For years after the completion of the First Transcontinental Railroad (TCCR), 
                                     Chinese workers were nameless.  We would learn that the Chinese helped build the 

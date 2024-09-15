@@ -12,7 +12,7 @@ import HakoneEstateAndGardens from "../assets/authors/HakoneEstateAndGardens.jpg
 import patchWorkHistroy from "../assets/authors/patchWorkHistroy.jpeg"
 import ProfilesInExcellence from "../assets/authors/ProfilesInExcellence.jpg"
 import MakingWaves from "../assets/authors/MakingWaves.jpg"
-import voices from "../assets/authors/voices.jpeg"
+import voices from "../assets/book_scans/optimized/voices.webp"
 import chinatownsanjose from "../assets/authors/chinatownsanjose.jpg"
 import chineseInNappaValley from "../assets/authors/chineseInNappaValley.jpg"
 
@@ -96,7 +96,7 @@ const CarouselComponent = () => {
   
   return(
 
- <div className = "container">
+ <div className = "container carousel-container">
   
   <Swiper
         effect={'coverflow'}
@@ -137,8 +137,7 @@ const CarouselComponent = () => {
           
             <div
               className="reflection"
-              style={{ '--image': `url(${item})` }}
-          
+              style={{ '--image': `url(${item})` }}          
             />
             
           </SwiperSlide>)

@@ -5,11 +5,10 @@ $border-dark: rgba($base-color, 0.88);
 $text-contrast-for-blanchedAlmond: #4d4944;
 
 @font-face {
-  font-family: header;
-  src: url('./assets/fonts/Jacquard_12_Charted/Jacquard12Charted-Regular.ttf');
+  font-family: Jost;
+  // src: url('./assets/fonts/roboto/Roboto-Bold.ttf');
+  src:url('../assets/fonts/allover-modern-demo/ALLOVER\ MODERN\ DEMO.ttf')
 }
-
-
 
 
 .burger-menu .bar {
@@ -77,13 +76,13 @@ $text-contrast-for-blanchedAlmond: #4d4944;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  line-height: 2;
   
 }
 .menu a{
   font-size:calc( 2 * calc(1.375rem + 1.5vw) ) ;
-  font-family: header;
-  color: $text-contrast-for-blanchedAlmond;
-
+  font-family: Jost;
+  color: $text-contrast-for-blanchedAlmond; 
 }
 
 

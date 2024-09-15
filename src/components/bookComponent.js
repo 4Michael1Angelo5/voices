@@ -40,6 +40,7 @@ class Book extends React.Component{
     this.state = {
       currentPage: 0,
       forward: true,
+      firstRender:true
     };
     this.flipInterval = null;
   }
@@ -53,14 +54,23 @@ class Book extends React.Component{
 
     // Initialize the flipBook 
     // Start the automatic page flipping
+
+    if(this.state.firstRender){
+   
     this.flipInterval = setInterval(() => {
       this.flipPages(elBook, totalPages);
     }, 300); // Flip every .3 seconds, adjust as needed
+    
+    this.setState({ firstRender: false })
     }
+
+    }
+
     componentWillUnmount() {
       // Clear the interval when the component is unmounted to avoid memory leaks
       clearInterval(this.flipInterval);
     }
+
 
     flipPages(elBook, totalPages) {
       const { currentPage, forward } = this.state;

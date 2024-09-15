@@ -163,7 +163,7 @@ const HistoryPage =(props)=>{
         }}                                                                                  //   0 x
         >
 
-        <div className = "col-12 col-lg-6 d-flex justify-content-center image-for-chapter" >  
+        <div className = "mt-2 col-12 col-lg-6 d-flex justify-content-center image-for-chapter" >  
             {/* ====================================images for chapters ====================================== */}
                                                            
             <img   
@@ -182,7 +182,7 @@ const HistoryPage =(props)=>{
             /> 
         </div>
 
-        <div className = 'chapter-description-container col-12 col-lg-6'>
+        <div className = 'chapter-description-container mt-2 col-12 col-lg-6'>
             
             <div
             className = "events-description"

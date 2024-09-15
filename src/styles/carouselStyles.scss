@@ -158,6 +158,7 @@
 
   .mySwiper{
 	padding-bottom: 120px;
+ 
   }
 
   .swiper-left-btn {
@@ -176,6 +177,10 @@
 
   .swiper-pagination-bullet {
 	background: #c96868;
+  }
+
+  .carousel-container{
+	min-height:75vh;
   }
 
 // -----------------------left arrow for swiper coverflow

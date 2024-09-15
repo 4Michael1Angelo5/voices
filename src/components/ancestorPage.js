@@ -13,9 +13,9 @@ const AncestorPage = (props) => {
 
             <div className="family-tree-index-page pb-5">
 
-                <h1> FAMILY TREE PAGE</h1>
-
                 <div className='container'>
+                <h1 style ={{fontSize:"65px"}}> Ancestors Page</h1>
+                <h3> Explore differnt ancestors who helped build the railroad and their family tree! </h3>
 
                     {
                         props.ancestors.map((ancestor, index) => {

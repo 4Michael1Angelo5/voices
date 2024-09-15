@@ -15,13 +15,14 @@ $dawnBlue: rgba(1,84,164,1) ;
 }
 
 @font-face{
-  font-family: landingPage-text;
+  font-family: newsReader;
   src: url('./assets/fonts/Newsreader/Newsreader-VariableFont_opsz\,wght.ttf')
 }
 
 .App{
   overflow: hidden;
   background-color: #263144;
+  font-family: newsReader;
 }
 // -------------------- Header Design--------------------------
 .app-header{
@@ -168,6 +169,7 @@ a.icon-set:hov{
 
 .rail-road-history-section{
   background: linear-gradient(45deg, blue, #7938aa);
+  min-height: 75vh;
 }
 
 .rail-road-history-section{
@@ -247,12 +249,8 @@ a.icon-set:hov{
 .family-tree-index-page{
   // background-color: blanchedalmond;
   background-color: #263144 ; ;
-  color:blanchedalmond;
+  color:blanchedalmond; 
 }
-
-// .family-tree-index-page h1{
-//   margin-top:  calc(1.375rem + 1.5vw);;
-// }
 
 .ancestor-card{
 
@@ -262,7 +260,6 @@ a.icon-set:hov{
   height: 170px;
   transition: all .5s ease-in;
   
-
 }
 
 .ancestor-card:hover{
@@ -331,7 +328,7 @@ a.icon-set:hov{
 .tree-container{
   overflow: hidden;
   min-height:500px;
-  max-height: 50vh;  
+  max-height: 47vh;  
   border-width: 4px;
   border-style: solid;
   scrollbar-width: 10px;
@@ -520,7 +517,7 @@ a.icon-set:hov{
 .author-page{
   min-height: 100vh;
   background:#091e2f;
-  color: #8795a1;  font-family: landingPage-text;
+  color: #8795a1;  font-family: newsReader;
   opacity:0 ; 
   transition: opacity 2s ease-out;
   
@@ -543,16 +540,19 @@ a.icon-set:hov{
 .chapters-page{
 
   min-height: 100vh;
-  background:#14151a;
-  color: blanchedalmond;
-  font-family: landingPage-text;
+  background:#1d1e24;
+  // color: blanchedalmond;
+  // color: #cac5bc;
+  font-family: newsReader;
   opacity:0 ; 
   transition: opacity 2s ease-out;
   background-image: url('./assets/railRoadTracks2.png');    
   background-repeat: repeat-y;
   overflow: hidden;
   position: relative;
+  
 }
+
 
 
 .chapters-main-image{
@@ -568,14 +568,16 @@ a.icon-set:hov{
   // box-shadow: #181827 0px 6px 6px 1px;
 }
 
-.chapters-description{
-  background-image: linear-gradient(90deg, rgb(13 13 13) 0%, rgb(34 38 53 / 51%) 100%);
-  border: 1px solid #472d2d;
+.chapters-description{ 
+  color: #221f1d;
   border-radius: 10px;
   padding: 10px;
   position: relative;
   z-index: 100;
   box-shadow: #181827 0px 6px 6px 1px;
+  background: #8e8880;
+  font-weight: 400;
+  font-size:1.3rem;
 
 }
 
@@ -628,14 +630,33 @@ height: 250px;
 }
 
 
+.chapters-table-of-contents{
+  color:blanchedalmond;
+}
+
+.chapters-page li{
+  // background: #4b4b5b21;
+  background-color: #22232b;
+  padding: 10px;
+  border-radius: 10px;
+  margin:10px 10px;
+  transition: all 0.5s ease-in;
+}
+
+li:hover{
+  border: 1px solid whitesmoke;
+  background-color: #263144;
+
+}
+
+
 // ===================================History Page=======================================
 
 
 .history-page{
 
   background:#babad2;
-  color: #2e2f37;
-  font-family: landingPage-text;
+  font-family: newsReader;
   opacity:0 ; 
   transition: opacity 2s ease-out;
   background-image: url('./assets/railRoadTracks2.png');    
@@ -654,6 +675,50 @@ height: 250px;
   z-index: 100;
   // box-shadow: #181827 0px 6px 6px 1px;
   color:#160226;
-  font-size: 18px;
+  font-weight: 400;
+  font-size:1.3rem;  
+  color: #2e2f37;
 
+}
+
+// ======================================
+
+// .impact-title{
+//   // font-weight: 300;
+//     font-size: 90px;  
+// }
+
+
+
+.custom-shape-divider-bottom-1726354547 {
+ 
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1726354547 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 79px;
+}
+
+.custom-shape-divider-bottom-1726354547 .shape-fill {
+  fill: #ab9d9d;
+}
+
+.footer{
+  background-color: #ab9d9d;
+  padding-bottom: 10px;
+  color:aliceblue
+}
+
+.give-myself-credit{
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  align-items: end;
 }

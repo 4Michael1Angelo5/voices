@@ -9,19 +9,15 @@ const Menu = (props)=>{
             <Link to = "/"> Home </Link>
             <Link to = '/ancestors'>Ancestors</Link>
          
-            <Link to = '/chapters'>The Book</Link>
+            <Link to = '/chapters'>Chapters</Link>
         
-            <Link to = '/author'>The Author</Link>
+            <Link to = '/author'>Authors</Link>
 
-            <Link to = '/history'>The History</Link>             
+            <Link to = '/history'>History</Link>             
         </div>
     );
 }
  
-
-
-
-
 class BurgerMenu extends React.Component{
 
     constructor(props){
@@ -46,7 +42,7 @@ class BurgerMenu extends React.Component{
              onClick = {this.toggle}/> 
                            
             <div>
-            <div onClick={e=>this.toggle(e)} id = "burger"className = {this.state.isOpen? "burger-menu open" : "burger-menu"}>
+            <div onClick={e=>this.toggle(e)} id = "burger" className = {this.state.isOpen? "burger-menu open" : "burger-menu"}>
              <span className="bar"/>
              <span className="bar"/>
              <span className="bar"/>

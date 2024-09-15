@@ -1,7 +1,7 @@
 
-import './book.css' ;
-import './landingPage.scss'
-import './hamburger.scss';
+import './styles/book.css' ;
+import './styles/landingPage.scss';
+import './styles/hamburger.scss';
 import './App.scss';
 import './styles/headerStyles.scss' ; 
 import './styles/arrow.scss';
@@ -9,7 +9,7 @@ import './styles/arrow.scss';
 import { useEffect, useState} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import BurgerMenu from './components/burgerMenuComponent';
+import BurgerMenu from './components/menuComponent';
 
 // Contains all the differnt headers for each section
 // @TODO make this more efficent by making the things that change props/ parameters 
@@ -29,7 +29,8 @@ import AncestorPage from './components/ancestorPage';
 import AuthorPage from './components/authorPage';
 import ChaptersPage from './components/chaptersComponent';
 import HistoryPage from './components/historyPage';
-import SplashPage from './components/splashPage';
+import Footer from './components/footerComponent';
+// import SplashPage from './components/splashPage';
 
 // expiremental feature to try and prevent user from seeing images loading 
 
@@ -128,8 +129,10 @@ function App() {
 
           {/* ==========================>  pass historical events as props to HistoryPage */}
           <Route path = '/history'  element = {<HistoryPage events = {events} />}/>
+           
 
         </Routes> 
+        <Footer/>
       </BrowserRouter>
       }
       

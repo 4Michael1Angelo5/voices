@@ -84,6 +84,46 @@ const ChaptersPage = ()=>{
     // more quickly in relation to scroll posiiton. 
 
    };
+
+   const handleClick = (e, ref,idx) => {
+    e.preventDefault();
+
+    if (ref && ref.current) {
+        // make sure ref is available
+        
+        const element = ref.current;
+        const scrollY = element.getBoundingClientRect().top + window.scrollY;
+        console.log(scrollY); // Log the exact scroll position
+        
+        console.log(chaptRefsIsInView[5])
+
+        if(chaptRefsIsInView[idx]){
+
+            element.scrollIntoView({
+               
+                 behavior: 'smooth', // Enables smooth scrolling
+                 block: 'start'
+            });
+            
+
+        }else{
+            // if the element is not inview we need to adjust
+
+            window.scrollTo({
+
+                // adjustment needed because of animations performed to the 
+                // element once it's in view
+
+                top: scrollY-300, // Scroll to the element
+                behavior: "smooth", // Add smooth scrolling effect
+
+            })
+        }
+
+   
+    }
+};
+
    
 
 
@@ -97,9 +137,59 @@ const ChaptersPage = ()=>{
                 //background image of train tracks move twice the speeed of the user scrolling
                 minHeight: screenHeight, 
             }}           
-            >                 
+            >                
+                <div className = 'container '>  
 
-                <div className = 'container '>                  
+                    <div className ="row chapters-table-of-contents">                    <h1>Contents</h1>
+    
+                    <p><strong>Acknowledgments</strong> 9</p>
+                    <p><strong>Introduction</strong> 11</p>
+                    <p>Sue Lee</p>
+
+                    <ol>
+                        {/* chapter 1 */}
+                        <li>
+                            <strong>Discovering My Great-Grandfather Moy Jin Mun</strong> 17  <br/>  Montgomery Hom
+                        </li>
+                        {/* chapter 2 */}
+                        <li>
+                            <strong>Chin Lin Sou: Colorado Pioneer</strong> 27 <br/> Carolyn G. Kuhn
+                        </li>
+                        {/* chapter 3 */}
+                        <li>
+                            <strong>Jim King, Foreman of the Central Pacific</strong> 33 <br/> Gene O. Chan, with Connie Young Yu
+                        </li>
+                        {/* chapter 4 */}
+                        <li>
+                            <strong>Family History of Lum Ah Chew</strong> 39 <br/> Paulette Liang
+                        </li>
+                        {/* chapter 5 */}
+                        <li>
+                            <strong>Mock Chuck: A Golden Treasure</strong> 47 <br/> Vicki Tong Young
+                        </li>
+                        {/* chapter 6 */}
+                        <li>
+                            <strong>The Pioneering Legacy of my Great-Grandfather, Hung Lai Woh</strong> 55 <br/> Russell N. Low
+                        </li>
+                        {/* chapter 7 */}
+                        <li onClick={(e)=>handleClick(e,chapterRefernces.current[3],3)}>
+                            <strong>Lim Lip Hong: An Indomitable Pioneer</strong> 63 <br/> Andrea Yee
+                        </li>
+                        {/* chapter 8 */}
+                        <li onClick={(e)=>handleClick(e,chapterRefernces.current[4],4)}>
+                            <strong>Lee Ling & Lee Yik Gim: My Roots as a Railroad Worker Descendant</strong> 71 <br/> Sandra K. Lee
+                        </li>
+                        {/* chapter 9 */}
+                        <li onClick={(e)=>handleClick(e,chapterRefernces.current[5],5)}>
+                             
+                            <strong>Lee Wong Sang, Laying Tracks to Follow</strong>    77  <br/> 
+                            Connie Young Yu <strong> Afterword</strong> 91              <br/>
+                            Connie Youn Yu <strong> About the Contributors </strong> 94
+                        </li>
+                    </ol>
+                     
+                    </div>
+
                                    
                     <>  
 
@@ -157,7 +247,7 @@ const ChaptersPage = ()=>{
                             }}                                                                                  //   0 x
                             >
 
-                            <div className = "col-12 col-lg-6 d-flex justify-content-center image-for-chapter" >  
+                            <div className = "mt-2 col-12 col-lg-6 d-flex justify-content-center image-for-chapter" >  
                                 {/* ====================================images for chapters ====================================== */}
                                                                                
                                 <img   
@@ -176,7 +266,7 @@ const ChaptersPage = ()=>{
                                 /> 
                             </div>
 
-                            <div className = 'chapter-description-container col-12 col-lg-6'>
+                            <div className = 'chapter-description-container mt-2 col-12 col-lg-6'>
                                 <p
                                 className = "chapters-description"
                                 style={{
