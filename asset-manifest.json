@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.ebc8d400.css",
-    "main.js": "/voices/static/js/main.e255c030.js",
+    "main.css": "/voices/static/css/main.e0228e30.css",
+    "main.js": "/voices/static/js/main.dad40f30.js",
     "static/js/453.2ea725eb.chunk.js": "/voices/static/js/453.2ea725eb.chunk.js",
+    "static/media/Lim_family.png": "/voices/static/media/Lim_family.0963865a79047831049b.png",
+    "static/media/lum_ah_chew_payRoll.png": "/voices/static/media/lum_ah_chew_payRoll.b37caaacc33228ca6130.png",
+    "static/media/Lim_Lip_Hong_group_photo.png": "/voices/static/media/Lim_Lip_Hong_group_photo.170f407bccc946059759.png",
     "static/media/hammer.png": "/voices/static/media/hammer.f06ff3da91a1c494483b.png",
+    "static/media/Lum_Chew_generalStore.png": "/voices/static/media/Lum_Chew_generalStore.7e03bb253c4ef6448613.png",
+    "static/media/Connie.png": "/voices/static/media/Connie.a0d41f3030c6996b80e8.png",
+    "static/media/Lum_Ah_Chew_Wife.png": "/voices/static/media/Lum_Ah_Chew_Wife.d3e66aaaf8b20cef9ebb.png",
     "static/media/chinatownsanjose.jpg": "/voices/static/media/chinatownsanjose.b28e38ea071fcf296a54.jpg",
     "static/media/Newsreader-VariableFont_opsz,wght.ttf": "/voices/static/media/Newsreader-VariableFont_opsz,wght.5032d4be14f4a0091c82.ttf",
     "static/media/backgroundOfChinese.png": "/voices/static/media/backgroundOfChinese.4ed3181a758c46bff390.png",
     "static/media/ALLOVER MODERN DEMO.ttf": "/voices/static/media/ALLOVER MODERN DEMO.b4cb3bcd1489e79bee01.ttf",
+    "static/media/Mock_Chuck_portrait.png": "/voices/static/media/Mock_Chuck_portrait.a09f331d5810533b369a.png",
     "static/media/map.png": "/voices/static/media/map.7b6905ea8260e3118f13.png",
     "static/media/SummitTunnel.jpg": "/voices/static/media/SummitTunnel.b963143084dc1ec1132b.jpg",
+    "static/media/Mock_Chuck_watch.png": "/voices/static/media/Mock_Chuck_watch.09e2d40f1c727f2ce947.png",
     "static/media/page6.webp": "/voices/static/media/page6.ccc336aec0b3f71b39e5.webp",
     "static/media/page9.webp": "/voices/static/media/page9.6ca193c246d48af49735.webp",
     "static/media/howDidTheChineseWork.jpg": "/voices/static/media/howDidTheChineseWork.63f680da2a9af5138b8a.jpg",
@@ -49,12 +57,12 @@
     "static/media/birds.png": "/voices/static/media/birds.fceed944d1c8c61fd848.png",
     "static/media/page1.webp": "/voices/static/media/page1.f5589b5ced5cc12e4c97.webp",
     "index.html": "/voices/index.html",
-    "main.ebc8d400.css.map": "/voices/static/css/main.ebc8d400.css.map",
-    "main.e255c030.js.map": "/voices/static/js/main.e255c030.js.map",
+    "main.e0228e30.css.map": "/voices/static/css/main.e0228e30.css.map",
+    "main.dad40f30.js.map": "/voices/static/js/main.dad40f30.js.map",
     "453.2ea725eb.chunk.js.map": "/voices/static/js/453.2ea725eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ebc8d400.css",
-    "static/js/main.e255c030.js"
+    "static/css/main.e0228e30.css",
+    "static/js/main.dad40f30.js"
   ]
 }
