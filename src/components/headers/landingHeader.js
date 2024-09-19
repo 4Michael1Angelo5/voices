@@ -22,7 +22,7 @@ const LandingHeader = (props) => {
                     <div className='col-6 col-lg-4'>
 
                         <p> "A compilation of narratives by the 
-                            descendants of Chinese American railroad workers"
+                            descendants of Chinese railroad workers"
                         </p>
 
                     </div>

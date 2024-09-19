@@ -12,7 +12,16 @@ const ChaptersHeader = (props) => {
                 <div className='row d-flex justify-content-center m-2'>
 
                     <div className=' col-6 col-lg-4'>
-                        <h1 className="left-line"> Chapters Page</h1>
+                        <h1 
+                            className="left-line"
+                            style={{ 
+                                borderImage:"linear-gradient(181deg, rgb(92, 2, 44), rgb(148 1 59)) 30 / 1 / 0 stretch"
+
+                            }}                            
+                        > 
+                            Chapters Page
+
+                        </h1>
 
                     </div>
                     <div className='col-6 col-lg-4'>

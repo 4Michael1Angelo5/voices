@@ -1,22 +1,20 @@
-import { useState, useEffect, useRef, createRef } from "react";
-import railRoadWorkers from '../assets/railRoadWorkers.jpg'
-import { useInView, animate, distance } from "framer-motion";
-import birds from '../assets/birds.png';
-import hammer from '../assets/hammer.png';
+import { useState, useEffect, useRef, createRef } from "react"; 
+import { useInView } from "framer-motion";
+import birds from '../assets/birds.png'; 
 import clouds_9 from '../assets/clouds_9.png';
 
 import React from "react";
 
-const CHAPTER_IMAGES = [hammer, railRoadWorkers, hammer, railRoadWorkers, hammer, railRoadWorkers];
-
-
+ 
 const ChaptersPage = (props) => {
 
     const [opacity, setOpacity] = useState(0);
     const [scrollY, setScrollY] = useState(0);
-    const [screenHeight, setScreenHeight] = useState(800);
+    const [screenHeight, setScreenHeight] = useState(800); 
+   
 
-    const [intoViewAnimationComplete, setFlag] = useState([false, false, false, false, false, false])
+    const lastExecutionRef = useRef(Date.now);
+    const throttleDelay = 100; // Time in milliseconds for throttling
 
 
     // ref for handling scrolling animations 
@@ -40,6 +38,7 @@ const ChaptersPage = (props) => {
 
 
     })
+    // console.log(chapter_images)
 
     const chapter_titleReferences = useRef(chapter_titles.map(() => createRef()));
 
@@ -49,8 +48,12 @@ const ChaptersPage = (props) => {
     const chapter_Refernces = useRef(chapter_images.map(() => createRef()));
     
     // there are 12 images total remember that if you want to add another image you'll have to add it here: 
+
+    // photos for sue lee intro
     const photo1IsInView = useInView(chapter_Refernces.current[0], { once: true, amount: 0.4 });
     const photo2IsInView = useInView(chapter_Refernces.current[1], { once: true, amount: 0.4 });
+
+    // photos for lum ahh chew
     const photo3IsInView = useInView(chapter_Refernces.current[2], { once: true, amount: 0.4 });
     const photo4IsInView = useInView(chapter_Refernces.current[3], { once: true, amount: 0.4 });
     const photo5IsInView = useInView(chapter_Refernces.current[4], { once: true, amount: 0.4 });
@@ -58,9 +61,14 @@ const ChaptersPage = (props) => {
     const photo7IsInView = useInView(chapter_Refernces.current[6], { once: true, amount: 0.4 });
     const photo8IsInView = useInView(chapter_Refernces.current[7], { once: true, amount: 0.4 });
     const photo9IsInView = useInView(chapter_Refernces.current[8], { once: true, amount: 0.4 });
+    // photos for lim lip hong
     const photo10IsInView = useInView(chapter_Refernces.current[9], { once: true, amount: 0.4 });
     const photo11IsInView = useInView(chapter_Refernces.current[10], { once: true, amount: 0.4 });
     const photo12IsInView = useInView(chapter_Refernces.current[11], { once: true, amount: 0.4 });
+    const photo13IsInView = useInView(chapter_Refernces.current[12], { once: true, amount: 0.4 });
+    // photos for connie  
+    const photo14IsInView = useInView(chapter_Refernces.current[13], { once: true, amount: 0.4 });
+    const photo15IsInView = useInView(chapter_Refernces.current[14], { once: true, amount: 0.4 });
 
     // create array of boolean values for each element being viewable or not.
     const chaptRefs_Is_Iniew =
@@ -70,13 +78,10 @@ const ChaptersPage = (props) => {
             photo5IsInView, photo6IsInView,
             photo7IsInView, photo8IsInView,
             photo9IsInView, photo10IsInView,
-            photo11IsInView, photo12IsInView
+            photo11IsInView, photo12IsInView,
+            photo13IsInView, photo14IsInView,
+            photo15IsInView
         ]
-
-    
-    
-    
-
 
 
     // opacity and height of entire page below header
@@ -84,6 +89,7 @@ const ChaptersPage = (props) => {
 
         console.log(chapters)
 
+        console.log(chapter_images.length)
         // set opacity of body on mount 
         // setOpacity(1);
         // set height to viewport inner height on mount
@@ -93,11 +99,6 @@ const ChaptersPage = (props) => {
 
     }, [])
 
-    useEffect(() => {
-
-        console.log(chapter_Refernces.current)
-
-    }, [chapter_Refernces])
 
     // scroll handler
     const handleScroll = () => {
@@ -110,10 +111,14 @@ const ChaptersPage = (props) => {
 
     }
 
+ 
+ 
+ 
     useEffect(() => {
 
         // add event listener on mount
         window.addEventListener("scroll", handleScroll);
+         
 
         return () => {
             // clean up on unmount
@@ -136,7 +141,11 @@ const ChaptersPage = (props) => {
         //  calculate translate amount in Y direction 
         //  relative to scroll posiiton 
 
-        return (scrollPosition) / ((12 - idx)) * (-1) ** (idx)
+        
+        
+        
+        return (scrollPosition) / ((4 - Math.cos(idx))) * (-1) ** (idx)
+        
 
         // odd index values will create negative translate values 
         // even index values will create positive translate values
@@ -151,36 +160,12 @@ const ChaptersPage = (props) => {
         // time * speed = distance 
         // distance/speed = time
 
-        const speed = 1.5;  //adjust as needed
+        const speed = 5.5;  //adjust as needed
 
         return (distance / speed);
 
 
     }
-
-    useEffect(() => {
-        // whenever an images inView animation has completed
-        // set a flag for that image that tells us the animation
-        // has completed/ 
-        // this flag helps us calculate the correct position 
-        // of the element because its position is dependent on the 
-        // state of it's animation.  
-
-        let tempBooleanArray = [false, false, false, false, false, false]
-
-        chaptRefs_Is_Iniew.forEach((elementIsInView, index) => {
-
-            if (elementIsInView) {
-
-                tempBooleanArray[index] = true;
-            }
-
-        })
-
-        setFlag(tempBooleanArray)
-
-
-    }, chaptRefs_Is_Iniew)
 
     const handleClick = (ref, idx) => {
 
@@ -196,32 +181,19 @@ const ChaptersPage = (props) => {
 
         let time = calculateTime(distnaceToScroll)
 
-        // need to adjust based on whether element's inView animation has completed
-
-        // if (intoViewAnimationComplete[idx]) {
-        //     // if its inView animation has completed
-
-        //     let time = calculateTime(distnaceToScroll)
-
-        //     smoothScrollTo(distnaceToScroll, time)
-        // } else {
-        //     // need to ajust because the element is 
-        //     // 1/2 the size and translated in the y-direction 200px
-
-        //     const adjustedDistance = distnaceToScroll - elementRect.height / 2 - 200
-
-        //     let time = calculateTime(distnaceToScroll)
-
-        //     smoothScrollTo(adjustedDistance, time)
-        // }
 
         // if(idx ===  4){
-        //     smoothScrollTo(distnaceToScroll,1000)
-        // }else if(idx ==3){
-        //     smoothScrollTo(distnaceToScroll,2000)
+        //     // connie yu (longest distance)
+        //     smoothScrollTo(distnaceToScroll,7000)
+        // }else if(idx === 3){
+        //     // lim lip hong (second longest distance)
+        //     smoothScrollTo(distnaceToScroll,590)
+        // }else if( idx === 2){
+        //     // mock chuck 
+        //     smoothScrollTo(distnaceToScroll,600)
         // }else
 
-        smoothScrollTo(distnaceToScroll,1000)
+        smoothScrollTo(distnaceToScroll,time)
 
     };
 
@@ -232,6 +204,15 @@ const ChaptersPage = (props) => {
 
         // Optimized easing function to reduce thrashing
         const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+        
+        // this is really easeOutQuad 
+        // but got lazy
+        // const easeInOutQuad = (distance)=> {
+
+        //     return 1 - Math.pow(1 - distance, 2); 
+          
+        //   }
 
         const scrollStep = (currentTime) => {
             const elapsedTime = currentTime - startTime;
@@ -248,6 +229,12 @@ const ChaptersPage = (props) => {
         requestAnimationFrame(scrollStep); // Start animation
     };
 
+    const handleBackToTop =()=>{
+        const distnaceToScroll = scrollY
+
+        const time  = calculateTime(distnaceToScroll)
+        smoothScrollTo(0,time)
+    }
 
 
     let chaptIndex = -1; 
@@ -255,17 +242,21 @@ const ChaptersPage = (props) => {
 
     return (
 
+        <>
+
 
         <div className="chapters-page"
             style={{
                 // opacity: opacity,
-                backgroundPosition: `center ${(scrollY * 2)}px`,
-                //background image of train tracks move twice the speeed of the user scrolling
+                backgroundPosition: `center ${(scrollY * .75)}px`,
+                //background image of train tracks move 75% the speeed of the user scrolling
                 minHeight: screenHeight,
             }}
         >
 
             <div className='container '>
+
+             
 
                 <div className="row chapters-table-of-contents">
                     <h1>Table of Contents</h1>
@@ -424,6 +415,7 @@ const ChaptersPage = (props) => {
                                                                 className='chapters-main-image'
                                                                 src={content.image}
                                                                 alt={"chatper " + chaptIndex + " image"}
+                                                                // loading="lazy"
                                                                 width="100%"
                                                                 style={{
                                                                     // chaptRefsIsInView is an array of boolean values for each isInView() of every chapter                                                                       
@@ -433,28 +425,13 @@ const ChaptersPage = (props) => {
                                                                 }}
                                                             />
                                                             <div className ="row">
-                                                                <div className = "col-lf-6 col-12 d-flex justify-content-lg-start">
-                                                            {
-                                                                content.photoTitle
-                                                                ? 
-                                                                <div 
-                                                                    style={{
-                                                                        color:"blanchedalmond"
-                                                                    }}
-                                                                    className = "history-page-photo-title">
-                                                                        {content.photoTitle}
-                                                                </div>
-                                                                :
-                                                                null
-                                                            }
-                                                            </div>
-                                                            <div className ="col-lg-6 col-12 d-flex justify-content-lg-end">
-                                                            {
+                                                                <div className = "col-lg-6 col-12 d-flex">
+                                                                {
                                                                 content.photoCredit
                                                                 ? 
                                                                 <div 
                                                                     style={{
-                                                                        color:"blanchedalmond"
+                                                                        color:"#b6b2ab"
                                                                     }}
                                                                     className = "history-page-photo-title">
                                                                         Photo Credit: { content.photoCredit}
@@ -462,6 +439,24 @@ const ChaptersPage = (props) => {
                                                                 :
                                                                 null
                                                             }
+                                                    
+                                                            </div>
+                                                            <div className ="col-lg-6 col-12">
+                                                            {
+                                                                content.photoTitle
+                                                                ? 
+                                                                <div 
+                                                                    style={{
+                                                                        color:"blanchedalmond",
+                                                                        textAlign:"right"
+                                                                    }}
+                                                                    className = "history-page-photo-title">
+                                                                        {content.photoTitle}
+                                                                </div>
+                                                                :
+                                                                null
+                                                            }
+                                         
                                                             </div>
                                                             </div>
                                                         </div>
@@ -474,10 +469,18 @@ const ChaptersPage = (props) => {
                                                                 transition: "1s ease-in-out"
 
                                                             }}>
+                                                                {
+                                                                    content.subheading
+                                                                    ?
+                                                                    <h3>{content.subheading}</h3>
+                                                                    :
+                                                                    null
+                                                                }
 
                                                             {content.description.map((paragraph, k) => {
 
                                                                 return (
+                                                                    
                                                                     <p
                                                                         key={k}
                                                                         className="chapters-description"
@@ -556,12 +559,29 @@ const ChaptersPage = (props) => {
                 </>
 
 
-
+                
             </div>
-
-
+            
+            
 
         </div>
+
+        <button 
+            className="icon-set"
+            style={{
+                opacity: scrollY<1500?"0":"1",
+                zIndex: scrollY<1500? -10:1000,
+                transition:"opacity 1s ease-out",
+                position:"fixed",
+                bottom:"10px",
+                right:"10px"
+            }}
+            onClick={()=>handleBackToTop()}
+            >
+            <div className="arrow-up"/>
+        </button>
+
+        </>
 
     );
 }

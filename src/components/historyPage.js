@@ -1,8 +1,8 @@
  
 import { useState, useEffect, useRef, createRef } from "react";
 import { useInView } from "framer-motion";
-import clouds_7 from '../assets/clouds_7.png';
-import birds_1 from '../assets/birds_1.png';
+import clouds_9 from '../assets/clouds_9.png';
+import birds from '../assets/birds.png';
 
 import React from "react";
 
@@ -92,7 +92,8 @@ const HistoryPage = (props) => {
         //  calculate translate amount in Y direction 
         //  relative to scroll posiiton 
 
-        return (scrollPosition) / ((5 - idx)) * (-1) ** (idx)
+        // return (scrollPosition) / ((5 - idx)) * (-1) ** (idx)
+        return (scrollPosition) / ((2 - Math.cos(idx))) * (-1) ** (idx)
 
         // odd index values will create negative translate values 
         // even index values will create positive translate values
@@ -101,16 +102,64 @@ const HistoryPage = (props) => {
 
     };
 
+    const smoothScrollTo = (targetPosition, duration) => {
+        const startPosition = scrollY
+        const distance = targetPosition - startPosition;
+        const startTime = performance.now();
+
+        // Optimized easing function to reduce thrashing
+        const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+        // this is really easeOutQuad 
+        // but got lazy
+        // const easeInOutQuad = (distance)=> {
+
+        //     return 1 - Math.pow(1 - distance, 2); 
+          
+        //   }
+
+        
+
+        const scrollStep = (currentTime) => {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1); // Ensure progress doesn't exceed 1
+            const easeProgress = easeInOutQuad(progress); // Smooth progress using easing function
+
+            window.scrollTo(0, startPosition + (distance * easeProgress)); // Set scroll position
+
+            if (progress < 1) {
+                requestAnimationFrame(scrollStep); // Continue scrolling if not complete
+            }
+        };
+
+        requestAnimationFrame(scrollStep); // Start animation
+    };
+
 
     return (
 
         <div className="history-page"
             style={{
                 opacity: opacity,
-                backgroundPosition: `center ${1.5 * scrollY}px`,
+                backgroundPosition: `center ${1.2 * scrollY}px`,
                 minHeight: screenHeight
             }}
         >
+            
+        <button 
+            className="icon-set"
+            style={{
+                opacity: scrollY<1500?"0":"1",
+                zIndex: scrollY<1500? -10:1000,
+                transition:"opacity 1s ease-out",
+                position:"fixed",
+                bottom:"10px",
+                right:"10px"
+            }}
+            onClick={()=>smoothScrollTo(0,1500)}
+            >
+            <div className="arrow-up"/>
+        </button>
 
             <div className="container">
 
@@ -133,7 +182,7 @@ const HistoryPage = (props) => {
                                                 <img
                                                     // bird images for parallax effect to add texture/ layers 
                                                     className="birds first_layer-parrallax-image"
-                                                    src={idx % 2 === 0 ? clouds_7 : birds_1}
+                                                    src={idx % 2 === 0 ? clouds_9 : birds}
                                                     width={"40%"}
                                                     alt="parralax effect backgound"
                                                     style={{
@@ -148,7 +197,7 @@ const HistoryPage = (props) => {
                                                 <img
                                                     // bird images for parallax effect to add texture/ layers 
                                                     className="birds first_layer-parrallax-image"
-                                                    src={idx % 2 === 0 ? birds_1 : clouds_7}
+                                                    src={idx % 2 === 0 ? birds : clouds_9}
                                                     alt="parralax effect backgound"
                                                     width={"40%"}
                                                     style={{
@@ -173,7 +222,8 @@ const HistoryPage = (props) => {
                                     <div
                                         className={idx % 2 === 1 ? 'section d-flex row flex-row-reverse' : 'section d-flex row'}  //   creates this pattern:
                                         style={{                                                                            //   o x   o = text x =images
-                                            minHeight: screenHeight  // AVOID PITFALLS OF VH units on mobile                 //   x o
+                                            minHeight: screenHeight,  // AVOID PITFALLS OF VH units on mobile                 //   x o
+                                            alignContent:"center"
                                         }}>
 
                                         <div className="mt-2 col-12 col-lg-6 d-flex justify-content-center image-for-chapter" >
@@ -195,19 +245,25 @@ const HistoryPage = (props) => {
 
                                         </div>
 
-                                        <div className='history-description-container mt-2 col-12 col-lg-6'>
+                                        <div className='history-description-container mt-2 col-12 col-lg-6'
+                                                                  style={{
+
+                                                                    // slide is from left or right depending on whether idx is even or odd
+                                                                    transform: eventRefsIsInView[idx] ? "translateX(0px)" : `translateX(${400 * (-1) ** (idx)}px)`,
+                                                                    transition: "1s ease-in-out"
+                
+                                                                }}>
 
                                             <div
                                                 className="events-description"
-                                                style={{
-
-                                                    // slide is from left or right depending on whether idx is even or odd
-                                                    transform: eventRefsIsInView[idx] ? "translateX(0px)" : `translateX(${400 * (-1) ** (idx)}px)`,
-                                                    transition: "1s ease-in-out"
-
-                                                }}
+                      
                                             >
-                                                {<h2>{el.title}</h2>}
+                                                {<h2 style = {{
+                                                    
+                                                    color:"#BDBDBD"
+                                                }}>
+                                                    {el.title}
+                                                </h2>}
                                                 <p>
                                                     {el.description}
                                                 </p>
@@ -231,7 +287,7 @@ const HistoryPage = (props) => {
                                         <div className="second-left-col-parralax-container col-6  d-flex justify-content-start align-items-baseline ">
                                             <img
                                                 className="secondary-parallax-image"
-                                                src={idx % 2 == 0 ? clouds_7 : birds_1}
+                                                src={idx % 2 == 0 ? clouds_9 : birds}
                                                 width="20%"
                                                 alt="secondary parallax background"
                                                 style={{
@@ -245,7 +301,7 @@ const HistoryPage = (props) => {
                                         <div className="second-right-col-parralax-container col-6 d-flex justify-content-end align-items-start">
                                             <img
                                                 className="secondary-parallax-image"
-                                                src={idx % 2 == 0 ? birds_1 : clouds_7}
+                                                src={idx % 2 == 0 ? birds : clouds_9}
                                                 alt="secondary parallax background"
                                                 width="20%"
                                                 style={{

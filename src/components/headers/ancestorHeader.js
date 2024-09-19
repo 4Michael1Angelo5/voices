@@ -15,7 +15,14 @@ const AncestorHeader = (props) => {
                 <div className='row d-flex justify-content-center m-2'>
 
                     <div className=' col-6 col-lg-4'>
-                        <h1 className="left-line"> Ancestors Page</h1>
+                    <h1 
+                        className="left-line"
+                        style={{
+                            borderImage:"linear-gradient(181deg, blue, pink) 30"
+                        }}
+                        > 
+                        Ancestors Page
+                    </h1>
 
                     </div>
                     <div className='col-6 col-lg-4'>

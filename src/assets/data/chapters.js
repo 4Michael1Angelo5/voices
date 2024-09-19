@@ -4,6 +4,8 @@ import voices from "../book_scans/optimized/voices.webp"
 
 // Connie (Afterwards)
 import Connie from "../chapters/Connie.png"
+import connie_1 from "../chapters/connie_1.png";
+import connie_2 from "../chapters/connie_2.png";
 
 // placeholder
 import railRoadWorkers from "../railRoadWorkers.jpg"
@@ -15,8 +17,10 @@ import lum_ah_chew_payRoll from "../chapters/lum_ah_chew_payRoll.png"
 import Lum_Chew_generalStore from "../chapters/Lum_Chew_generalStore.png"
 
 // Lim Lip Hong Section
-import Lim_Lip_Hong_group_photo from "../ancestors/lim_lip_hong_descendants/Lim_Lip_Hong_group_photo.png"
-import Lim_family from "../chapters/Lim_family.png"
+import Lim_Lip_Hong_group_photo from "../ancestors/lim_lip_hong_descendants/Lim_Lip_Hong_group_photo.png";
+import Lim_family from "../chapters/Lim_family.png";
+import Lim_family_1 from "../chapters/Lim_family_1.png";
+import Lim_Sing_Family from "../chapters/Lim_Sing_Family.png"
 
 // Mock Chuck Section
 import Mock_Chuck_watch from "../chapters/Mock_Chuck_watch.png"
@@ -31,6 +35,7 @@ const CHAPTERS =
             content:
             [   
                 { 
+                // photo 0
                 image: voices,
                 photoCredit:null,
                 photoTitle: "Voices From the Rail Road",
@@ -62,6 +67,7 @@ const CHAPTERS =
                             ]
                 },
                 {
+                    // photo 2
                     image:railRoadWorkers,
                     photoCredit:null,
                     photoTitle:"Chinese Railroad Workers",
@@ -102,6 +108,7 @@ const CHAPTERS =
             content: 
             [
                 {
+                    // photo 3
                     image: Mock_Chuck_portrait,                   
                     photoCredit: null,
                     photoTitle: "Mock Chuck, 1905",
@@ -121,12 +128,13 @@ const CHAPTERS =
                     ]
                 },
                 {
+                    // photo 4
                     image:Mock_Chuck_watch,
                     photoCredit:"Vicki Tong Young",
                     photoTitle: "Mock Chuck's Golden Watch ",
                     description:
                     [
-                        
+                                                
                         'Mock Chuck was my paternal great-grandfather. Born in 1847, he resolutely sailed to \
                         America in 1864, at only 17 years old. Mock Chuck was one of the few fortunate ones who had \
                         been educated in China, could read and write, was quick with numbers, and had training as an \
@@ -151,6 +159,7 @@ const CHAPTERS =
             content:
             [
                 {
+                    // photo 5
                     image:Lum_Ah_Chew_profile_pic,
                     photoCredit: "Paulette Liang Collection",
                     photoTitle: "Portrait of Lum Ah Chew.",
@@ -168,19 +177,23 @@ const CHAPTERS =
                         winters in California, and workers were killed in avalanches, their bodies not uncovered until spring.'
                         ,
                     
-                        'THE SACRAMENTO DELTA \
-                        After his stint on the railroad Ah Chew ended up in the Sacramento Delta building the levees and as a farm hand. The \
-                        1870 Federal Census lists him as a farm worker on the Soloman Runyon ranch noting that he could speak English.'
-                        
+
 
                     ]
                 },
                 {
+                    // photo 6
                     image:Lum_Ah_Chew_Wife,
                     photoTitle:"Portrait of Low Sam, Lum Ah Chew’s wife",
                     photoCredit:"Paulette Liang Collection",
+                    subheading: "THE SACRAMENTO DELTA",
                     description:
                     [
+                        
+                        'After his stint on the railroad Ah Chew ended up in the Sacramento Delta building the levees and as a farm hand. The \
+                        1870 Federal Census lists him as a farm worker on the Soloman Runyon ranch noting that he could speak English.'
+                        ,
+
                         'He married my great-grandmother Low Sam in 1881. She was born in 1863, and came to California as a servant girl in \
                         1877 when she was 14. They had three sons and a daughter. Their daughter died at age four.'
                         ,
@@ -201,6 +214,7 @@ const CHAPTERS =
                     ]
                 },
                 {
+                    // photo 7
                     image:lum_ah_chew_payRoll,
                     photoTitle:"CPRR payroll record for the Summit Tunnel camp, September 1866. Ah Chew's name is circled.",
                     photoCredit:null,
@@ -224,6 +238,7 @@ const CHAPTERS =
                     ]
                 },
                 {
+                    // photo 8
                     image:Lum_Chew_generalStore,
                     photoTitle:"Chauncey Lum Chew’s general merchandise store, Courtland, California.",
                     photoCredit: "Paulette Liang Collection",
@@ -250,6 +265,7 @@ const CHAPTERS =
             content: 
             [
                 {
+                    // photo 9
                     image: Lim_Lip_Hong_group_photo,
                     photoCredit: "Security Pacific National Bank Collection / Los Angeles Public Library",
                     photoTitle: "Chinese hired by the Central Pacific Railroad in 1864. Lim Lip Hong is front row, second from left. ",
@@ -268,37 +284,63 @@ const CHAPTERS =
                         largest settlements of Chinese outside of San Francisco. Ah Lim, described as a miner, is found on the 1860 census.'
                         ,
                     
+
+                    ],
+                },
+                {
+                    // photo 10
+                    image:Lim_family,
+                    photoCredit:null,
+                    photoTitle: "Lim Family Collection",
+                    description:
+                    [
                         'At age 20, Lim was 6 feet tall, spoke English, and could serve as a leader and go-between with the white bosses. He \
                         was one of the first Chinese hired by the CPRR in 1864 (see photo, page 62). Ah Lim as head-man appears on Central \
                         Pacific payroll ledgers throughout 1866.'
                         ,
 
                         'After completion of the transcontinental railroad in 1869, Lim continued to work on railroads in Nevada and Utah.'
-
-                    ],
-                },
-                {
-                    image:Lim_family,
-                    photoCredit:null,
-                    photoTitle:null,
-                    description:
-                    [
+                        ,
 
                         'In San Francisco, he met Foon Chan (1863–1945). He married her, and they settled into Potrero Hill (Dogpatch), four miles from Chinatown. \
                         They were the first Chinese residents, with two horses, one cow, ducks and chickens. In a 1917 immigration statement, Lim described his \
                         home in Potrero as a ranch.'
                         ,
-                    
+
+                    ],
+                },
+                {
+                    // photo 11
+                    image:Lim_family_1,
+                    photoCredit: "Lim Family Collection.",
+                    photoTitle: "Members of Lim’s work crew with Robert Lym seated, c.1910s.",
+                    description:
+                    [
                         'To support their growing family of seven children, his wife, Chan Shee aka "China Mary," would raise chickens and sell her basket of eggs \
                         door to door. Lim worked at night at a slaughterhouse, collecting discarded hog and beef parts—head, feet, tails, innards—into his horse-drawn \
                         wagon. In the morning, he would sell the meat on the streets of Chinatown after dropping off his sons at the Oriental School on Clay Street.'
                         ,
                     
                         'His children were not allowed to attend the Irving Scott School located in Potrero. Later, his growing sons would take over the business and \
-                        expand into shrimp farming in Monterey and importing guano from Cuba.'                    
+                        expand into shrimp farming in Monterey and importing guano from Cuba.'  
+                    ]
                     
+                },
+                {
+                    // photo 12
+                    image:Lim_Sing_Family,
+                    photoCredit:"Lim Family Collection ",
+                    photoTitle:"Lim Sing Family, 1914.",
+                    description:
+                    [
+                        'Lim Lip Hong’s eldest son, Fook Sing (known as Lim Sing) 1884–1948, was a generous, kind man who believed in helping others. \
+                        When the great earthquake and fire leveled Chinatown, he helped to save lives, find shelter, raise money, and fight to keep Chinatown in place.'
+                        ,
+                    
+                        'The City’s leaders wanted to relocate the Chinese community to Hunters Point. With his brother-in-law Wong Git Yow and other Chinatown leaders, \
+                        Chinatown was rebuilt in exactly the same location, to become the Chinatown we know today.'
 
-                    ],
+                    ]
                 }
 
             ]
@@ -310,6 +352,7 @@ const CHAPTERS =
             content: 
             [
                 {
+                    // photo 13
                     image:Connie,
                     photoCredit: "Photo by Ian Matteon Courtesy Spike 150",
                     photoTitle: "Connie Young Yu speaking at the 150th Golden Spike Celebration, May 10,2019",
@@ -334,7 +377,7 @@ const CHAPTERS =
                     ],
                 },
                 {
-                    image:null,
+                    image:connie_2,
                     photoCredit:null,
                     photoTitle:null,
                     description:
@@ -354,7 +397,7 @@ const CHAPTERS =
                     ],
                 },
                 {
-                    image:null,
+                    image:connie_1,
                     photoCredit:null,
                     photoTitle:null,
                     description:
@@ -379,12 +422,11 @@ const CHAPTERS =
                         hammering in of the last spike. Done!'
 
                     ],
-                },
+                }
                 
-            ],
+            ]
  
 
-        },
+        }
     ]
-
 export default CHAPTERS

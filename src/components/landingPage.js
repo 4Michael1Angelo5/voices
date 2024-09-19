@@ -16,11 +16,8 @@ const LandingPage = () => {
                         position: "relative"
                         , top: "-120px"
                     }}>
-                    <div className="row d-flex justify-content-center">
-                        {/* {loading? <LoadingComponent/> : <Book/>} */}
-                        {/* <SplashPage/> */}
-                        <Book/>
-                    </div>
+                 
+                    <Book/>
                     <div className="row d-flex justify-content-center">
                         {/* <div className="col-9 col-lg-6 frame about-the-author">
                             <h1>About the Author</h1>
