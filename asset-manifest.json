@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/voices/static/css/main.e0228e30.css",
-    "main.js": "/voices/static/js/main.dad40f30.js",
+    "main.css": "/voices/static/css/main.d8e9d27e.css",
+    "main.js": "/voices/static/js/main.d5f17444.js",
     "static/js/453.2ea725eb.chunk.js": "/voices/static/js/453.2ea725eb.chunk.js",
     "static/media/Lim_family.png": "/voices/static/media/Lim_family.0963865a79047831049b.png",
     "static/media/lum_ah_chew_payRoll.png": "/voices/static/media/lum_ah_chew_payRoll.b37caaacc33228ca6130.png",
+    "static/media/connie_1.png": "/voices/static/media/connie_1.a52810e6f7ba66ffe202.png",
+    "static/media/Lim_family_1.png": "/voices/static/media/Lim_family_1.570221c47f50eb93af9f.png",
+    "static/media/Lim_Sing_Family.png": "/voices/static/media/Lim_Sing_Family.12f82f654eb5a6c16fff.png",
     "static/media/Lim_Lip_Hong_group_photo.png": "/voices/static/media/Lim_Lip_Hong_group_photo.170f407bccc946059759.png",
     "static/media/hammer.png": "/voices/static/media/hammer.f06ff3da91a1c494483b.png",
+    "static/media/connie_2.png": "/voices/static/media/connie_2.40cc0320833d45576d1f.png",
     "static/media/Lum_Chew_generalStore.png": "/voices/static/media/Lum_Chew_generalStore.7e03bb253c4ef6448613.png",
-    "static/media/Connie.png": "/voices/static/media/Connie.a0d41f3030c6996b80e8.png",
+    "static/media/Connie.png": "/voices/static/media/Connie.d400c678fddfe68af4f1.png",
     "static/media/Lum_Ah_Chew_Wife.png": "/voices/static/media/Lum_Ah_Chew_Wife.d3e66aaaf8b20cef9ebb.png",
     "static/media/chinatownsanjose.jpg": "/voices/static/media/chinatownsanjose.b28e38ea071fcf296a54.jpg",
     "static/media/Newsreader-VariableFont_opsz,wght.ttf": "/voices/static/media/Newsreader-VariableFont_opsz,wght.5032d4be14f4a0091c82.ttf",
@@ -31,7 +35,6 @@
     "static/media/page10.webp": "/voices/static/media/page10.753f590aba2a29945bac.webp",
     "static/media/ConnieYu.jpg": "/voices/static/media/ConnieYu.6dda0b84c8199f2a8a5f.jpg",
     "static/media/strike.webp": "/voices/static/media/strike.2f2872a6bebd16fc07fb.webp",
-    "static/media/clouds_7.png": "/voices/static/media/clouds_7.388edc23a65d4a603a2f.png",
     "static/media/clouds_9.png": "/voices/static/media/clouds_9.01f255b0fe34a71db488.png",
     "static/media/page3.webp": "/voices/static/media/page3.f7e85cfec260e0b6037a.webp",
     "static/media/HakoneEstateAndGardens.jpg": "/voices/static/media/HakoneEstateAndGardens.59c5c7f4e09203fc589a.jpg",
@@ -53,16 +56,15 @@
     "static/media/Gene_O_Chan_profile_pic.jpg": "/voices/static/media/Gene_O_Chan_profile_pic.7c9413221754b72335af.jpg",
     "static/media/ProfilesInExcellence.jpg": "/voices/static/media/ProfilesInExcellence.ee74a3d5a34a44a4f05e.jpg",
     "static/media/Jow_Kee_profile_pic.jpg": "/voices/static/media/Jow_Kee_profile_pic.f974d9981aad3ef45a4f.jpg",
-    "static/media/birds_1.png": "/voices/static/media/birds_1.758c969c29f769267f2b.png",
     "static/media/birds.png": "/voices/static/media/birds.fceed944d1c8c61fd848.png",
     "static/media/page1.webp": "/voices/static/media/page1.f5589b5ced5cc12e4c97.webp",
     "index.html": "/voices/index.html",
-    "main.e0228e30.css.map": "/voices/static/css/main.e0228e30.css.map",
-    "main.dad40f30.js.map": "/voices/static/js/main.dad40f30.js.map",
+    "main.d8e9d27e.css.map": "/voices/static/css/main.d8e9d27e.css.map",
+    "main.d5f17444.js.map": "/voices/static/js/main.d5f17444.js.map",
     "453.2ea725eb.chunk.js.map": "/voices/static/js/453.2ea725eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0228e30.css",
-    "static/js/main.dad40f30.js"
+    "static/css/main.d8e9d27e.css",
+    "static/js/main.d5f17444.js"
   ]
 }
