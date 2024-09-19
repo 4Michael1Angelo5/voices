@@ -9,9 +9,6 @@ const Footer =()=>{
 
     const determineColor = (location)=>{
 
-        console.log(location)
-        console.log(location.substring(0,9))
-
         
         if (location === "/") {
             setColor("rgba(0, 0, 245, 1)");  // blue

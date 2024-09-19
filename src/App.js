@@ -20,6 +20,9 @@ import AncestorFamilyTree from './components/ancestorFamilyTreePage';
 // Array of obects containing data on historical events 
 import HISTORY from './assets/data/history';  
 
+// Array of obects containing data on chapters of the book
+import CHAPTERS from './assets/data/chapters';
+
 // Array of obects containing data on ancestors   
 import ANCESTORS from './assets/data/ansestors';
 
@@ -53,6 +56,7 @@ function App() {
 
   const [ancestors] = useState(ANCESTORS)
   const [events] = useState(HISTORY)
+  const [chapters] = useState(CHAPTERS)
 
   
   const BASENAME ="/voices"
@@ -125,7 +129,7 @@ function App() {
           }
 
           <Route path = '/author'   element = {<AuthorPage/>}/>
-          <Route path = '/chapters' element = {<ChaptersPage/>}/>
+          <Route path = '/chapters' element = {<ChaptersPage chapters = {chapters}/>}/>
 
           {/* ==========================>  pass historical events as props to HistoryPage */}
           <Route path = '/history'  element = {<HistoryPage events = {events} />}/>

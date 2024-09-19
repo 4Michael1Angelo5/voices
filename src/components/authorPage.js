@@ -116,13 +116,38 @@ const AuthorPage = ()=>{
                     </div>
                     <div className = "col-12 col-lg-8 mt-4">
                         <p>
-                            CONNIE YOUNG YU, a fourth-generation Chinese in California, is a descendant 
-                            of railroad worker Lee Wong Sang.  A graduate of Mills College, 
-                            she has written extensively on Asian American issues and is the author of 
-                            Chinatown, San Jose, U.S.A. She was on the citizens committee that saved Angel 
-                            Island Immigration Station detention barracks from demolition and a founding 
-                            member of Asian Americans for Community Involvement.
+                        Connie Young Yu, a fourth-generation Chinese American, is an author and historian.  
+                        An activist on Asian American issues since 1970, she served on the Angel Island  
+                        Immigration Station citizen’s advisory committee that saved the detention barracks  
+                        as a historic site and was a founder of Asian Americans for Community Involvement (AACI).
                         </p>
+
+                        <p>
+                        Through her family’s oral history, Connie learned of her maternal great-grandfather  
+                        working on the first Transcontinental Railroad, her maternal grandmother detained for  
+                        15 months on Angel Island, and her paternal grandfather fleeing the arson fire in  
+                        1887 of San Jose’s Chinatown. Connie has brought these and other AAPI stories to  
+                        light in five books, numerous articles, museum exhibits, and documentaries.
+                        </p>
+
+                        <p>
+                        Her book, <em>Chinatown, San Jose, USA</em> is a resource for historians and archaeologists  
+                        on rural Chinese communities. In her work, Connie’s primary resources are oral history  
+                        interviews and family memorabilia. She conducted oral history interviews of descendants  
+                        of Chinese railroad workers for Stanford’s Chinese Railroad Workers in North America  
+                        project (2012-2018). Her oral history interviews and recovered photographs revealed a  
+                        hidden story of Hakone Gardens in Saratoga for the 2021 book, <em>Hakone Garden and Estates</em>,  
+                        by Ann Waltonsmith and Connie Young Yu.
+                        </p>
+
+                        <p>
+                        Connie was an advisor to Santa Clara County AAPI Perspectives: Activism and Oral History  
+                        Project, an online digital archive, launched June 2024. She is a trustee of the Hakone  
+                        Foundation, which oversees Hakone Estate and Gardens in Saratoga, California. She is the  
+                        board member emeritus of the Chinese Historical Society of America (CHSA) and serves on  
+                        the advisory board of CHCP, the Chinese Historical and Cultural Project.
+                        </p>
+
                         
 
                     </div>

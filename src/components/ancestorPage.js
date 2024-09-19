@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 
 const AncestorPage = (props) => {
+
+
  
 
     return (
@@ -80,7 +82,7 @@ const AncestorPage = (props) => {
                 </div>
 
             </div>
-
+          
         </React.Fragment>
 
     );

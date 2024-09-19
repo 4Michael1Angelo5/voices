@@ -1,352 +1,565 @@
-import { useState, useEffect ,useRef, createRef} from "react"; 
+import { useState, useEffect, useRef, createRef } from "react";
 import railRoadWorkers from '../assets/railRoadWorkers.jpg'
-import {useInView} from "framer-motion";
+import { useInView, animate, distance } from "framer-motion";
 import birds from '../assets/birds.png';
 import hammer from '../assets/hammer.png';
-import clouds_9 from '../assets/clouds_9.png'; 
+import clouds_9 from '../assets/clouds_9.png';
 
-const CHAPTER_IMAGES = [hammer,railRoadWorkers,hammer,railRoadWorkers,hammer,railRoadWorkers];
+import React from "react";
 
-const ChaptersPage = ()=>{
+const CHAPTER_IMAGES = [hammer, railRoadWorkers, hammer, railRoadWorkers, hammer, railRoadWorkers];
 
-    const [opacity,setOpacity] = useState(0) ;
+
+const ChaptersPage = (props) => {
+
+    const [opacity, setOpacity] = useState(0);
     const [scrollY, setScrollY] = useState(0);
     const [screenHeight, setScreenHeight] = useState(800);
-    
-    // create ref shortcut isntead of having to manually write it out for each one
-    const chapterRefernces = useRef(CHAPTER_IMAGES.map(() => createRef()));    
-    
-    // create useInView() hook to have framer motion track whether or not each 
-    // element is inside the viewport
-    // @TODO figure out how to do below like above to reduce rewrting code 
 
-    const Chap1IsInView = useInView(chapterRefernces.current[0], {once:true,amount:0.5});
-    const Chap2IsInView = useInView(chapterRefernces.current[1], {once:true,amount:0.5});
-    const Chap3IsInView = useInView(chapterRefernces.current[2], {once:true,amount:0.5});
-    const Chap4IsInView = useInView(chapterRefernces.current[3], {once:true,amount:0.5});
-    const Chap5IsInView = useInView(chapterRefernces.current[4], {once:true,amount:0.5});
-    const Chap6IsInView = useInView(chapterRefernces.current[5], {once:true,amount:0.5});
+    const [intoViewAnimationComplete, setFlag] = useState([false, false, false, false, false, false])
+
+
+    // ref for handling scrolling animations 
+    const requestId = useRef();
+
+    // create array of images for each chapter to create refs 
+    const chapters = props.chapters;
+
+    const chapter_images = []
+    const chapter_titles =[]
+
+    chapters.forEach((chapter, index) => {
+        
+        // there are 12 images so far 
+        // each chapter can have differnt amount of images
+        chapter_images.push(...chapter.content.map((item, idx) => { return item.image }))
+
+        //there are 5 chapters right now
+        chapter_titles.push(chapter.title) 
+        
+
+
+    })
+
+    const chapter_titleReferences = useRef(chapter_titles.map(() => createRef()));
+
     
+ 
+    // create ref shortcut isntead of having to manually write it out for each one
+    const chapter_Refernces = useRef(chapter_images.map(() => createRef()));
+    
+    // there are 12 images total remember that if you want to add another image you'll have to add it here: 
+    const photo1IsInView = useInView(chapter_Refernces.current[0], { once: true, amount: 0.4 });
+    const photo2IsInView = useInView(chapter_Refernces.current[1], { once: true, amount: 0.4 });
+    const photo3IsInView = useInView(chapter_Refernces.current[2], { once: true, amount: 0.4 });
+    const photo4IsInView = useInView(chapter_Refernces.current[3], { once: true, amount: 0.4 });
+    const photo5IsInView = useInView(chapter_Refernces.current[4], { once: true, amount: 0.4 });
+    const photo6IsInView = useInView(chapter_Refernces.current[5], { once: true, amount: 0.4 });
+    const photo7IsInView = useInView(chapter_Refernces.current[6], { once: true, amount: 0.4 });
+    const photo8IsInView = useInView(chapter_Refernces.current[7], { once: true, amount: 0.4 });
+    const photo9IsInView = useInView(chapter_Refernces.current[8], { once: true, amount: 0.4 });
+    const photo10IsInView = useInView(chapter_Refernces.current[9], { once: true, amount: 0.4 });
+    const photo11IsInView = useInView(chapter_Refernces.current[10], { once: true, amount: 0.4 });
+    const photo12IsInView = useInView(chapter_Refernces.current[11], { once: true, amount: 0.4 });
+
     // create array of boolean values for each element being viewable or not.
-    const chaptRefsIsInView = [Chap1IsInView,Chap2IsInView,Chap3IsInView,Chap4IsInView,Chap5IsInView,Chap6IsInView];
+    const chaptRefs_Is_Iniew =
+        [
+            photo1IsInView, photo2IsInView,
+            photo3IsInView, photo4IsInView,
+            photo5IsInView, photo6IsInView,
+            photo7IsInView, photo8IsInView,
+            photo9IsInView, photo10IsInView,
+            photo11IsInView, photo12IsInView
+        ]
+
+    
+    
+    
+
+
 
     // opacity and height of entire page below header
+    useEffect(() => {
 
-    useEffect( ()=>{
+        console.log(chapters)
 
         // set opacity of body on mount 
-        setOpacity(1);
+        // setOpacity(1);
         // set height to viewport inner height on mount
         setScreenHeight(window.innerHeight)
         // set opacity of body on unmount (clean up)
-        return ()=>setOpacity(0);
-       
-    }
-    ,[])
+        return () => setOpacity(0);
 
+    }, [])
 
-    const handleScroll =()=>{
-        
-        // set state variable to current scroll posiiton
+    useEffect(() => {
+
+        console.log(chapter_Refernces.current)
+
+    }, [chapter_Refernces])
+
+    // scroll handler
+    const handleScroll = () => {
+
+        // throttle the execution of handleScroll
+        // to the screens refreshrate (ie 60fps)        
+        requestId.current = requestAnimationFrame(handleScroll);
+
         setScrollY(window.scrollY);
 
     }
 
-    useEffect( ()=>{
+    useEffect(() => {
 
         // add event listener on mount
-        window.addEventListener("scroll",handleScroll);
+        window.addEventListener("scroll", handleScroll);
 
-        return ()=>{
+        return () => {
+            // clean up on unmount
+            cancelAnimationFrame(requestId.current);
             window.removeEventListener("scroll", handleScroll);
         }
 
-    },[])
+    }, [])
 
-    useEffect( ()=>{        
-        // call handle scroll when
-        // window scroll posiiton changes
-        handleScroll(); 
+    // call handle scroll when window scroll posiiton changes
+    useEffect(() => {
+
+        handleScroll();
+    }
+        , [scrollY])
+
+    // respoonsible for parrallax image positions
+    const getTranslation = (scrollPosition, idx) => {
+
+        //  calculate translate amount in Y direction 
+        //  relative to scroll posiiton 
+
+        return (scrollPosition) / ((12 - idx)) * (-1) ** (idx)
+
+        // odd index values will create negative translate values 
+        // even index values will create positive translate values
+        // as index increases the divisor shrinks causing elements to move 
+        // more quickly in relation to scroll posiiton. 
+
+    };
+
+    const calculateTime = (distance) => {
+
+        // speed = distance / time 
+        // time * speed = distance 
+        // distance/speed = time
+
+        const speed = 1.5;  //adjust as needed
+
+        return (distance / speed);
+
 
     }
-    ,[scrollY])
+
+    useEffect(() => {
+        // whenever an images inView animation has completed
+        // set a flag for that image that tells us the animation
+        // has completed/ 
+        // this flag helps us calculate the correct position 
+        // of the element because its position is dependent on the 
+        // state of it's animation.  
+
+        let tempBooleanArray = [false, false, false, false, false, false]
+
+        chaptRefs_Is_Iniew.forEach((elementIsInView, index) => {
+
+            if (elementIsInView) {
+
+                tempBooleanArray[index] = true;
+            }
+
+        })
+
+        setFlag(tempBooleanArray)
 
 
-   const getTranslation = (scrollPosition,idx) =>{
-    //  calculate translate amount in Y direction 
-    //  relative to scroll posiiton 
+    }, chaptRefs_Is_Iniew)
 
-    return (scrollPosition)/((10-idx))*(-1)**(idx) 
+    const handleClick = (ref, idx) => {
 
-    // odd index values will create negative translate values 
-    // even index values will create positive translate values
-    // as index increases the divisor shrinks causing elements to move 
-    // more quickly in relation to scroll posiiton. 
+        // responsible for navigating by scrolling user to correct chapter when they click
+        // on a link from the table of contents
 
-   };
-
-   const handleClick = (e, ref,idx) => {
-    e.preventDefault();
-
-    if (ref && ref.current) {
-        // make sure ref is available
-        
         const element = ref.current;
-        const scrollY = element.getBoundingClientRect().top + window.scrollY;
-        console.log(scrollY); // Log the exact scroll position
-        
-        console.log(chaptRefsIsInView[5])
 
-        if(chaptRefsIsInView[idx]){
+        let elementRect = element.getBoundingClientRect();
 
-            element.scrollIntoView({
-               
-                 behavior: 'smooth', // Enables smooth scrolling
-                 block: 'start'
-            });
-            
+        // distance of dom object relative to the top of the viewport
+        let distnaceToScroll = elementRect.top + scrollY
 
-        }else{
-            // if the element is not inview we need to adjust
+        let time = calculateTime(distnaceToScroll)
 
-            window.scrollTo({
+        // need to adjust based on whether element's inView animation has completed
 
-                // adjustment needed because of animations performed to the 
-                // element once it's in view
+        // if (intoViewAnimationComplete[idx]) {
+        //     // if its inView animation has completed
 
-                top: scrollY-300, // Scroll to the element
-                behavior: "smooth", // Add smooth scrolling effect
+        //     let time = calculateTime(distnaceToScroll)
 
-            })
-        }
+        //     smoothScrollTo(distnaceToScroll, time)
+        // } else {
+        //     // need to ajust because the element is 
+        //     // 1/2 the size and translated in the y-direction 200px
 
-   
-    }
-};
+        //     const adjustedDistance = distnaceToScroll - elementRect.height / 2 - 200
 
-   
+        //     let time = calculateTime(distnaceToScroll)
+
+        //     smoothScrollTo(adjustedDistance, time)
+        // }
+
+        // if(idx ===  4){
+        //     smoothScrollTo(distnaceToScroll,1000)
+        // }else if(idx ==3){
+        //     smoothScrollTo(distnaceToScroll,2000)
+        // }else
+
+        smoothScrollTo(distnaceToScroll,1000)
+
+    };
+
+    const smoothScrollTo = (targetPosition, duration) => {
+        const startPosition = scrollY
+        const distance = targetPosition - startPosition;
+        const startTime = performance.now();
+
+        // Optimized easing function to reduce thrashing
+        const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+        const scrollStep = (currentTime) => {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1); // Ensure progress doesn't exceed 1
+            const easeProgress = easeInOutQuad(progress); // Smooth progress using easing function
+
+            window.scrollTo(0, startPosition + (distance * easeProgress)); // Set scroll position
+
+            if (progress < 1) {
+                requestAnimationFrame(scrollStep); // Continue scrolling if not complete
+            }
+        };
+
+        requestAnimationFrame(scrollStep); // Start animation
+    };
 
 
-    return(
+
+    let chaptIndex = -1; 
 
 
-        <div className = "chapters-page"            
-            style= {{
-                opacity:opacity,
-                backgroundPosition: `center ${(scrollY*2)}px`, 
+    return (
+
+
+        <div className="chapters-page"
+            style={{
+                // opacity: opacity,
+                backgroundPosition: `center ${(scrollY * 2)}px`,
                 //background image of train tracks move twice the speeed of the user scrolling
-                minHeight: screenHeight, 
-            }}           
-            >                
-                <div className = 'container '>  
+                minHeight: screenHeight,
+            }}
+        >
 
-                    <div className ="row chapters-table-of-contents">                    <h1>Contents</h1>
-    
-                    <p><strong>Acknowledgments</strong> 9</p>
-                    <p><strong>Introduction</strong> 11</p>
-                    <p>Sue Lee</p>
+            <div className='container '>
 
+                <div className="row chapters-table-of-contents">
+                    <h1>Table of Contents</h1>
+
+                    <ul>
+                        <li onClick={()=>handleClick(chapter_titleReferences.current[0],0)}>
+                            <strong>Introduction</strong>
+                            <br />
+                            Sue Lee
+
+                        </li>
+
+                    </ul>
+                    <h2>Chapters</h2>
                     <ol>
                         {/* chapter 1 */}
                         <li>
-                            <strong>Discovering My Great-Grandfather Moy Jin Mun</strong> 17  <br/>  Montgomery Hom
+                            <strong>Discovering My Great-Grandfather Moy Jin Mun</strong>   <br />  Montgomery Hom
                         </li>
                         {/* chapter 2 */}
                         <li>
-                            <strong>Chin Lin Sou: Colorado Pioneer</strong> 27 <br/> Carolyn G. Kuhn
+                            <strong>Chin Lin Sou: Colorado Pioneer</strong>  <br /> Carolyn G. Kuhn
                         </li>
                         {/* chapter 3 */}
                         <li>
-                            <strong>Jim King, Foreman of the Central Pacific</strong> 33 <br/> Gene O. Chan, with Connie Young Yu
+                            <strong>Jim King, Foreman of the Central Pacific</strong>  <br /> Gene O. Chan, with Connie Young Yu
                         </li>
                         {/* chapter 4 */}
-                        <li>
-                            <strong>Family History of Lum Ah Chew</strong> 39 <br/> Paulette Liang
+                        <li onClick={()=>handleClick(chapter_titleReferences.current[2],2)}>
+                            <strong>Family History of Lum Ah Chew</strong>  <br /> Paulette Liang
                         </li>
                         {/* chapter 5 */}
-                        <li>
-                            <strong>Mock Chuck: A Golden Treasure</strong> 47 <br/> Vicki Tong Young
+                        <li onClick={()=>handleClick(chapter_titleReferences.current[1],1)}>
+                            <strong>Mock Chuck: A Golden Treasure</strong>  <br /> Vicki Tong Young
                         </li>
                         {/* chapter 6 */}
                         <li>
-                            <strong>The Pioneering Legacy of my Great-Grandfather, Hung Lai Woh</strong> 55 <br/> Russell N. Low
+                            <strong>The Pioneering Legacy of my Great-Grandfather, Hung Lai Woh</strong> 55 <br /> Russell N. Low
                         </li>
                         {/* chapter 7 */}
-                        <li onClick={(e)=>handleClick(e,chapterRefernces.current[3],3)}>
-                            <strong>Lim Lip Hong: An Indomitable Pioneer</strong> 63 <br/> Andrea Yee
+                        <li onClick={()=>handleClick(chapter_titleReferences.current[3],3)}>
+                            <strong>Lim Lip Hong: An Indomitable Pioneer</strong>  <br /> Andrea Yee
                         </li>
                         {/* chapter 8 */}
-                        <li onClick={(e)=>handleClick(e,chapterRefernces.current[4],4)}>
-                            <strong>Lee Ling & Lee Yik Gim: My Roots as a Railroad Worker Descendant</strong> 71 <br/> Sandra K. Lee
+                        <li>
+                            <strong>Lee Ling & Lee Yik Gim: My Roots as a Railroad Worker Descendant</strong> 71 <br /> Sandra K. Lee
                         </li>
                         {/* chapter 9 */}
-                        <li onClick={(e)=>handleClick(e,chapterRefernces.current[5],5)}>
-                             
-                            <strong>Lee Wong Sang, Laying Tracks to Follow</strong>    77  <br/> 
-                            Connie Young Yu <strong> Afterword</strong> 91              <br/>
-                            Connie Youn Yu <strong> About the Contributors </strong> 94
+                        <li>
+
+                            <strong>Lee Wong Sang, Laying Tracks to Follow</strong>      <br />
+                            Connie Young Yu <strong> Afterword</strong>               <br />
+                            Connie Young Yu <strong> About the Contributors </strong>
                         </li>
                     </ol>
-                     
-                    </div>
 
-                                   
-                    <>  
+                    <ul>
+                        <li onClick={()=>handleClick(chapter_titleReferences.current[4],4)}>
+                            <strong>Afterword</strong>
+                            <br />
+                            Connie Young Yu
 
-                    {
-                        // title images for each chapter
-                        CHAPTER_IMAGES.map((el,idx)=>{
+                        </li>
 
-                        return(
-                        <>
-                            <div className= {idx%2===0? "row d-flex  firstRow-container-for-parallax" : "row d-flex flex-row-reverse firstRow-container-for-parallax"}>
-
-                                <div className = 'col-6'>
-                                <div className= {"first-left-col-parralax-container col-12  d-flex align-items-start justify-content-start"}>
-                                         
-                                        <img 
-                                        // bird images for parallax effect to add texture/ layers 
-                                            className = "birds first_layer-parrallax-image"
-                                            src={idx%2===0?clouds_9:birds}
-                                            alt = {"parallax effect background"}
-                                            width={"40%"}
-                                            style = {{
-                                                // see getTranslation() function for description
-                                                transform: `translateY(${getTranslation(scrollY,idx)}px)`,
-                                                zIndex: 1
-                                            }} 
-                                        />
-                                       
-                                    </div>
-                                    <div className="first-right-col-parralax-container col-12  d-flex align-items-baseline justify-content-end" >
-                                    <img 
-                                        // bird images for parallax effect to add texture/ layers 
-                                            className = "birds first_layer-parrallax-image"
-                                            src={idx%2===0?birds:clouds_9}
-                                            alt = {"parallax effect background"}
-                                            width={"40%"}
-                                            style = {{
-                                                // see getTranslation() function for description
-                                                transform: `translateY(${getTranslation(scrollY,-idx)}px)`,
-                                                zIndex: 1
-                                            }} 
-                                        />
-
-                                    </div>
-
-                                </div>
-                                <div className = 'col-6'>
-                                    
-                                </div>  
-                            </div>
-                        
-                        {/* // alternate  between left right pattern on larger devices                                 */}
-                        <div className= {idx%2===1? 'section d-flex row flex-row-reverse':'section d-flex row'}  //   creates this pattern:
-                            style={{                                                                            //   o x   o = text x =images
-                                minHeight:screenHeight  // AVOID PITFALLS OF VH units on mobile                 //   x o
-                            }}                                                                                  //   0 x
-                            >
-
-                            <div className = "mt-2 col-12 col-lg-6 d-flex justify-content-center image-for-chapter" >  
-                                {/* ====================================images for chapters ====================================== */}
-                                                                               
-                                <img   
-                                // chapter's main image  
-                                ref = {chapterRefernces.current[idx]}                                    
-                                className = 'chapters-main-image'
-                                src = {el} 
-                                alt = {"chatper " + idx+ " image"}
-                                width = "100%"    
-                                style = {{
-                                    // chaptRefsIsInView is an array of boolean values for each isInView() of every chapter                                                                       
-                                    opacity:chaptRefsIsInView[idx]?1:0,
-                                    //  move up 200px and scale from half the image size to full size once half the image is with-in the viewport
-                                    transform:chaptRefsIsInView[idx]? ` translateY(0px) scale(1)`:"  translateY(200px) scale(.5)",
-                                }}                                  
-                                /> 
-                            </div>
-
-                            <div className = 'chapter-description-container mt-2 col-12 col-lg-6'>
-                                <p
-                                className = "chapters-description"
-                                style={{
-                                    
-                                    // slide is from left or right depending on whether idx is even or odd
-                                    transform:chaptRefsIsInView[idx]? "translateX(0px)": `translateX(${400*(-1)**(idx)}px)`,                                                                                                                
-                                    transition: "1s ease-in-out"
-
-                                }}
-                                >
-
-                                I'm baby adaptogen ascot waistcoat, cred tacos banh mi art party vape. 
-                                Mlkshk vinyl drinking vinegar trust fund, umami cardigan tofu locavore 
-                                green juice hexagon humblebrag +1 letterpress mumblecore tilde. Mixtape 
-                                jawn selvage bespoke succulents banjo, semiotics tonx chicharrones 
-                                vegan deep v godard. Taxidermy skateboard marfa chartreuse. Portland 
-                                lomo stumptown yes plz vaporware woke lyft cred tacos flexitarian 
-                                street art cray blue bottle shoreditch photo booth. Coloring book wolf
-                                kinfolk, austin pabst literally taxidermy church-key copper mug 
-                                asymmetrical.
-                            
-                                </p>
-
-
-                            </div>
-
-                        </div>
-
-                        {/*=============================  additonal parallax affect images=========================================== */}
-                        <div className = 'parallax-row-container row d-flex'
-                            style ={{
-                                position:"relative",
-                                // width:"100vw",
-                                // height:"200px",
-                                
-                            }}
-                            >
-                            <div className = "second-left-col-parralax-container col-6  d-flex justify-content-start align-items-baseline ">
-                                <img    
-                                    className="secondary-parallax-image"
-                                    src = {idx%2===0?clouds_9:birds} //alternate between pictures of clouds and birds
-                                    alt = {"parallax effect background"}
-                                    width="20%"
-                                    style ={{
-                                        objectFit: "cover",
-                                        position:"relative",
-                                        transform: `translateY(${getTranslation(scrollY,idx)}px)`,
-                                    }}                                      
-                                />
-                                
-                            </div>
-                            <div className="second-right-col-parralax-container col-6 d-flex justify-content-end align-items-start">
-                                <img    
-                                    className="secondary-parallax-image"
-                                    src = {idx%2===0?birds:clouds_9} //alternate between pictures of clouds and birds
-                                    alt = {"parallax effect background"}
-                                    width="20%"
-                                    style ={{
-                                        objectFit: "cover",
-                                        position:"relative",
-                                        transform: `translateY(${getTranslation(scrollY,idx+1)}px)`,
-                                    }}
-                                />
-
-                            </div>
-
-                        </div>
-                        <div className = "buffer"/>
-                        {/* =========================================================================================================== */}
-
-                        </>
-                                
-                        );                        
-                        })                      
-                     
-                    }
-
-                    </>
+                    </ul>
 
                 </div>
+
+                <>
+                    {
+                        chapters.map((chapter, i) => {
+
+                            return (
+                                <div key={i}>
+                                    <h1 ref={chapter_titleReferences.current[i]}
+                                        style={{
+                                        color:"blanchedAlmond", 
+                                        fontSize:"3em",
+                                        position:"relative",
+                                        zIndex:"100"
+                                    }}>
+                                        {chapter.title}
+                                    </h1>
+                                    <h3 style ={{
+                                        color:"blanchedalmond",
+                                        position:"relative",
+                                        zIndex:"100"
+                                    }}>
+                                        {chapter.author}
+                                    </h3>
+                                    {
+                                        chapter.content.map((content, j) => {
+                                            chaptIndex++
+
+                                            return (
+
+                                                <React.Fragment key={chaptIndex}>
+                                                    <div
+                                                        className={chaptIndex % 2 === 0 ? "row d-flex  firstRow-container-for-parallax" : "row d-flex flex-row-reverse firstRow-container-for-parallax"}>
+
+                                                        <div className='col-6'>
+                                                            <div className={"first-left-col-parralax-container col-12  d-flex align-items-start justify-content-start"}>
+
+                                                                <img
+                                                                    // bird images for parallax effect to add texture/ layers 
+                                                                    className="birds first_layer-parrallax-image"
+                                                                    src={j % 2 === 0 ? clouds_9 : birds}
+                                                                    alt={"parallax effect background"}
+                                                                    width={"40%"}
+                                                                    style={{
+                                                                        // see getTranslation() function for description
+                                                                        transform: `translateY(${getTranslation(scrollY, chaptIndex)}px)`,
+                                                                        zIndex: 1
+                                                                    }}
+                                                                />
+
+                                                            </div>
+                                                            <div className="first-right-col-parralax-container col-12  d-flex align-items-baseline justify-content-end" >
+                                                                <img
+                                                                    // bird images for parallax effect to add texture/ layers 
+                                                                    className="birds first_layer-parrallax-image"
+                                                                    src={chaptIndex % 2 === 0 ? birds : clouds_9}
+                                                                    alt={"parallax effect background"}
+                                                                    width={"40%"}
+                                                                    style={{
+                                                                        // see getTranslation() function for description
+                                                                        transform: `translateY(${getTranslation(scrollY, -chaptIndex)}px)`,
+                                                                        zIndex: 1
+                                                                    }}
+                                                                />
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div className='col-6'>
+
+                                                        </div>
+                                                    </div>
+
+                                                    {/* // alternate  between left right pattern on larger devices                                 */}
+                                                    <div
+                                                        className={chaptIndex % 2 === 1 ? 'section d-flex row flex-row-reverse' : 'section d-flex row'}  //   creates this pattern:
+                                                        // style={{                                                                            //   o x   o = text x =images
+                                                        //     minHeight: screenHeight,  // AVOID PITFALLS OF VH units on mobile                 //   x o
+                                                         
+                                                        // }}                                                                                  //   0 x
+                                                    >
+
+                                                        <div className="mt-2 col-12 col-lg-6 d-flex image-for-chapter"
+                                                            style={{flexDirection:"column"}} >
+                                                            {/* ====================================images for chapters ====================================== */}
+
+                                                            <img
+                                                                // chapter's main image  
+                                                                ref={chapter_Refernces.current[chaptIndex]}
+                                                                className='chapters-main-image'
+                                                                src={content.image}
+                                                                alt={"chatper " + chaptIndex + " image"}
+                                                                width="100%"
+                                                                style={{
+                                                                    // chaptRefsIsInView is an array of boolean values for each isInView() of every chapter                                                                       
+                                                                    opacity: chaptRefs_Is_Iniew[chaptIndex] ? 1 : 0,
+                                                                    //  move up 200px and scale from half the image size to full size once half the image is with-in the viewport
+                                                                    transform: chaptRefs_Is_Iniew[chaptIndex] ? ` translateY(0px) scale(1)` : "  translateY(200px) scale(.5)",
+                                                                }}
+                                                            />
+                                                            <div className ="row">
+                                                                <div className = "col-lf-6 col-12 d-flex justify-content-lg-start">
+                                                            {
+                                                                content.photoTitle
+                                                                ? 
+                                                                <div 
+                                                                    style={{
+                                                                        color:"blanchedalmond"
+                                                                    }}
+                                                                    className = "history-page-photo-title">
+                                                                        {content.photoTitle}
+                                                                </div>
+                                                                :
+                                                                null
+                                                            }
+                                                            </div>
+                                                            <div className ="col-lg-6 col-12 d-flex justify-content-lg-end">
+                                                            {
+                                                                content.photoCredit
+                                                                ? 
+                                                                <div 
+                                                                    style={{
+                                                                        color:"blanchedalmond"
+                                                                    }}
+                                                                    className = "history-page-photo-title">
+                                                                        Photo Credit: { content.photoCredit}
+                                                                </div>
+                                                                :
+                                                                null
+                                                            }
+                                                            </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='chapter-description-container mt-2 col-12 col-lg-6'
+                                                            style={{
+
+                                                                // slide is from left or right depending on whether idx is even or odd
+                                                                transform: chaptRefs_Is_Iniew[chaptIndex] ? "translateX(0px)" : `translateX(${400 * (-1) ** (chaptIndex)}px)`,
+                                                                transition: "1s ease-in-out"
+
+                                                            }}>
+
+                                                            {content.description.map((paragraph, k) => {
+
+                                                                return (
+                                                                    <p
+                                                                        key={k}
+                                                                        className="chapters-description"
+                                                                        >
+
+                                                                        {paragraph}
+
+
+
+                                                                    </p>
+                                                                )
+                                                            })
+
+                                                            }
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    {/*=============================  additonal parallax affect images=========================================== */}
+                                                    <div
+                                                        className='parallax-row-container row d-flex'
+                                                        style={{
+                                                            position: "relative",
+                                                        }}
+                                                    >
+                                                        <div className="second-left-col-parralax-container col-6  d-flex justify-content-start align-items-baseline ">
+                                                            <img
+                                                                className="secondary-parallax-image"
+                                                                src={j % 2 === 0 ? clouds_9 : birds} //alternate between pictures of clouds and birds
+                                                                alt={"parallax effect background"}
+                                                                width="20%"
+                                                                style={{
+                                                                    objectFit: "cover",
+                                                                    position: "relative",
+                                                                    transform: `translateY(${getTranslation(scrollY, j)}px)`,
+                                                                }}
+                                                            />
+
+                                                        </div>
+                                                        <div className="second-right-col-parralax-container col-6 d-flex justify-content-end align-items-start">
+                                                            <img
+                                                                className="secondary-parallax-image"
+                                                                src={j % 2 === 0 ? birds : clouds_9} //alternate between pictures of clouds and birds
+                                                                alt={"parallax effect background"}
+                                                                width="20%"
+                                                                style={{
+                                                                    objectFit: "cover",
+                                                                    position: "relative",
+                                                                    transform: `translateY(${getTranslation(scrollY, j + 1)}px)`,
+                                                                }}
+                                                            />
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    
+                                                    {/* =========================================================================================================== */}
+
+                                                </React.Fragment>
+
+
+                                            )
+                                        
+                                        })
+                                    }
+                                    <div className="buffer"/>
+                                </div>
+                            )
+
+                        })
+                    }
+                </>
+
+
+
+            </div>
+
+
 
         </div>
 

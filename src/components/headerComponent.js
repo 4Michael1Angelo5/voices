@@ -13,12 +13,12 @@ const Header = ()=>{
     // basename prop of <BrowserRouter> to get spa working on gh-pages
     // ex: location.pathname will change to /author instead of /voices/author
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-       console.log(location.pathname)
-       console.log(location.pathname.substring(0,9))
+    //    console.log(location.pathname)
+    //    console.log(location.pathname.substring(0,9))
 
-    },[location.pathname])
+    // },[location.pathname])
    
    
 

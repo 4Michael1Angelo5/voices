@@ -4,6 +4,8 @@ $icon-base-color: rgb(208, 207, 189) ;
 $icon-hover-color: white ; 
 $text-contrast-for-blanchedAlmond: #4d4944;
 
+$darkBlue-theme: #263144;
+
 $nightBlue: rgba(0,30,87,1);
 $duskPurple:rgba(0,30,87,1);
 $dawnBlue: rgba(1,84,164,1) ;
@@ -19,9 +21,14 @@ $dawnBlue: rgba(1,84,164,1) ;
   src: url('./assets/fonts/Newsreader/Newsreader-VariableFont_opsz\,wght.ttf')
 }
 
+html{
+  scroll-behavior:auto !important;
+}
+
 .App{
-  overflow: hidden;
-  background-color: #263144;
+  overflow-x: hidden;
+  overflow-y: auto; 
+  background-color: $darkBlue-theme;
   font-family: newsReader;
 }
 // -------------------- Header Design--------------------------
@@ -247,9 +254,12 @@ a.icon-set:hov{
 //---------------------------------- family tree index page
 
 .family-tree-index-page{
-  // background-color: blanchedalmond;
-  background-color: #263144 ; ;
+  z-index: 100;
+  position: relative;
+  transform: translateY(-1px);
+  background-color: $darkBlue-theme ; ;
   color:blanchedalmond; 
+   
 }
 
 .ancestor-card{
@@ -264,7 +274,7 @@ a.icon-set:hov{
 
 .ancestor-card:hover{
   border: 1px solid whitesmoke;
-  background-color: #263144 ;
+  background-color: $darkBlue-theme ;
 }
 
 .person-container{
@@ -540,16 +550,12 @@ a.icon-set:hov{
 .chapters-page{
 
   min-height: 100vh;
-  background:#1d1e24;
-  // color: blanchedalmond;
-  // color: #cac5bc;
-  font-family: newsReader;
-  opacity:0 ; 
-  transition: opacity 2s ease-out;
+  background:#1d1e24;   
   background-image: url('./assets/railRoadTracks2.png');    
   background-repeat: repeat-y;
   overflow: hidden;
   position: relative;
+  transform: translateY(-1px);
   
 }
 
@@ -568,14 +574,35 @@ a.icon-set:hov{
   // box-shadow: #181827 0px 6px 6px 1px;
 }
 
-.chapters-description{ 
+.chapter-description-container{
+  position: relative;
+  z-index: 100;
+  // display:flex;
+  // justify-content: center;
+  // align-items: center;
+  // testing below
   color: #221f1d;
-  border-radius: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    z-index: 100;
+    box-shadow: #181827 0px 6px 6px 1px;
+    background-color: blanchedalmond;
+    font-weight: 400;
+    font-size: 1.3rem;
+    height: fit-content;
+    
+  box-shadow: #181827 0px 6px 6px 1px;
+}
+
+.chapters-description{ 
+  // color: #221f1d;
+  // border-radius: 10px;
   padding: 10px;
   position: relative;
   z-index: 100;
-  box-shadow: #181827 0px 6px 6px 1px;
-  background: #8e8880;
+  // background: #8e8880;
+  background-color: blanchedalmond;
   font-weight: 400;
   font-size:1.3rem;
 
@@ -604,13 +631,7 @@ height: 250px;
   position: relative;
 }
 
-.chapter-description-container{
-  position: relative;
-  z-index: 100;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .firstRow-container-for-parallax{
   position:absolute;
@@ -645,7 +666,7 @@ height: 250px;
 
 li:hover{
   border: 1px solid whitesmoke;
-  background-color: #263144;
+  background-color: $darkBlue-theme;
 
 }
 
@@ -688,6 +709,14 @@ li:hover{
 //     font-size: 90px;  
 // }
 
+.history-description-container{
+
+  position: relative;
+  z-index: 100;
+  display:flex;
+  justify-content: center;
+  align-items: center; 
+}
 
 
 .custom-shape-divider-bottom-1726354547 {

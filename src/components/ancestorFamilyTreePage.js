@@ -162,7 +162,9 @@ const AncestorFamilyTree = (props)=>{
 
     return(
 
-        <div className = 'container ancestor-page'>
+        <div className = " ancestor-page">
+
+        <div className = 'container'>
             {/* ----------------- Title of Page  ----------------------*/}
 
             <h1>{props.ancestor.name} Family Tree </h1>
@@ -249,6 +251,7 @@ const AncestorFamilyTree = (props)=>{
                 <div ref = {centerLine} className = "center-line"/>
             </div>    
             
+        </div>
         </div>
 
     );

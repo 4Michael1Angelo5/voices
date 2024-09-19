@@ -1,16 +1,13 @@
 import Book from "./bookComponent";
 import LinkBtnComponent from "./linkBtnComponent";
-import { Link} from 'react-router-dom'; 
+import { Link} from 'react-router-dom';  
 // import LoadingComponent from "./loadingComponent";
 // import { useState, useLayoutEffect } from "react";
 // import SplashPage from "./splashPage";
 
 const LandingPage = () => {
-    // landing page component
 
-    // const [loading,setLoading] = useState(true);
  
-
     return (
         <div className="landing-page">
             <div className="first-section">
@@ -38,19 +35,7 @@ const LandingPage = () => {
                             </p>
                             <LinkBtnComponent text = {'Learn More'} pathName = '/author'/>
                         </div> */}
-                        {/* <div className='col-3 col-lg-6 d-flex justify-content-center align-items-center flex-column '>
-                            
-                                    <label className ="btn-label text-center">Family Tree </label>
-
-                                    <Link to = '/ancestors'className='icon-set family-tree'></Link>
-                             
-                                    <label className ="btn-label text-center">The Authors </label>                                
-                                    <Link  to = '/author'className='icon-set author'></Link>
-                               
-                                    <label className ="btn-label text-center"> Chapters </label>
-                                    <Link  to = '/chapters' className='icon-set chapters-link'></Link>
-                             
-                        </div> */}
+                      
 
                         <div className = "d-flex col-12 col-lg-6 mt-4">
 
@@ -114,6 +99,8 @@ const LandingPage = () => {
                                     Their accounts are the foundation of a new chapter in the American 
                                     historical narrative — the Chinese in America.
                                 </p>
+
+                            
                            
                         </div>
                     </div>
