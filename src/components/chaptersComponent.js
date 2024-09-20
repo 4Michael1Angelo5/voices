@@ -11,14 +11,12 @@ const ChaptersPage = (props) => {
     const [opacity, setOpacity] = useState(0);
     const [scrollY, setScrollY] = useState(0);
     const [screenHeight, setScreenHeight] = useState(800); 
-   
-
-    const lastExecutionRef = useRef(Date.now);
-    const throttleDelay = 100; // Time in milliseconds for throttling
-
 
     // ref for handling scrolling animations 
     const requestId = useRef();
+
+    // ref for handling scrolling animation 
+    const lastCall = useRef(0); 
 
     // create array of images for each chapter to create refs 
     const chapters = props.chapters;
@@ -66,9 +64,14 @@ const ChaptersPage = (props) => {
     const photo11IsInView = useInView(chapter_Refernces.current[10], { once: true, amount: 0.4 });
     const photo12IsInView = useInView(chapter_Refernces.current[11], { once: true, amount: 0.4 });
     const photo13IsInView = useInView(chapter_Refernces.current[12], { once: true, amount: 0.4 });
-    // photos for connie  
+     
     const photo14IsInView = useInView(chapter_Refernces.current[13], { once: true, amount: 0.4 });
+    
+    // photos for connie 
+
     const photo15IsInView = useInView(chapter_Refernces.current[14], { once: true, amount: 0.4 });
+    const photo16IsInView = useInView(chapter_Refernces.current[15], { once: true, amount: 0.4 });
+    const photo17IsInView = useInView(chapter_Refernces.current[16], { once: true, amount: 0.4 });
 
     // create array of boolean values for each element being viewable or not.
     const chaptRefs_Is_Iniew =
@@ -80,72 +83,52 @@ const ChaptersPage = (props) => {
             photo9IsInView, photo10IsInView,
             photo11IsInView, photo12IsInView,
             photo13IsInView, photo14IsInView,
-            photo15IsInView
+            photo15IsInView, photo16IsInView,
+            photo17IsInView
         ]
 
+    // ============== scroll handler =======================
 
-    // opacity and height of entire page below header
-    useEffect(() => {
+    const throttleRAF = (func, delay) => {
+        return (...args) => {
+          const now = new Date().getTime();
+          if (now - lastCall.current < delay) return;
+    
+          requestAnimationFrame(() => {
+            func(...args);
+            lastCall.current = now; // Update the ref's value
+          });
+        };
+      };
 
-        console.log(chapters)
-
-        console.log(chapter_images.length)
-        // set opacity of body on mount 
-        // setOpacity(1);
-        // set height to viewport inner height on mount
-        setScreenHeight(window.innerHeight)
-        // set opacity of body on unmount (clean up)
-        return () => setOpacity(0);
-
-    }, [])
-
-
-    // scroll handler
-    const handleScroll = () => {
-
-        // throttle the execution of handleScroll
-        // to the screens refreshrate (ie 60fps)        
-        requestId.current = requestAnimationFrame(handleScroll);
-
+      const handleScroll = throttleRAF(() => {
         setScrollY(window.scrollY);
-
-    }
-
- 
- 
+      }, 100);
  
     useEffect(() => {
 
         // add event listener on mount
         window.addEventListener("scroll", handleScroll);
-         
+        // window.addEventListener("scroll",debouncedHandleScroll)         
 
         return () => {
             // clean up on unmount
-            cancelAnimationFrame(requestId.current);
+            cancelAnimationFrame(lastCall.current);
+            // window.removeEventListener("scroll", debouncedHandleScroll);
             window.removeEventListener("scroll", handleScroll);
         }
 
-    }, [])
+    }, [handleScroll])
 
-    // call handle scroll when window scroll posiiton changes
-    useEffect(() => {
 
-        handleScroll();
-    }
-        , [scrollY])
-
-    // respoonsible for parrallax image positions
+    // responsible for parrallax image positions
     const getTranslation = (scrollPosition, idx) => {
 
         //  calculate translate amount in Y direction 
         //  relative to scroll posiiton 
 
         
-        
-        
-        return (scrollPosition) / ((4 - Math.cos(idx))) * (-1) ** (idx)
-        
+        return (scrollPosition) / ((4 - Math.cos(idx))) * (-1) ** (idx)        
 
         // odd index values will create negative translate values 
         // even index values will create positive translate values
@@ -153,6 +136,8 @@ const ChaptersPage = (props) => {
         // more quickly in relation to scroll posiiton. 
 
     };
+
+    // ============== scroll navigation buttons =============================
 
     const calculateTime = (distance) => {
 
@@ -163,8 +148,6 @@ const ChaptersPage = (props) => {
         const speed = 5.5;  //adjust as needed
 
         return (distance / speed);
-
-
     }
 
     const handleClick = (ref, idx) => {
@@ -181,18 +164,6 @@ const ChaptersPage = (props) => {
 
         let time = calculateTime(distnaceToScroll)
 
-
-        // if(idx ===  4){
-        //     // connie yu (longest distance)
-        //     smoothScrollTo(distnaceToScroll,7000)
-        // }else if(idx === 3){
-        //     // lim lip hong (second longest distance)
-        //     smoothScrollTo(distnaceToScroll,590)
-        // }else if( idx === 2){
-        //     // mock chuck 
-        //     smoothScrollTo(distnaceToScroll,600)
-        // }else
-
         smoothScrollTo(distnaceToScroll,time)
 
     };
@@ -204,15 +175,6 @@ const ChaptersPage = (props) => {
 
         // Optimized easing function to reduce thrashing
         const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-
-        
-        // this is really easeOutQuad 
-        // but got lazy
-        // const easeInOutQuad = (distance)=> {
-
-        //     return 1 - Math.pow(1 - distance, 2); 
-          
-        //   }
 
         const scrollStep = (currentTime) => {
             const elapsedTime = currentTime - startTime;
@@ -231,13 +193,17 @@ const ChaptersPage = (props) => {
 
     const handleBackToTop =()=>{
         const distnaceToScroll = scrollY
-
         const time  = calculateTime(distnaceToScroll)
         smoothScrollTo(0,time)
+
     }
+    // =======================================================================
 
 
-    let chaptIndex = -1; 
+
+    let chaptIndex = -1; // initialize chapter index to be used to count how many  
+                         // sections there are in each chapter and give keys and 
+                         // and index refs for images
 
 
     return (
@@ -273,15 +239,15 @@ const ChaptersPage = (props) => {
                     <h2>Chapters</h2>
                     <ol>
                         {/* chapter 1 */}
-                        <li>
+                        <li className="inactive"  >
                             <strong>Discovering My Great-Grandfather Moy Jin Mun</strong>   <br />  Montgomery Hom
-                        </li>
+                        </li >
                         {/* chapter 2 */}
-                        <li>
+                        <li  className="inactive">
                             <strong>Chin Lin Sou: Colorado Pioneer</strong>  <br /> Carolyn G. Kuhn
                         </li>
                         {/* chapter 3 */}
-                        <li>
+                        <li className="inactive" >
                             <strong>Jim King, Foreman of the Central Pacific</strong>  <br /> Gene O. Chan, with Connie Young Yu
                         </li>
                         {/* chapter 4 */}
@@ -293,7 +259,7 @@ const ChaptersPage = (props) => {
                             <strong>Mock Chuck: A Golden Treasure</strong>  <br /> Vicki Tong Young
                         </li>
                         {/* chapter 6 */}
-                        <li>
+                        <li className="inactive" >
                             <strong>The Pioneering Legacy of my Great-Grandfather, Hung Lai Woh</strong> 55 <br /> Russell N. Low
                         </li>
                         {/* chapter 7 */}
@@ -301,11 +267,11 @@ const ChaptersPage = (props) => {
                             <strong>Lim Lip Hong: An Indomitable Pioneer</strong>  <br /> Andrea Yee
                         </li>
                         {/* chapter 8 */}
-                        <li>
+                        <li  className="inactive" >
                             <strong>Lee Ling & Lee Yik Gim: My Roots as a Railroad Worker Descendant</strong> 71 <br /> Sandra K. Lee
                         </li>
                         {/* chapter 9 */}
-                        <li>
+                        <li className="inactive">
 
                             <strong>Lee Wong Sang, Laying Tracks to Follow</strong>      <br />
                             Connie Young Yu <strong> Afterword</strong>               <br />
@@ -398,12 +364,13 @@ const ChaptersPage = (props) => {
 
                                                     {/* // alternate  between left right pattern on larger devices                                 */}
                                                     <div
-                                                        className={chaptIndex % 2 === 1 ? 'section d-flex row flex-row-reverse' : 'section d-flex row'}  //   creates this pattern:
-                                                        // style={{                                                                            //   o x   o = text x =images
-                                                        //     minHeight: screenHeight,  // AVOID PITFALLS OF VH units on mobile                 //   x o
-                                                         
-                                                        // }}                                                                                  //   0 x
-                                                    >
+                                                        className={chaptIndex % 2 === 1 ? 'section d-flex row flex-row-reverse' : 'section d-flex row'}  
+                                                        //   creates this pattern:
+
+                                                        //   o x   o = text x =images                                                                      
+                                                        //   x o                                                                                                                                         
+                                                        //   0 x
+                                                        >
 
                                                         <div className="mt-2 col-12 col-lg-6 d-flex image-for-chapter"
                                                             style={{flexDirection:"column"}} >

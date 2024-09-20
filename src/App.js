@@ -3,8 +3,8 @@ import './styles/book.css' ;
 import './styles/landingPage.scss';
 import './styles/hamburger.scss';
 import './App.scss';
-import './styles/headerStyles.scss' ; 
 import './styles/arrow.scss';
+// import "./styles/loadingComponent.scss"
 
 import { useEffect, useState} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -33,23 +33,6 @@ import AuthorPage from './components/authorPage';
 import ChaptersPage from './components/chaptersComponent';
 import HistoryPage from './components/historyPage';
 import Footer from './components/footerComponent';
-// import SplashPage from './components/splashPage';
-
-// expiremental feature to try and prevent user from seeing images loading 
-
-// images for book 
-// import page1 from "./assets/book_scans/optimized/page1.webp";
-// import page2 from "./assets/book_scans/optimized/page2.webp";
-// import page3 from "./assets/book_scans/optimized/page3.webp";
-// import page4 from "./assets/book_scans/optimized/page4.webp";
-// import page5 from "./assets/book_scans/optimized/page5.webp";
-// import page6 from "./assets/book_scans/optimized/page6.webp";
-// import page7 from "./assets/book_scans/optimized/page7.webp";
-// import page8 from "./assets/book_scans/optimized/page8.webp";
-// import page9 from "./assets/book_scans/optimized/page9.webp";
-// import page10 from "./assets/book_scans/optimized/page10.webp";
-
-// const pages = [page1,page2,page3,page4,page5,page6,page7,page8,page9,page10];
 
 
 function App() {
@@ -61,43 +44,9 @@ function App() {
   
   const BASENAME ="/voices"
 
-  // expiremental feature to try and prevent user from seeing images loading 
-
-  // const [loading,setLoading] = useState(true);
-  // const [messageComplete, setMessageComplete] = useState(false);
-
-
-  // const loadImage = (src) => {
-  //   return new Promise((resolve, reject) => {
-  //     const img = new Image();
-  //     img.src = src;
-  //     img.onload = () => resolve(src);
-  //     img.onerror = () => reject(new Error(`Failed to load image at ${src}`));
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   const loadImages = async () => {
-  //     try {
-  //       await Promise.all(pages.map(loadImage));
-  //       console.log("loading images")
-  //        setTimeout(()=>{setLoading(false)},15000) 
-  //     } catch (error) {
-  //       console.error("Error loading images:", error);
-  //       setLoading(false); // Set to false even if some images fail to load
-  //     }
-  //   };
-
-  //   loadImages();
-  // }, []);
 
   return (
     <div className="App">
-      {
-        // !messageComplete
-        // ? 
-        // <SplashPage setMessageComplete = {setMessageComplete}/>
-        // :
       <BrowserRouter basename={BASENAME}>
         <BurgerMenu />
         <Header/>
@@ -118,7 +67,7 @@ function App() {
                   key={index}
                   path={"/ancestors/" + ancestor.name.replace(/\s/g, '')}
                   // =======================> pass ancestor as prop to ancestor page
-                  // this page shows a graph of a specif ancestor and their descendents
+                  // this page shows a graph of a specifc ancestor and their descendents
                   element={<AncestorFamilyTree ancestor={ancestor}  />
                   }
                 />
@@ -138,7 +87,7 @@ function App() {
         </Routes> 
         <Footer/>
       </BrowserRouter>
-      }
+      
       
 
     </div>

@@ -73,7 +73,7 @@ html{
   background-color: rgb(87, 0, 67);
   // background-color: (134 6 43);
   // background-image: linear-gradient(90deg, rgb(9 5 5) 0%, rgb(151, 1, 59) 50%, rgb(125 56 119) 100%);
-  background-image:linear-gradient(90deg, rgb(9 5 5 / 58%) 0%, rgb(151, 1, 59) 68%, rgb(41 24 99 / 30%) 100%) ;
+  background-image:linear-gradient(90deg, rgba(9, 5, 5, 0.58) 0%, rgb(151, 1, 59) 68%, rgb(41 24 99 / 30%) 100%) ;
   // background-image: linear-gradient(90deg, rgb(52 28 28 / 58%) 0%, rgb(151 1 59 / 94%) 68%, rgb(119 101 179 / 25%) 100%);
   transition: all 2s ease-in-out;
 
@@ -83,30 +83,14 @@ html{
   position: absolute ;
   top:0;
   transition: all 2s ease-in-out;
-  background-color: #ffbd77;
+  // background-color: #ffbd77;
   // pastel colors
-  background-image: linear-gradient(270deg, #ffbd77 0%, #f0f4a4 37%, #acfcd9 100%);
+  // background-image: linear-gradient(270deg, #ffbd77 0%, #f0f4a4 37%, #acfcd9 100%);
   // fall
-  background-image: linear-gradient(90deg, #351402 -12%, #d85023 100%);
-  color:black 
+  // background-image: linear-gradient(90deg, #351402 -12%, #d85023 100%);
+  //  purple
+  background-image: linear-gradient(0deg, #a4508b 0%, #5f0a87 74%)
 }
-
-// .history-header h1{
-
-//   padding-left: 5px;
-//   color: black !important;
-
-// }
-
-// .history-header p{
-//   color:black !important;
-// }
-
-
-
-
-
-
 
  // note the headers needs to be positions absolute except the first one
 
@@ -118,7 +102,7 @@ html{
   margin-left:0px ; 
   color: antiquewhite;
   font-style: italic;
-  font-weight: lighter;
+  font-weight: 500;
 }
 
 .active-header{
@@ -146,19 +130,28 @@ html{
   box-shadow: 4px 6px 10px;
   z-index:15;
   color: $text-contrast-for-blanchedAlmond;
-   
+  transition: transform .3s ease-in-out;
+  position: relative;
+  perspective: 10px;
+  transform-style: preserve-3d;
+  transition: background-color 1s ease-in-out;
  
 }
 
-a.icon-set:hov{
-
-  background: red !important ; 
+ .icon-set:hover{
+  background-color: #a69f95;
+  border-color: #d8d5c631;
   
+}
+
+.icon-set:active{
+  background-color: $deep-jade;
+  box-shadow: 2px 3px 5px;
+  transform: translateZ(-10px) scale(.95);
 }
 
 .family-tree{
   background-image: url('./assets/icons/familyTree.png');
- 
 
 }
 
@@ -173,6 +166,9 @@ a.icon-set:hov{
   background-size: 50%;
 
 }
+
+// this is really the section that says
+// about the book on the landing page
 
 .context-section{
   transform: translate(168px, -653px);
@@ -203,7 +199,7 @@ a.icon-set:hov{
   width: calc(125% + 1.3px);
 }
 
-// -- shape-divider for tree index page
+// -- shape-divider for tree index page (ancestors page)
 
 
   .custom-shape-divider-top-1713657617.tree-divider{
@@ -257,7 +253,8 @@ a.icon-set:hov{
     // purple theme
     // background-image: linear-gradient(-90deg, #6617cb 0%, #cb218e 74%);;
     // fall theme
-    background-image: linear-gradient(-90deg, #351402 -12%, #d85023 100%);
+    // background-image: linear-gradient(-90deg, #351402 -12%, #d85023 100%);
+    background-image: linear-gradient(0deg, #a4508b  32%, #511ed3)
 
   }
   
@@ -673,6 +670,11 @@ height: 250px;
   border-radius: 10px;
   margin:10px 10px;
   transition: all 0.5s ease-in;
+}
+.inactive{
+  color:black;
+  // text-decoration: line-through;
+  background-color: #22232b96 !important;
 }
 
 li:hover{

@@ -4,6 +4,8 @@ $border-dark: rgba($base-color, 0.88);
 
 $text-contrast-for-blanchedAlmond: #4d4944;
 
+$deep-jade: #199668; 
+
 @font-face {
   font-family: Jost;
   // src: url('./assets/fonts/roboto/Roboto-Bold.ttf');
@@ -23,8 +25,6 @@ $text-contrast-for-blanchedAlmond: #4d4944;
   transition: all 0.5s ease-in-out;
 }
 
-
-
 .burger-menu{
   position: absolute;
   top: 5px;
@@ -34,12 +34,12 @@ $text-contrast-for-blanchedAlmond: #4d4944;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  // background-color: black;
   border-radius: 3px;
   z-index: 1000;
+  cursor: pointer;
 }
 
-.burger-menu:hover{
+.burger-menu a:hover{
   cursor: pointer;
 }
 
@@ -68,8 +68,8 @@ $text-contrast-for-blanchedAlmond: #4d4944;
 
 
 .menu{ 
-  opacity: 0.5;
-  transform: translateY(-100%);
+  opacity: .5;
+  transform: translateY(calc(-100% + -250px));
   position: absolute;
   text-align: center;
   width:100% ; 
@@ -86,7 +86,20 @@ $text-contrast-for-blanchedAlmond: #4d4944;
 .menu a{
   font-size:calc( 2 * calc(1.375rem + 1.5vw) ) ;
   font-family: Jost;
+  transition: all .5s ease-in-out;
   color: $text-contrast-for-blanchedAlmond; 
+}
+
+.menu a:hover{
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: #a69f95;   
+}
+
+.menu a:active{
+  background-color: $deep-jade;
+  border: 1px solid;
+  border-radius: 10px;
 }
 
 

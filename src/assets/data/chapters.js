@@ -25,6 +25,9 @@ import Lim_Sing_Family from "../chapters/Lim_Sing_Family.png"
 // Mock Chuck Section
 import Mock_Chuck_watch from "../chapters/Mock_Chuck_watch.png"
 import Mock_Chuck_portrait from "../chapters/Mock_Chuck_portrait.png"
+import mock_chuck_1 from "../chapters/mock_chuck_1.png";
+import mock_chuck_2 from "../chapters/mock_chuck_2.png";
+
 
 const CHAPTERS =
     [
@@ -123,6 +126,11 @@ const CHAPTERS =
                         official who gave it to him so many decades ago. All my life I have asked a question: “Why \
                         do we own this golden treasure?”'
                         ,
+                        'Mock Chuck was my paternal great-grandfather. Born in 1847, he resolutely sailed to \
+                        America in 1864, at only 17 years old. Mock Chuck was one of the few fortunate ones who had \
+                        been educated in China, could read and write, was quick with numbers, and had training as an \
+                        herbalist. '
+                        
                         
 
                     ]
@@ -135,18 +143,73 @@ const CHAPTERS =
                     description:
                     [
                                                 
-                        'Mock Chuck was my paternal great-grandfather. Born in 1847, he resolutely sailed to \
-                        America in 1864, at only 17 years old. Mock Chuck was one of the few fortunate ones who had \
-                        been educated in China, could read and write, was quick with numbers, and had training as an \
-                        herbalist. '
-                        ,
+                
                         'At the time,  the Central Pacific Railroad began recruiting Chinese workers to build the \
                         Central Pacific. My great-grandfather had an uncle who was hired as a cook for the railroad. \
                         With his help, Mock Chuck was quickly hired as a Chinese headman, who would be linked with \
                         and work under an Irish foreman and be assigned to a numbered camp. '
+                        ,
+                        'The Chinese headmen were responsible for 20 to 30 Chinese workers in their crews, were accountable to receive all their wages, \
+                        buy all the food, tools and provisions for the crew, and distribute the pay. Mock Chuck quickly realized that his talents for math, \
+                        language and Chinese medicine were great assets.'
+                        
+                    
 
                     ]
+                },
+                // photo 5
+                {
+                    image:mock_chuck_1,
+                    photoCredit:"Vicki Tong Collection",
+                    photoTitle:'The Chinese basketball team of Los Angeles called “LOWA,” 1936. George H. Tong at 6ft 2" is the tallest.',
+                    description:
+                    [
+                
+                        'As an herb doctor, he eased the pain and suffering of the bone-weary laborers who toiled from sunrise to sunset, twelve hours a day, \
+                        six days a week. Mock Chuck’s crew helped to carve the roadbed around treacherous Cape Horn. They slept in the snow in the frigid \
+                        winter through spring, and labored to chip away at the Donner Summit tunnels by hand through the mountain granite.'
+                        ,
+                    
+                        'In the month of June, 1866, his crew worked feverishly to log in 786 1/2 man days. However, in August 1866, Mock Chuck and his exhausted \
+                        crew decided to flee before winter came, and in early September, 1866, along with hundreds of others, they quit.'
+                        
+                    
+                        
+                    ]
+                    
+
+                },
+                // photo 6
+                {
+                    image:mock_chuck_2,
+                    photoCredit:"Vicki Tong Collection",
+                    photoTitle:"George Tong Family, 1958. (l to r) Bruce, Betty, George, Vicki, Ronald.",
+                    description:
+                    [
+                        'Mock Chuck had determined that the key to his survival was to use his skills to work as an agent for the railroad. According to family lore, \
+                        he became a partner in a Chinese goods store in San Francisco, and “rode the rails all the way to Texas,” being the middleman to hire workers, \
+                        obtain Chinese supplies, and to act as a banker for Chinese wary of American banks wherever the railroads went.'
+                        ,
+                    
+                        'In 1874 labor contractor Mock Chuck supplied over 1000 Chinese for the San Fernando Tunnel alone. On November 20, 1875, the railroad honored \
+                        Mock Chuck by giving him an 18 karat Tissot Swiss watch engraved with his name, MOCK CHUCK, in fancy cursive.'
+                        ,
+                    
+                        'My great-grandfather was so proud of the watch that he had a long 24 karat Chinese gold chain and a solid gold peanut made for the watch, so \
+                        he could walk around town, swinging the peanut as he strolled.'
+                        ,
+                    
+                        'In 1906, Mock Chuck arranged for his son in China to take his place in Los Angeles, so he could finally return to China. He had to hire an \
+                        attorney in Washington D.C. to get his son admitted to the U.S.A., even though he had legal status as son of a merchant.'
+                        ,
+                    
+                        'He died in China in 1913, having only two years at home before he died, but he lived to see his grandson born.'
+                    ]
+
+
+                
                 }
+                
             
 
             ]
@@ -252,6 +315,9 @@ const CHAPTERS =
                         'Because he was a fluent English speaker, he became a spokesman for the Chinese to the English-speaking community. \
                         Chauncey was quite an entrepreneur. He farmed—pioneering crops like onions and potatoes on virgin Delta land. He \
                         invested in modern machinery like tractors, became a labor contractor.'
+
+                   
+                        
 
                     ]
                 }

@@ -40,10 +40,35 @@ class Book extends React.Component{
     this.state = {
       currentPage: 0,
       forward: true,
-      firstRender:true
+      firstRender:true,
+      // top:120,
     };
     this.flipInterval = null;
+    this.book = React.createRef()
+    // this.calculateTop = this.calculateTop.bind(this);
   }
+
+  // calculateTop=()=>{
+      
+  //   const bookElement = this.book.current; 
+ 
+  //   const bookElementDOMrect = bookElement.getBoundingClientRect(); 
+
+  //   const  y = bookElementDOMrect.y
+  //   const height = bookElementDOMrect.height;
+
+  //   const screenHeight = window.innerHeight; 
+    
+  //   const top = 0
+    
+     
+
+  //   console.log(top);
+
+  //   this.setState({top:top})
+    
+
+  // }
 
     componentDidMount(){
 
@@ -55,6 +80,10 @@ class Book extends React.Component{
     // Initialize the flipBook 
     // Start the automatic page flipping
 
+    // this.calculateTop()
+
+
+
     if(this.state.firstRender){
    
     this.flipInterval = setInterval(() => {
@@ -63,6 +92,7 @@ class Book extends React.Component{
     
     this.setState({ firstRender: false })
     }
+
 
     }
 
@@ -103,7 +133,11 @@ class Book extends React.Component{
         return (
           // front cover and first page
             <>
-              <div className="book">
+              <div ref = {this.book} className="book"
+                style ={{
+                  top:`${this.state.top}px`
+                }}
+                >
                   <div className="page">                    
                     <div className="front cover">
                       <img 

@@ -16,7 +16,7 @@ const HistoryHeader = (props) => {
                         {/* left-line should be a parameter */}
                         <h1 className="left-line"
                         style={{
-                            borderImage:"linear-gradient(181deg, #5a384a, #970707) 30"
+                            borderImage:"linear-gradient(180deg, purple, purple) 30"
                         }}
                         > History Page</h1>                         
 

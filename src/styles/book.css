@@ -16,7 +16,9 @@
   /* Incline on the X axis for pages preview */
   rotate: 1 0 0 30deg;
   transform: rotateX(-45deg) rotateY(-4deg);
-  z-index:800
+  z-index:800;
+  cursor: pointer;
+  
   
 }
 

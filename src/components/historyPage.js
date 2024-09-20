@@ -41,6 +41,8 @@ const HistoryPage = (props) => {
 
     // ref for handling scrolling animations 
     const requestId = useRef();
+    const lastCall = useRef(0); // Using useRef to persist across renders
+
 
     // set opacity and screen height on mount 
     useEffect(() => {
@@ -54,53 +56,57 @@ const HistoryPage = (props) => {
         // set opacity to 0 on unmount
         return () => setOpacity(0);
 
-    }, [])
+    }, []) 
 
-    // scroll handler
-    const handleScroll = () => {
 
-        // throttle the execution of handleScroll
-        // to the screens refreshrate (ie 60fps)          
-        requestId.current = requestAnimationFrame(handleScroll);
+    const throttleRAF = (func, delay) => {
+        return (...args) => {
+          const now = new Date().getTime();
+          if (now - lastCall.current < delay) return;
+    
+          requestAnimationFrame(() => {
+            func(...args);
+            lastCall.current = now; // Update the ref's value
+          });
+        };
+      };
 
+      const handleScroll = throttleRAF(() => {
         setScrollY(window.scrollY);
-    }
+      }, 100);
 
 
     // add scroll event listeners and link to handleScroll 
     useEffect(() => {
 
         window.addEventListener("scroll", handleScroll);
+        // window.addEventListener("scroll",debouncedHandleScroll)
 
         return () => {
             // clean up on unmount
             cancelAnimationFrame(requestId.current);
             window.removeEventListener("scroll", handleScroll)
+            // window.removeEventListener("scroll",debouncedHandleScroll)
         }
 
-    }, [])
-
-    // call handleScroll when user scroll posiiton changes
-    useEffect(() => {
-
-        handleScroll()
-
-    }, [scrollY])
+    }, [handleScroll])
 
     // handles parallax animations based on user scroll posiiton
     const getTranslation = (scrollPosition, idx) => {
         //  calculate translate amount in Y direction 
         //  relative to scroll posiiton 
-
         // return (scrollPosition) / ((5 - idx)) * (-1) ** (idx)
-        return (scrollPosition) / ((2 - Math.cos(idx))) * (-1) ** (idx)
+
+
+        return (scrollPosition) / ((4 - Math.cos(idx))) * (-1) ** (idx)
 
         // odd index values will create negative translate values 
         // even index values will create positive translate values
         // as index increases the divisor shrinks causing elements to move 
         // more quickly in relation to scroll posiiton. 
-
     };
+
+    // ===================== scroll linked naviation button ====================
 
     const smoothScrollTo = (targetPosition, duration) => {
         const startPosition = scrollY
@@ -109,16 +115,6 @@ const HistoryPage = (props) => {
 
         // Optimized easing function to reduce thrashing
         const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-
-        // this is really easeOutQuad 
-        // but got lazy
-        // const easeInOutQuad = (distance)=> {
-
-        //     return 1 - Math.pow(1 - distance, 2); 
-          
-        //   }
-
-        
 
         const scrollStep = (currentTime) => {
             const elapsedTime = currentTime - startTime;
